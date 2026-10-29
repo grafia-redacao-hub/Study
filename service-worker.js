@@ -1,5 +1,5 @@
 /* Grafia Study PWA — shell cache with network-first navigation. */
-const CACHE_NAME = 'grafia-study-shell-v1';
+const CACHE_NAME = 'grafia-study-shell-v2-logo4';
 const SHELL_FILES = [
   './',
   './index.html',
