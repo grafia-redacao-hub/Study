@@ -1036,8 +1036,8 @@ html.timer-focus-active body{margin:0!important;padding:0!important}
 .timer-page .timer-paper-card.is-focus-view .paper-status,.timer-page .timer-paper-card.is-focus-view .paper-progress,.timer-page .timer-paper-card.is-focus-view .paper-hint{display:none!important}
 .timer-page .timer-paper-card.is-focus-view .timer-buttons{position:absolute;left:50%;bottom:max(30px,calc(env(safe-area-inset-bottom) + 22px));transform:translateX(-50%);display:flex;justify-content:center;align-items:center;gap:12px;margin:0!important;width:min(90vw,560px)}
 .timer-page .timer-paper-card.is-focus-view .timer-buttons .primary-btn,.timer-page .timer-paper-card.is-focus-view .timer-buttons .secondary-btn{min-height:46px;padding:0 24px;border-radius:14px;font-size:13px;box-shadow:0 4px 0 rgba(0,0,0,.35)}
-.timer-page .timer-paper-card.is-focus-view [data-action="timer-finish"],.timer-page .timer-paper-card.is-focus-view [data-action="timer-discard"]{display:none!important}
-body:has(.timer-paper-card.is-focus-view) .toast,body:has(.timer-paper-card.is-focus-view) #appDialog{display:none!important}
+
+body:has(.timer-paper-card.is-focus-view) .toast{display:none!important}
 @media (orientation:landscape) and (max-height:520px){
  .timer-page .timer-paper-card.is-focus-view{padding:18px 54px!important}
  .timer-page .timer-paper-card.is-focus-view .timer-focus-topline{top:max(12px,env(safe-area-inset-top));left:max(18px,env(safe-area-inset-left));right:max(62px,calc(env(safe-area-inset-right) + 50px))}
@@ -1062,6 +1062,162 @@ body:has(.timer-paper-card.is-focus-view) .toast,body:has(.timer-paper-card.is-f
 }
 @media(prefers-reduced-motion:reduce){.timer-page .paper-flap-top,.timer-page .paper-flap-bottom{animation-duration:.01ms!important;animation-delay:0ms!important}}
 
+
+
+/* Paper Flip: paired split-flap boards inspired by desktop flip calendars. */
+.timer-page .paper-unit{display:flex;flex-direction:column;align-items:stretch;justify-content:center;position:relative;min-width:0}
+.timer-page .paper-unit-label{display:none}
+.timer-page .paper-unit-digits{display:flex;align-items:center;justify-content:center;gap:clamp(3px,.55vw,8px);min-width:0}
+.timer-page .paper-digits>.paper-separator{flex:0 0 auto}
+.timer-page .timer-paper-card.is-focus-view .timer-card-fullscreen-btn{
+ position:fixed!important;top:max(14px,env(safe-area-inset-top))!important;right:max(14px,env(safe-area-inset-right))!important;left:auto!important;
+ transform:none!important;width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;padding:0!important;
+ display:flex!important;align-items:center;justify-content:center;border-radius:50%!important;background:#f1f3f5!important;
+ border:1px solid rgba(255,255,255,.78)!important;color:#111820!important;font:500 28px/1 system-ui,sans-serif!important;
+ box-shadow:0 5px 18px rgba(0,0,0,.32)!important;z-index:2147483647!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important
+}
+.timer-page .timer-paper-card.is-focus-view .timer-card-fullscreen-btn:active{transform:scale(.94)!important}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-topline{left:max(28px,env(safe-area-inset-left));right:max(78px,calc(env(safe-area-inset-right) + 60px));top:max(24px,env(safe-area-inset-top));align-items:flex-start}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-date{font-size:clamp(12px,1.45vw,16px);letter-spacing:.025em;color:#d8e0e8}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-date:before{content:"GRAFIA STUDY";font-size:9px;letter-spacing:.22em;color:#8199ad}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-clock{font-size:clamp(27px,4vw,42px);letter-spacing:.015em}
+.timer-page .timer-paper-card.is-focus-view .timer-paper-card{}
+.timer-page .timer-paper-card.is-focus-view .paper-session-name{top:20%;font-size:10px;color:#9bb5c9!important;letter-spacing:.24em}
+.timer-page .timer-paper-card.is-focus-view .paper-digits{
+ position:absolute;left:50%;top:53%;transform:translate(-50%,-50%);width:min(86vw,1380px);max-width:calc(100vw - 110px);
+ display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.6vw,42px);margin:0;perspective:1700px
+}
+.timer-page .timer-paper-card.is-focus-view .paper-unit{
+ flex:1 1 0;width:0;max-width:610px;min-width:0;height:clamp(174px,56vh,430px);box-sizing:border-box;position:relative;overflow:hidden;
+ border-radius:clamp(20px,2.6vw,38px);border:1px solid rgba(151,166,181,.13);
+ background:linear-gradient(180deg,#202226 0%,#1d1f23 49.7%,#17191d 50%,#202226 100%);
+ box-shadow:0 14px 30px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.045)
+}
+.timer-page .timer-paper-card.is-focus-view .paper-unit:after{content:"";position:absolute;z-index:6;left:0;right:0;top:50%;height:2px;background:rgba(5,7,10,.94);box-shadow:0 1px 0 rgba(220,228,236,.035);pointer-events:none}
+.timer-page .timer-paper-card.is-focus-view .paper-unit-label{display:block;position:absolute;z-index:7;top:7%;left:8px;right:8px;text-align:center;color:#9da5af;font:750 clamp(9px,1.1vw,12px)/1.2 system-ui,sans-serif;letter-spacing:.2em}
+.timer-page .timer-paper-card.is-focus-view .paper-unit-digits{position:absolute;inset:0 3% 0;display:flex;align-items:center;justify-content:center;gap:0;padding:0;box-sizing:border-box}
+.timer-page .timer-paper-card.is-focus-view .paper-digit{flex:1 1 50%;width:50%;height:100%;max-width:50%;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:hidden;color:#e5e8ed;font-family:Georgia,'Times New Roman',serif;font-size:clamp(82px,37vh,310px);font-weight:650;line-height:1}
+.timer-page .timer-paper-card.is-focus-view .paper-half,.timer-page .timer-paper-card.is-focus-view .paper-flap{background:transparent!important}
+.timer-page .timer-paper-card.is-focus-view .paper-digit:after{display:none!important}
+.timer-page .timer-paper-card.is-focus-view .paper-digit .digit-glyph{text-shadow:0 2px 1px rgba(255,255,255,.045)}
+.timer-page .timer-paper-card.is-focus-view .paper-separator{font-size:clamp(38px,8vh,78px);color:#818d99;text-shadow:none;margin:0 -0.1em}
+.timer-page .timer-paper-card.is-focus-view .paper-phase{top:82%;font-size:10px;letter-spacing:.22em;color:#a9c3d6!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons{bottom:max(24px,calc(env(safe-area-inset-bottom) + 18px));gap:10px}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons .primary-btn,.timer-page .timer-paper-card.is-focus-view .timer-buttons .secondary-btn{min-height:42px;padding:0 22px;border-radius:13px;font-size:12px}
+@media (orientation:landscape) and (max-height:520px){
+ .timer-page .timer-paper-card.is-focus-view .paper-digits{top:54%;width:min(82vw,1200px);max-width:calc(100vw - 100px);gap:clamp(10px,2.2vw,28px)}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit{height:clamp(142px,54vh,260px);border-radius:24px}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit-label{top:8%;font-size:9px}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit-digits{inset:0 3% 0}
+ .timer-page .timer-paper-card.is-focus-view .paper-digit{font-size:clamp(76px,34vh,190px)}
+ .timer-page .timer-paper-card.is-focus-view .paper-session-name{top:20%;font-size:9px}
+ .timer-page .timer-paper-card.is-focus-view .paper-phase{top:83%;font-size:9px}
+}
+@media (orientation:portrait) and (max-width:760px){
+ .timer-page .timer-paper-card.is-focus-view .paper-digits{width:calc(100vw - 68px);max-width:none;gap:5px;top:53%}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit{height:clamp(130px,32vh,230px);border-radius:18px}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit-label{font-size:8px;letter-spacing:.12em}
+ .timer-page .timer-paper-card.is-focus-view .paper-digit{font-size:clamp(50px,18vh,120px)}
+ .timer-page .timer-paper-card.is-focus-view .paper-separator{font-size:34px}
+ .timer-page .timer-paper-card.is-focus-view .timer-focus-topline{left:16px;right:64px;top:14px}
+ .timer-page .timer-paper-card.is-focus-view .timer-focus-date{font-size:10px}
+ .timer-page .timer-paper-card.is-focus-view .timer-focus-clock{font-size:24px}
+ .timer-page .timer-paper-card.is-focus-view .paper-session-name{top:23%;font-size:8px}
+ .timer-page .timer-paper-card.is-focus-view .paper-phase{top:77%}
+}
+
+
+
+/* Paper Flip — acabamento alinhado à referência visual do calendário split-flap. */
+.timer-page .timer-card-fullscreen-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;padding:0!important;border-radius:50%!important;background:rgba(25,31,39,.9)!important;border:1px solid rgba(210,220,232,.26)!important;color:#e9edf2!important;font:500 19px/1 system-ui,sans-serif!important;box-shadow:0 3px 10px rgba(0,0,0,.2)!important}
+.timer-page .timer-card-fullscreen-btn:hover{background:#303741!important}
+.timer-page .timer-paper-card.is-focus-view{background:#000!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:clamp(16px,3.2vh,34px) clamp(20px,5vw,76px)!important}
+.timer-page .timer-paper-card.is-focus-view:before,.timer-page .timer-paper-card.is-focus-view:after{display:none!important}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-topline{position:absolute!important;display:flex!important;align-items:center!important;justify-content:space-between!important;left:max(28px,env(safe-area-inset-left))!important;right:max(58px,calc(env(safe-area-inset-right) + 38px))!important;top:max(20px,env(safe-area-inset-top))!important;gap:20px!important;z-index:5!important;pointer-events:none!important}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-brandline{display:flex;align-items:center;gap:13px;min-width:0}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-logo{display:block;width:clamp(30px,4vw,42px);height:clamp(30px,4vw,42px);object-fit:cover;border-radius:9px;border:1px solid rgba(255,255,255,.16);box-shadow:0 3px 12px rgba(0,0,0,.35)}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-date{display:block;color:#c8cbd0!important;font:500 clamp(10px,1.25vw,14px)/1.3 system-ui,sans-serif!important;letter-spacing:.015em!important;text-transform:none!important;white-space:nowrap}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-date:before,.timer-page .timer-paper-card.is-focus-view .timer-focus-clock:before{display:none!important;content:none!important}
+.timer-page .timer-paper-card.is-focus-view .timer-focus-clock{color:#e7e9ec!important;font:400 clamp(19px,3vw,30px)/1 system-ui,sans-serif!important;letter-spacing:.01em!important;font-variant-numeric:tabular-nums!important}
+.timer-page .timer-paper-card.is-focus-view .timer-card-fullscreen-btn{position:fixed!important;top:max(13px,env(safe-area-inset-top))!important;right:max(13px,env(safe-area-inset-right))!important;left:auto!important;width:25px!important;height:25px!important;min-width:25px!important;min-height:25px!important;padding:0!important;border-radius:50%!important;background:rgba(235,238,242,.92)!important;border:1px solid rgba(255,255,255,.75)!important;color:#171a1e!important;font:500 17px/1 system-ui,sans-serif!important;box-shadow:0 2px 8px rgba(0,0,0,.32)!important;z-index:2147483647!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.timer-page .timer-paper-card.is-focus-view .timer-card-fullscreen-btn:active{transform:scale(.92)!important}
+.timer-page .timer-paper-card.is-focus-view .paper-kicker,.timer-page .timer-paper-card.is-focus-view .paper-session-name{display:none!important}
+.timer-page .timer-paper-card.is-focus-view .paper-digits{position:absolute!important;left:50%!important;top:53%!important;transform:translate(-50%,-50%)!important;width:min(84vw,1260px)!important;max-width:calc(100vw - 100px)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:clamp(20px,4vw,66px)!important;margin:0!important;perspective:1600px!important}
+.timer-page .timer-paper-card.is-focus-view .paper-unit{position:relative!important;display:flex!important;flex:1 1 0!important;min-width:0!important;width:0!important;height:clamp(190px,65vh,440px)!important;overflow:hidden!important;box-sizing:border-box!important;border:0!important;border-radius:clamp(22px,2.5vw,36px)!important;background:#202020!important;box-shadow:0 8px 22px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035)!important}
+.timer-page .timer-paper-card.is-focus-view .paper-unit:after{content:""!important;display:block!important;position:absolute!important;z-index:8!important;left:0!important;right:0!important;top:50%!important;height:2px!important;background:#080808!important;box-shadow:0 1px 0 rgba(255,255,255,.025)!important;pointer-events:none!important}
+.timer-page .timer-paper-card.is-focus-view .paper-unit-label{display:block!important;position:absolute!important;z-index:9!important;top:6.5%!important;left:8px!important;right:8px!important;color:#c5c7ca!important;text-align:center!important;font:600 clamp(10px,1.2vw,15px)/1.2 system-ui,sans-serif!important;letter-spacing:.035em!important;text-transform:none!important}
+.timer-page .timer-paper-card.is-focus-view .paper-unit-digits{position:absolute!important;inset:0 3%!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:0!important;padding:0!important;box-sizing:border-box!important}
+.timer-page .timer-paper-card.is-focus-view .paper-digit{display:inline-flex!important;flex:1 1 50%!important;width:50%!important;max-width:50%!important;height:100%!important;position:relative!important;overflow:hidden!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#c7c9cc!important;font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(96px,38vh,330px)!important;font-weight:500!important;line-height:1!important;letter-spacing:-.055em!important}
+.timer-page .timer-paper-card.is-focus-view .paper-half{background:transparent!important}
+.timer-page .timer-paper-card.is-focus-view .paper-flap-top,.timer-page .timer-paper-card.is-focus-view .paper-flap-bottom{background:#202020!important}
+.timer-page .timer-paper-card.is-focus-view .paper-digit:after{display:none!important}
+.timer-page .timer-paper-card.is-focus-view .digit-glyph{text-shadow:none!important}
+.timer-page .timer-paper-card.is-focus-view .paper-separator{flex:0 0 auto!important;color:#9fa2a6!important;font:400 clamp(32px,7vh,66px)/1 system-ui,sans-serif!important;margin:0 clamp(-10px,-.65vw,-3px)!important;text-shadow:none!important}
+.timer-page .timer-paper-card.is-focus-view .paper-phase{position:absolute!important;left:50%!important;top:84%!important;transform:translateX(-50%)!important;color:#aeb2b8!important;font:600 10px/1.3 system-ui,sans-serif!important;letter-spacing:.16em!important;white-space:nowrap!important}
+.timer-page .timer-paper-card.is-focus-view .paper-status,.timer-page .timer-paper-card.is-focus-view .paper-progress,.timer-page .timer-paper-card.is-focus-view .paper-hint{display:none!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons{position:absolute!important;left:50%!important;bottom:max(20px,calc(env(safe-area-inset-bottom) + 12px))!important;transform:translateX(-50%)!important;display:flex!important;justify-content:center!important;align-items:center!important;width:min(88vw,460px)!important;gap:9px!important;margin:0!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons .primary-btn,.timer-page .timer-paper-card.is-focus-view .timer-buttons .secondary-btn{min-height:40px!important;padding:0 22px!important;border-radius:12px!important;font-size:12px!important;background:#38b6ec!important;color:#08121a!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:0 3px 0 #17658a!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons .secondary-btn{background:#292d32!important;color:#e7e9eb!important;box-shadow:0 3px 0 #111!important}
+
+body:has(.timer-paper-card.is-focus-view) .toast{display:none!important}
+@media (orientation:landscape) and (max-height:520px){.timer-page .timer-paper-card.is-focus-view .timer-focus-topline{top:max(12px,env(safe-area-inset-top))!important}.timer-page .timer-paper-card.is-focus-view .paper-digits{top:54%!important;width:min(84vw,1150px)!important;gap:clamp(16px,3.1vw,42px)!important}.timer-page .timer-paper-card.is-focus-view .paper-unit{height:clamp(150px,64vh,300px)!important;border-radius:22px!important}.timer-page .timer-paper-card.is-focus-view .paper-unit-label{top:6%!important;font-size:10px!important}.timer-page .timer-paper-card.is-focus-view .paper-digit{font-size:clamp(90px,37vh,210px)!important}.timer-page .timer-paper-card.is-focus-view .paper-phase{top:84%!important}.timer-page .timer-paper-card.is-focus-view .timer-buttons{bottom:max(10px,calc(env(safe-area-inset-bottom) + 5px))!important}}
+@media (orientation:portrait) and (max-width:760px){.timer-page .timer-paper-card.is-focus-view .timer-focus-topline{left:14px!important;right:48px!important;top:12px!important}.timer-page .timer-paper-card.is-focus-view .timer-focus-date{font-size:9px!important}.timer-page .timer-paper-card.is-focus-view .timer-focus-clock{font-size:20px!important}.timer-page .timer-paper-card.is-focus-view .paper-digits{width:calc(100vw - 56px)!important;max-width:none!important;gap:7px!important;top:52%!important}.timer-page .timer-paper-card.is-focus-view .paper-unit{height:clamp(125px,30vh,220px)!important;border-radius:16px!important}.timer-page .timer-paper-card.is-focus-view .paper-unit-label{font-size:8px!important}.timer-page .timer-paper-card.is-focus-view .paper-digit{font-size:clamp(48px,17vh,112px)!important}.timer-page .timer-paper-card.is-focus-view .paper-separator{font-size:30px!important}.timer-page .timer-paper-card.is-focus-view .paper-phase{top:76%!important;font-size:9px!important}.timer-page .timer-paper-card.is-focus-view .timer-buttons{bottom:max(12px,calc(env(safe-area-inset-bottom) + 7px))!important}}
+@media(prefers-reduced-motion:reduce){.timer-page .timer-paper-card.is-focus-view .paper-flap-top,.timer-page .timer-paper-card.is-focus-view .paper-flap-bottom{animation-duration:.01ms!important;animation-delay:0ms!important}}
+
+
+
+/* A animação de entrada da página criava um containing block para position:fixed. Removê-la no modo foco faz o cartão cobrir a viewport real. */
+html.timer-focus-active .timer-page{transform:none!important;animation:none!important;will-change:auto!important}
+/* Paper Flip — correções de interação, confirmação e layout responsivo */
+.app-dialog-overlay[hidden]{display:none!important}
+#appDialog:not([hidden]){position:fixed!important;inset:0!important;z-index:2147483647!important;display:grid!important;place-items:center!important;padding:22px!important;box-sizing:border-box!important;background:rgba(3,8,14,.72)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important}
+#appDialog .app-dialog{width:min(100%,430px)!important;max-height:min(82dvh,620px)!important;overflow:auto!important;box-sizing:border-box!important;padding:24px!important;border:1px solid rgba(174,197,216,.28)!important;border-radius:22px!important;background:linear-gradient(155deg,rgba(34,48,64,.98),rgba(14,23,34,.99))!important;color:#edf4fa!important;box-shadow:0 22px 70px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.06)!important}
+#appDialog .app-dialog h2{margin:0 0 10px!important;color:#f3f7fb!important;font:750 18px/1.25 system-ui,sans-serif!important}
+#appDialog .app-dialog-message{color:#c1ceda!important;font:400 13px/1.6 system-ui,sans-serif!important;white-space:pre-wrap!important}
+#appDialog .app-dialog-actions{display:flex!important;justify-content:flex-end!important;gap:9px!important;flex-wrap:wrap!important;margin-top:22px!important}
+#appDialog .app-dialog-actions button{min-height:42px!important;padding:0 17px!important;border-radius:12px!important;font:750 12px/1 system-ui,sans-serif!important;cursor:pointer!important}
+#appDialog .app-dialog-cancel{border:1px solid #536578!important;background:#202d3a!important;color:#dce6ef!important}
+#appDialog .app-dialog-confirm{border:1px solid rgba(255,255,255,.15)!important;background:#45b8ed!important;color:#071722!important;box-shadow:0 3px 0 #17658a!important}
+#appDialog .app-dialog-actions button:focus-visible{outline:2px solid #9fe1ff!important;outline-offset:3px!important}
+body:has(.timer-paper-card.is-focus-view) #appDialog:not([hidden]){display:grid!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons{width:min(92vw,650px)!important;flex-wrap:wrap!important;gap:8px!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons [data-action="timer-finish"],
+.timer-page .timer-paper-card.is-focus-view .timer-buttons [data-action="timer-discard"]{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:34px!important;padding:0 13px!important;border-radius:10px!important;font-size:10px!important;line-height:1!important;box-shadow:none!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons [data-action="timer-finish"]{background:rgba(39,49,60,.95)!important;color:#e4ebf2!important;border:1px solid rgba(179,196,211,.22)!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons [data-action="timer-discard"]{background:transparent!important;color:#b6c3ce!important;border:1px solid rgba(179,196,211,.22)!important;text-decoration:none!important}
+.timer-page .timer-paper-card.is-focus-view .timer-buttons [data-action="timer-start"],
+.timer-page .timer-paper-card.is-focus-view .timer-buttons [data-action="timer-pause"],
+.timer-page .timer-paper-card.is-focus-view .timer-buttons [data-action="timer-resume"],
+.timer-page .timer-paper-card.is-focus-view .timer-buttons [data-action="timer-next-phase"]{min-height:42px!important;padding:0 22px!important}
+
+/* On small landscape screens, keep the boards and all controls inside the safe viewport. */
+@media (orientation:landscape) and (max-height:560px){
+ .timer-page .timer-paper-card.is-focus-view{padding:12px max(44px,env(safe-area-inset-right)) 12px max(22px,env(safe-area-inset-left))!important}
+ .timer-page .timer-paper-card.is-focus-view .timer-focus-topline{top:max(10px,env(safe-area-inset-top))!important;left:max(18px,env(safe-area-inset-left))!important;right:max(54px,calc(env(safe-area-inset-right) + 40px))!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-digits{top:51%!important;width:min(82vw,1120px)!important;max-width:calc(100vw - 90px)!important;gap:clamp(10px,2.2vw,30px)!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit{height:clamp(138px,56vh,270px)!important;border-radius:clamp(16px,3vh,24px)!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit-label{top:6%!important;font-size:clamp(8px,1.8vh,11px)!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-digit{font-size:clamp(78px,34vh,205px)!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-separator{font-size:clamp(28px,7vh,52px)!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-phase{top:82%!important}
+ .timer-page .timer-paper-card.is-focus-view .timer-buttons{bottom:max(8px,calc(env(safe-area-inset-bottom) + 5px))!important}
+}
+
+/* When orientation lock is unavailable, preserve a readable portrait layout until the device rotates. */
+@media (orientation:portrait) and (max-width:760px){
+ .timer-page .timer-paper-card.is-focus-view .timer-focus-topline{left:16px!important;right:54px!important;top:max(14px,env(safe-area-inset-top))!important;gap:10px!important}
+ .timer-page .timer-paper-card.is-focus-view .timer-focus-logo{width:30px!important;height:30px!important}
+ .timer-page .timer-paper-card.is-focus-view .timer-focus-date{font-size:9px!important;white-space:normal!important}
+ .timer-page .timer-paper-card.is-focus-view .timer-focus-clock{font-size:22px!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-digits{width:calc(100vw - 62px)!important;max-width:none!important;top:52%!important;gap:7px!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit{height:clamp(130px,30vh,230px)!important;border-radius:17px!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-unit-label{font-size:8px!important;letter-spacing:.08em!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-digit{font-size:clamp(54px,17vh,120px)!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-separator{font-size:32px!important}
+ .timer-page .timer-paper-card.is-focus-view .paper-phase{top:76%!important;font-size:9px!important}
+ .timer-page .timer-paper-card.is-focus-view .timer-buttons{bottom:max(12px,calc(env(safe-area-inset-bottom) + 8px))!important;width:calc(100vw - 36px)!important}
+}
+@media(prefers-reduced-motion:reduce){#appDialog .app-dialog{scroll-behavior:auto!important}}
 
 </style>
 </head>
@@ -1196,17 +1352,58 @@ function dailySubjectRows(dateKey=localDayKey(Date.now())){const totals={};for(c
 function subjectTopic(subject){return TOPICS.filter(t=>t.subject===subject);} 
 function showToast(message){const el=document.getElementById('toast');if(!el)return;el.textContent=message;el.classList.add('show');clearTimeout(toastHandle);toastHandle=setTimeout(()=>el.classList.remove('show'),2400);}
 let appDialogConfirmAction=null;
-function closeAppDialog(confirmed=false){const overlay=document.getElementById('appDialog');if(!overlay)return;overlay.hidden=true;const action=appDialogConfirmAction;appDialogConfirmAction=null;if(confirmed&&typeof action==='function')action();}
-function showAppDialog({title='Grafia Study',message='',confirmText='Entendi',cancelText='Cancelar',onConfirm=null,informational=false}){const overlay=document.getElementById('appDialog');if(!overlay)return;document.getElementById('appDialogTitle').textContent=title;document.getElementById('appDialogMessage').textContent=message;const cancel=document.getElementById('appDialogCancel'),confirm=document.getElementById('appDialogConfirm');cancel.textContent=cancelText;cancel.hidden=!!informational;confirm.textContent=confirmText;appDialogConfirmAction=onConfirm;overlay.hidden=false;confirm.focus();}
+let appDialogPreviousFocus=null;
+function closeAppDialog(confirmed=false){
+ const overlay=document.getElementById('appDialog');if(!overlay)return;
+ overlay.hidden=true;overlay.setAttribute('aria-hidden','true');
+ const action=appDialogConfirmAction;appDialogConfirmAction=null;
+ const previous=appDialogPreviousFocus;appDialogPreviousFocus=null;
+ if(confirmed&&typeof action==='function'){
+  try{const result=action();if(result&&typeof result.catch==='function')result.catch(err=>{console.error('Falha ao concluir a confirmação:',err);showToast('Não foi possível concluir a ação.');});}
+  catch(err){console.error('Falha ao concluir a confirmação:',err);showToast('Não foi possível concluir a ação.');}
+ }else if(previous&&previous.isConnected&&typeof previous.focus==='function'){previous.focus({preventScroll:true});}
+}
+function showAppDialog({title='Grafia Study',message='',confirmText='Entendi',cancelText='Cancelar',onConfirm=null,informational=false}){
+ const overlay=document.getElementById('appDialog');if(!overlay)return;
+ appDialogPreviousFocus=document.activeElement;
+ document.getElementById('appDialogTitle').textContent=title;
+ document.getElementById('appDialogMessage').textContent=message;
+ const cancel=document.getElementById('appDialogCancel'),confirm=document.getElementById('appDialogConfirm');
+ cancel.textContent=cancelText;cancel.hidden=!!informational;confirm.textContent=confirmText;
+ appDialogConfirmAction=onConfirm;overlay.hidden=false;overlay.setAttribute('aria-hidden','false');
+ requestAnimationFrame(()=>{if(!overlay.hidden)confirm.focus({preventScroll:true});});
+}
 function showAppConfirm(title,message,onConfirm,confirmText='Confirmar'){showAppDialog({title,message,confirmText,cancelText:'Cancelar',onConfirm});}
 function showAppInfo(title,message){showAppDialog({title,message,confirmText:'Entendi',informational:true});}
-function timerNativeFullscreen(){return document.fullscreenElement===document.documentElement||document.webkitFullscreenElement===document.documentElement;}
+function timerNativeFullscreen(){return !!(document.fullscreenElement||document.webkitFullscreenElement);}
 function timerFocusActive(){const card=document.getElementById('timerPaperCard');return document.documentElement.classList.contains('timer-focus-active')||timerNativeFullscreen()||!!card?.classList.contains('is-focus-view');}
-function lockTimerLandscape(){try{const orientation=screen.orientation;if(orientation&&typeof orientation.lock==='function')orientation.lock('landscape').catch(()=>{});}catch(e){}}
-function unlockTimerLandscape(){try{if(screen.orientation&&typeof screen.orientation.unlock==='function')screen.orientation.unlock();}catch(e){}}
-async function exitTimerFullscreen(){const html=document.documentElement;const native=timerNativeFullscreen();if(native){try{const exit=document.exitFullscreen||document.webkitExitFullscreen;if(exit)await exit.call(document);}catch(e){}}html.classList.remove('timer-focus-active','timer-focus-native');const card=document.getElementById('timerPaperCard');if(card)card.classList.remove('is-focus-view','is-pseudo-fullscreen');unlockTimerLandscape();syncFullscreenButton();}
-async function toggleTimerFullscreen(){const card=document.getElementById('timerPaperCard');if(!card)return;if(timerFocusActive()){await exitTimerFullscreen();return;}const html=document.documentElement;const activate=(pseudo=false)=>{html.classList.add('timer-focus-active');if(!pseudo)html.classList.add('timer-focus-native');card.classList.add('is-focus-view');if(pseudo)card.classList.add('is-pseudo-fullscreen');syncFullscreenButton();lockTimerLandscape();};const request=document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen;if(request){try{await request.call(document.documentElement,{navigationUI:'hide'});activate(false);return;}catch(e){/* Fallback visual when fullscreen permission/API is unavailable. */}}activate(true);}
-function syncFullscreenButton(){const card=document.getElementById('timerPaperCard');const html=document.documentElement;const native=timerNativeFullscreen();if(native){html.classList.add('timer-focus-active','timer-focus-native');if(card)card.classList.add('is-focus-view');}else if(html.classList.contains('timer-focus-native')){html.classList.remove('timer-focus-active','timer-focus-native');if(card)card.classList.remove('is-focus-view');unlockTimerLandscape();}if(!card)return;const button=card.querySelector('[data-action="timer-fullscreen"]');if(!button)return;const active=timerFocusActive();button.textContent=active?'×':'⛶ Tela cheia';button.setAttribute('aria-label',active?'Sair da tela cheia':'Ativar tela cheia');button.title=active?'Sair da tela cheia':'Ativar tela cheia';} 
+async function lockTimerLandscape(){try{const orientation=window.screen&&window.screen.orientation;if(orientation&&typeof orientation.lock==='function'){await orientation.lock('landscape');return true;}}catch(e){}return false;}
+function unlockTimerLandscape(){try{const orientation=window.screen&&window.screen.orientation;if(orientation&&typeof orientation.unlock==='function')orientation.unlock();}catch(e){}}
+async function exitTimerFullscreen(){
+ const html=document.documentElement,card=document.getElementById('timerPaperCard'),native=timerNativeFullscreen();
+ if(native){try{const exit=document.exitFullscreen||document.webkitExitFullscreen;if(exit)await exit.call(document);}catch(e){}}
+ html.classList.remove('timer-focus-active','timer-focus-native','timer-focus-rotated');
+ if(card)card.classList.remove('is-focus-view','is-pseudo-fullscreen');
+ unlockTimerLandscape();syncFullscreenButton();
+}
+async function toggleTimerFullscreen(){
+ const card=document.getElementById('timerPaperCard');if(!card)return;
+ if(timerFocusActive()){await exitTimerFullscreen();return;}
+ const html=document.documentElement;
+ const activate=(pseudo=false)=>{html.classList.add('timer-focus-active');html.classList.toggle('timer-focus-native',!pseudo);card.classList.add('is-focus-view','is-pseudo-fullscreen');if(!pseudo)card.classList.remove('is-pseudo-fullscreen');syncFullscreenButton();};
+ const request=document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen;
+ let native=false;
+ if(request){try{await request.call(document.documentElement,{navigationUI:'hide'});native=true;}catch(e){/* Fallback visual when fullscreen permission/API is unavailable. */}}
+ activate(!native);
+ await lockTimerLandscape();
+}
+function syncFullscreenButton(){
+ const card=document.getElementById('timerPaperCard'),html=document.documentElement,native=timerNativeFullscreen();
+ if(native){html.classList.add('timer-focus-active','timer-focus-native');if(card)card.classList.add('is-focus-view');}
+ else if(html.classList.contains('timer-focus-native')){html.classList.remove('timer-focus-active','timer-focus-native','timer-focus-rotated');if(card)card.classList.remove('is-focus-view','is-pseudo-fullscreen');unlockTimerLandscape();}
+ if(!card)return;const button=card.querySelector('[data-action="timer-fullscreen"]');if(!button)return;
+ const active=timerFocusActive();button.textContent=active?'×':'⛶';button.setAttribute('aria-label',active?'Sair da visualização ampliada':'Abrir visualização ampliada');button.title=active?'Sair da visualização':'Abrir visualização ampliada';
+}
 function syncTimerFocusDateTime(){const now=new Date();const date=document.getElementById('timerFocusDate'),clock=document.getElementById('timerFocusClock');if(date)date.textContent=new Intl.DateTimeFormat('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).format(now);if(clock)clock.textContent=new Intl.DateTimeFormat('pt-BR',{hour:'2-digit',minute:'2-digit',hour12:false}).format(now);}
 
 function updateNav(){document.querySelectorAll('[data-page]').forEach(el=>el.classList.toggle('active',el.dataset.page===page));const crumb={home:'Visão geral',cycle:'Ciclo de estudos',topics:'Matérias e assuntos',timer:'Cronômetro',history:'Histórico',settings:'Configurações'};document.getElementById('crumb').textContent=crumb[page]||'Visão geral';}
@@ -1307,11 +1504,15 @@ function renderTimer(){
  <div class="timer-center-wrap"><div class="timer-settings"><div class="field"><label for="timerSubject">MATÉRIA</label><select id="timerSubject" class="select" ${active?'disabled':''}>${subjectOptions.map(s=>`<option value="${s}" ${s===subjectValue?'selected':''}>${s}</option>`).join('')}</select></div><div class="field"><label for="timerTopic">ASSUNTO (OPCIONAL)</label><select id="timerTopic" class="select" ${active||subjectValue==='Redação'?'disabled':''}>${topicOptions}</select></div></div>
  ${subjectValue==='Redação'?`<div class="essay-theme-field field" style="max-width:860px;margin:0 auto 14px"><label for="timerEssayTheme">TEMA DA REDAÇÃO (OPCIONAL)</label><input id="timerEssayTheme" class="timer-input" type="text" maxlength="240" placeholder="Digite o tema que você vai desenvolver" value="${esc(active?(timer.essayTheme||''):timerDraftEssayTheme)}" ${active?'disabled':''}></div>`:''}
  ${!active?timerModeSettings(mode,false):''}
- <div class="timer-card timer-paper-card" id="timerPaperCard"><div class="paper-kicker">GRAFIA STUDY</div><button class="timer-card-fullscreen-btn" data-action="timer-fullscreen" aria-label="Ativar tela cheia" title="Tela cheia">⛶ Tela cheia</button><div class="timer-focus-topline" aria-label="Data e hora local"><div class="timer-focus-date"><time id="timerFocusDate"></time></div><div class="timer-focus-clock"><time id="timerFocusClock"></time></div></div><div class="paper-session-name" id="timerSessionName">${esc(sessionName)}</div><div class="paper-digits" id="timerDisplay" aria-live="off">${paperDigits(formatPaperClock(displaySeconds))}</div><div class="paper-phase" id="timerPhase">${active?(phaseLabel||timerModeLabel(mode)):'Pronto para começar'}</div><div class="paper-status" id="timerStatus">${esc(status)}</div><div class="paper-progress"><span id="timerProgressFill" style="width:${progress}%"></span></div><div class="timer-buttons">${!active?'<button class="primary-btn" data-action="timer-start" style="min-width:160px">▶ Iniciar</button>':timer.status==='running'?'<button class="secondary-btn" data-action="timer-pause">Ⅱ Pausar</button>':timer.status==='phase-complete'?'<button class="primary-btn" data-action="timer-next-phase">↻ Próxima etapa</button>':'<button class="primary-btn" data-action="timer-resume">▶ Continuar</button>'}${active?'<button class="primary-btn" data-action="timer-finish">✓ Finalizar sessão</button><button class="quiet-btn" data-action="timer-discard">Descartar</button>':''}</div></div>
+ <div class="timer-card timer-paper-card" id="timerPaperCard"><div class="paper-kicker">GRAFIA STUDY</div><button class="timer-card-fullscreen-btn" data-action="timer-fullscreen" aria-label="Abrir visualização ampliada" title="Abrir visualização ampliada">⛶</button><div class="timer-focus-topline" aria-label="Data e hora local"><div class="timer-focus-brandline"><img class="timer-focus-logo" src="icons/logo-opcao-4.png" alt="Grafia Study"><div class="timer-focus-date"><time id="timerFocusDate"></time></div></div><div class="timer-focus-clock"><time id="timerFocusClock"></time></div></div><div class="paper-session-name" id="timerSessionName">${esc(sessionName)}</div><div class="paper-digits" id="timerDisplay" aria-live="off">${paperDigits(formatPaperClock(displaySeconds))}</div><div class="paper-phase" id="timerPhase">${active?(phaseLabel||timerModeLabel(mode)):'Pronto para começar'}</div><div class="paper-status" id="timerStatus">${esc(status)}</div><div class="paper-progress"><span id="timerProgressFill" style="width:${progress}%"></span></div><div class="timer-buttons">${!active?'<button class="primary-btn" data-action="timer-start" style="min-width:160px">▶ Iniciar</button>':timer.status==='running'?'<button class="secondary-btn" data-action="timer-pause">Ⅱ Pausar</button>':timer.status==='phase-complete'?'<button class="primary-btn" data-action="timer-next-phase">↻ Próxima etapa</button>':'<button class="primary-btn" data-action="timer-resume">▶ Continuar</button>'}${active?'<button class="primary-btn" data-action="timer-finish">✓ Finalizar sessão</button><button class="quiet-btn" data-action="timer-discard">Descartar</button>':''}</div></div>
  <div class="timer-utility-row"><button class="secondary-btn" data-action="timer-notifications">♧ ${esc(permissionText)}</button><label class="timer-toggle-row" style="margin:0"><input id="timerSoundToggle" type="checkbox" ${state.timerPreferences.sound?'checked':''}> Aviso sonoro</label></div>
  </div><div class="two-col timer-lower"><div class="panel"><div class="card-head"><div><h2>Tempo estudado hoje</h2></div></div>${daily.length?`<div class="daily-summary">${daily.map(x=>`<div class="daily-row"><span>${esc(x.subject)}</span><strong>${durationLabel(x.seconds)}</strong><div class="progress-track"><div class="progress-fill" style="width:${Math.min(100,x.seconds/Math.max(1,daily.reduce((z,y)=>z+y.seconds,0))*100)}%"></div></div></div>`).join('')}<div class="daily-total"><span>Total do dia</span><strong>${durationLabel(daily.reduce((sum,x)=>sum+x.seconds,0))}</strong></div></div>`:'<div class="empty"><div class="empty-icon">◷</div>Seu tempo de hoje aparecerá aqui após a primeira sessão.</div>'}</div><div class="panel"><div class="card-head"><div><h2>Últimas sessões</h2></div><button class="text-link" data-page="history">Ver todas →</button></div><div class="session-list">${last.length?last.map(sessionTemplate).join(''):'<div class="empty">Nenhuma sessão finalizada ainda.</div>'}</div></div></div></div></section>`;
 }
-function paperDigits(value){return String(value).split('').map(ch=>/\d/.test(ch)?`<span class="paper-digit" data-value="${ch}"><span class="paper-half paper-upper"><span class="digit-glyph">${ch}</span></span><span class="paper-half paper-lower"><span class="digit-glyph">${ch}</span></span></span>`:`<span class="paper-separator">${ch}</span>`).join('');}
+function paperDigits(value){
+ const units=String(value).split(':');
+ const labels=units.length===3?['HORAS','MINUTOS','SEGUNDOS']:['MINUTOS','SEGUNDOS'];
+ return units.map((unit,index)=>`<span class="paper-unit" data-unit-index="${index}"><span class="paper-unit-label">${labels[index]||'TEMPO'}</span><span class="paper-unit-digits">${[...unit].map(ch=>`<span class="paper-digit" data-value="${ch}"><span class="paper-half paper-upper"><span class="digit-glyph">${ch}</span></span><span class="paper-half paper-lower"><span class="digit-glyph">${ch}</span></span></span>`).join('')}</span></span>`).join('<span class="paper-separator">:</span>');
+}
 function flipPaperDigit(node,next){const old=node.dataset.value;if(old===next)return;node.dataset.value=next;const upper=node.querySelector('.paper-upper .digit-glyph'),lower=node.querySelector('.paper-lower .digit-glyph');if(upper)upper.textContent=next;if(lower)lower.textContent=next;node.querySelectorAll('.paper-flap').forEach(x=>x.remove());const top=document.createElement('span');top.className='paper-flap paper-flap-top';top.innerHTML=`<span class="digit-glyph">${old}</span>`;const bottom=document.createElement('span');bottom.className='paper-flap paper-flap-bottom';bottom.innerHTML=`<span class="digit-glyph">${next}</span>`;node.append(top,bottom);const finish=()=>{top.remove();bottom.remove();};bottom.addEventListener('animationend',finish,{once:true});setTimeout(finish,520);} 
 function formatPaperClock(seconds){seconds=Math.max(0,Math.floor(Number(seconds)||0));const h=Math.floor(seconds/3600),m=Math.floor((seconds%3600)/60),s=seconds%60;return h>0?`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;}
 function sessionTemplate(s){const t=TOPICS.find(t=>t.id===Number(s.topicId));const start=s.startedAt||s.endedAt, end=s.endedAt||start;const date=new Date(end).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.','');const label=s.subject==='Redação'?(s.essayTheme?`Redação — ${esc(s.essayTheme)}`:'Redação'):`${esc(s.subject)}${t?' · '+esc(t.title):''}`;return `<div class="session-item"><div class="session-symbol">${ICONS[groupFor(s.subject)]||'◷'}</div><div><strong>${label}</strong><small>${date} · ${fmtTime(start)}–${fmtTime(end)} · sessão finalizada</small></div><div class="session-duration">${durationLabel(s.seconds)}</div></div>`;}
@@ -1378,8 +1579,18 @@ function advanceTimerIfNeeded(now=Date.now()){
  return transitions>0||!!lastMessage;
 }
 function finishTimer(automatic=false){const t=state.timer;if(!t)return;const now=Date.now();if(t.mode!=='stopwatch'&&t.phase==='focus'&&t.status==='running'&&t.startedAt){recordTimerFocusSegment(t,now);}const segments=sessionSegments(t,true).map(x=>({start:x.start,end:x.end}));const sec=Math.max(0,Math.floor((t.elapsedBase||0)+segments.reduce((sum,x)=>sum+(x.end-x.start)/1000,0)));state.timer=null;if(sec>0){const segmentStart=segments.length?Math.min(...segments.map(x=>x.start)):now;const startedAt=t.startedAtOverall||(Number(t.elapsedBase||0)>0?segmentStart-Number(t.elapsedBase||0)*1000:segmentStart);const monthKey=(()=>{const d=new Date(startedAt);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;})();state.sessions.push({id:`s-${t.id||now}`,subject:t.subject,topicId:t.topicId||null,essayTheme:t.subject==='Redação'?(t.essayTheme||'').trim():'',monthKey,seconds:sec,startedAt,endedAt:now,segments,legacySeconds:Number(t.elapsedBase||0),legacyStartedAt:t.startedAtOverall||startedAt,status:'completed',timerMode:t.mode||'stopwatch',timerName:t.customName||null});state.timerNotice=automatic?'A sessão terminou e foi salva no histórico.':'Sessão salva no histórico e somada ao tempo diário.';persist();renderApp();showToast(automatic?'Tempo concluído. Sessão salva no histórico.':'Sessão finalizada e salva no histórico.');}else{state.timerNotice=automatic?'O temporizador terminou.':'Sessão finalizada sem tempo de estudo registrado.';persist();renderApp();showToast(state.timerNotice);}}
-function discardTimer(){if(!state.timer)return;showAppConfirm('Descartar sessão','Esta sessão será descartada sem salvar o tempo no histórico.',()=>{state.timer=null;persist();renderApp();showToast('Sessão descartada.');},'Descartar');}
-function syncTimerDisplay(){if(state.timer&&state.timer.mode!=='stopwatch'&&state.timer.status==='running')advanceTimerIfNeeded();const d=document.getElementById('timerDisplay'),t=state.timer;if(!d||!t)return;const elapsed=sessionElapsed();const seconds=t.mode==='stopwatch'?elapsed:timerRemaining(t);const value=formatPaperClock(seconds);const existing=[...d.children];if(existing.length!==value.length){d.innerHTML=paperDigits(value);}else{[...d.children].forEach((node,i)=>{const ch=value[i];if(node.classList.contains('paper-digit')&&/\d/.test(ch)){if(node.dataset.value!==ch)flipPaperDigit(node,ch);}else if(node.classList.contains('paper-separator')&&node.textContent!==ch)node.textContent=ch;});}
+function discardTimer(){
+ const current=state.timer;if(!current)return;
+ const sessionId=current.id;
+ showAppConfirm('Descartar sessão','Esta sessão será descartada sem salvar o tempo no histórico.',async()=>{
+  if(!state.timer)return;
+  if(sessionId&&state.timer.id&&state.timer.id!==sessionId)return;
+  state.timer=null;state.timerNotice='A sessão foi descartada. Nenhum tempo foi adicionado ao histórico.';persist();
+  if(timerFocusActive())await exitTimerFullscreen();
+  renderApp();showToast('Sessão descartada.');
+ },'Descartar');
+}
+function syncTimerDisplay(){if(state.timer&&state.timer.mode!=='stopwatch'&&state.timer.status==='running')advanceTimerIfNeeded();const d=document.getElementById('timerDisplay'),t=state.timer;if(!d||!t)return;const elapsed=sessionElapsed();const seconds=t.mode==='stopwatch'?elapsed:timerRemaining(t);const value=formatPaperClock(seconds),units=value.split(':');let currentUnits=[...d.querySelectorAll('.paper-unit')];if(currentUnits.length!==units.length){d.innerHTML=paperDigits(value);currentUnits=[...d.querySelectorAll('.paper-unit')];}units.forEach((unit,index)=>{const group=currentUnits[index];if(!group)return;const digits=[...group.querySelectorAll('.paper-digit')];if(digits.length!==unit.length){d.innerHTML=paperDigits(value);currentUnits=[...d.querySelectorAll('.paper-unit')];return;}[...unit].forEach((ch,digitIndex)=>{const node=digits[digitIndex];if(node&&node.dataset.value!==ch)flipPaperDigit(node,ch);});});
  const phase=document.getElementById('timerPhase'),status=document.getElementById('timerStatus'),fill=document.getElementById('timerProgressFill'),name=document.getElementById('timerSessionName');const phaseLabel=t.phase==='focus'?'Concentração':t.phase==='shortBreak'?'Pausa curta':t.phase==='longBreak'?'Pausa longa':timerModeLabel(t.mode);if(phase)phase.textContent=t.phase?(phaseLabel+(t.mode==='stopwatch'?'':` · ${t.completedFocus||0}/${t.cycleTarget||1}`)):timerModeLabel(t.mode);if(status)status.textContent=t.status==='running'?'Em andamento':t.status==='phase-complete'?'Etapa concluída · próxima etapa disponível':'Pausado';if(fill)fill.style.width=t.mode==='stopwatch'?'0%':`${Math.min(100,Math.max(0,(1-seconds/Math.max(1,t.phaseDurationSeconds))*100))}%`;if(name)name.textContent=t.customName||t.subject||timerModeLabel(t.mode);}
 function saveTimerPreset(update=false){const name=(document.getElementById('timerPresetName')?.value||'').trim();if(!name){showToast('Dê um nome para a configuração.');return;}const preset={id:update?selectedTimerPresetId:`preset-${Date.now()}`,name,focusMinutes:timerNumber('timerCustomFocus',45,1,240),restMinutes:timerNumber('timerCustomRest',10,1,90),rounds:timerNumber('timerCustomRounds',3,1,20)};if(update&&selectedTimerPresetId){const i=state.timerPresets.findIndex(p=>p.id===selectedTimerPresetId);if(i>=0)state.timerPresets[i]=preset;else state.timerPresets.push(preset);}else{state.timerPresets.push(preset);selectedTimerPresetId=preset.id;}persist();renderApp();showToast(update?'Configuração atualizada.':'Configuração salva neste dispositivo.');}
 function deleteTimerPreset(){if(!selectedTimerPresetId)return;const p=state.timerPresets.find(x=>x.id===selectedTimerPresetId);if(!p)return;showAppConfirm('Excluir configuração',`A configuração “${p.name}” será removida deste dispositivo.`,()=>{state.timerPresets=state.timerPresets.filter(x=>x.id!==selectedTimerPresetId);selectedTimerPresetId='';persist();renderApp();showToast('Configuração excluída.');},'Excluir');}
@@ -1394,7 +1605,7 @@ document.addEventListener('input',e=>{if(e.target.id==='timerEssayTheme')timerDr
 document.getElementById('appDialogConfirm').addEventListener('click',()=>closeAppDialog(true));
 document.getElementById('appDialogCancel').addEventListener('click',()=>closeAppDialog(false));
 document.getElementById('appDialog').addEventListener('click',e=>{if(e.target.id==='appDialog')closeAppDialog(false);});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){const dialog=document.getElementById('appDialog');if(dialog&&!dialog.hidden)closeAppDialog(false);const card=document.getElementById('timerPaperCard');if(!timerNativeFullscreen()&&timerFocusActive()){exitTimerFullscreen();}}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){const dialog=document.getElementById('appDialog');if(dialog&&!dialog.hidden){closeAppDialog(false);e.preventDefault();return;}if(!timerNativeFullscreen()&&timerFocusActive()){exitTimerFullscreen();}}});
 document.addEventListener('fullscreenchange',syncFullscreenButton);document.addEventListener('webkitfullscreenchange',syncFullscreenButton);
 setInterval(()=>{syncTimerFocusDateTime();if(state.timer){if(state.timer.status==='running'){syncTimerDisplay();if(page!=='timer')updateSidebar();}persist();}},1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&state.timer){advanceTimerIfNeeded();syncTimerDisplay();persist();}});
