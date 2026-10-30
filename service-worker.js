@@ -1,5 +1,5 @@
-/* Grafia Study PWA — shell cache with network-first navigation. */
-const CACHE_NAME = 'grafia-study-shell-v2-logo4';
+/* Grafia Study PWA — offline app shell. The timer uses stored timestamps and is reconciled by the page when it runs/resumes; a service worker is not a persistent timer process. */
+const CACHE_NAME = 'grafia-study-shell-v3-paperflip';
 const SHELL_FILES = [
   './',
   './index.html',
