@@ -1897,8 +1897,8 @@ restoreTimerInterface();
 
 function exportData(){let blob=new Blob([JSON.stringify({prototype:'Grafia Study',createdAt:new Date().toISOString(),note:'Arquivo demonstrativo, sem dados reais.'},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='grafia-study-prototipo.json';a.click();URL.revokeObjectURL(a.href);toast('Arquivo demonstrativo exportado.')}
 drawTimer(true);
-<style id="grafia-mini-clock-cleanup">.timer-studio:not(.is-fullscreen) .timer-fullscreen-clock,.timer-studio:not(.is-fullscreen) .timer-device-status{display:none!important}</style>
 </script>
+<style id="grafia-mini-clock-cleanup">.timer-studio:not(.is-fullscreen) .timer-fullscreen-clock,.timer-studio:not(.is-fullscreen) .timer-device-status{display:none!important}</style>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(err => console.warn('Falha ao registrar o modo offline:', err)));
