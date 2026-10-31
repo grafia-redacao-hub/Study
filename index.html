@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<meta name="theme-color" content="#04191d"><title>Grafia Study — Protótipo</title>
+<meta name="theme-color" content="#04191d"><title>Grafia Study</title>
 <style>
 :root{--bg:#091321;--panel:#172a40;--panel2:#102035;--line:#b6d7ed24;--text:#edf3fa;--muted:#9aacc0;--blue:#8ecdf0;--mint:#a9d8cb;--lav:#c8c0ec;--sand:#e7d3a9}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1b3048,transparent 35%),var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1400px;margin:auto;padding:25px 28px 110px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:30px}.brand{display:flex;align-items:center;gap:12px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(145deg,#9bd8f4,#647fc0);display:grid;place-items:center;color:#0b1b2b;font-weight:900;font-size:23px}.brandname{font:24px Georgia,serif}.sub{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}.date{color:var(--muted);font-size:12px}.settings{background:#1b3048;border:1px solid var(--line);color:var(--text);padding:11px 15px;border-radius:14px;font-weight:650}.page{display:none;animation:appear .2s}.page.active{display:block}@keyframes appear{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:none}}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--blue);font-weight:800;text-transform:uppercase}h1{font:500 clamp(32px,4vw,48px) Georgia,serif;margin:8px 0}h2{font-size:17px;margin:0 0 8px}h3{font-size:14px;margin:13px 0 5px}.lead,.muted{color:var(--muted);line-height:1.6}.lead{max-width:650px}.grid{display:grid;gap:17px}.homegrid{grid-template-columns:1.5fr .9fr;margin-top:25px}.card{background:linear-gradient(145deg,#1b3048e8,#102035e8);border:1px solid var(--line);border-radius:22px;padding:21px;box-shadow:0 18px 50px #0003;backdrop-filter:blur(16px)}.hero{min-height:235px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #8dc9ed22;border-radius:50%;right:-55px;top:-75px;box-shadow:0 0 0 28px #8dc9ed08,0 0 0 58px #8dc9ed06}.stats{display:flex;gap:30px;flex-wrap:wrap;margin-top:25px}.stat strong{display:block;font:30px Georgia,serif}.stat span,.small{font-size:11px;color:var(--muted)}.track{height:7px;max-width:500px;background:#081522;border-radius:9px;margin-top:17px;overflow:hidden}.track i{display:block;width:62%;height:100%;background:linear-gradient(90deg,#72b4df,#a9d8cb)}.quick{display:grid;gap:11px;margin-top:15px}.quickitem{display:flex;align-items:center;gap:12px;background:#0c1a29aa;border:1px solid var(--line);border-radius:15px;padding:12px}.quickicon{width:37px;height:37px;border-radius:12px;background:#8ecdf022;display:grid;place-items:center;color:var(--blue);font-size:18px}.quickitem b{display:block;font-size:13px}.quickitem small{color:var(--muted)}.primary,.secondary{border-radius:12px;padding:11px 15px;font-weight:700}.primary{border:0;background:linear-gradient(135deg,#9bd8f4,#6eadd8);color:#0b1b2a}.secondary{border:1px solid var(--line);background:#263d56;color:var(--text)}.sectionhead{display:flex;align-items:end;justify-content:space-between;margin:31px 0 15px}.sectionhead h2{font:25px Georgia,serif;margin:5px 0 0}.subjects{grid-template-columns:repeat(4,1fr)}.subject{border:1px solid var(--line);border-radius:17px;padding:15px;background:#172b41b8;min-height:126px}.subjecttop{display:flex;justify-content:space-between}.mark{width:30px;height:30px;border-radius:10px;display:grid;place-items:center}.pill{font-size:10px;color:var(--blue);background:#8ecdf01c;border-radius:20px;padding:6px 9px}.subject p{font-size:11px;color:var(--muted);margin:0}.mini{height:4px;background:#081522;margin-top:13px;border-radius:5px}.mini i{display:block;height:100%;width:var(--w);background:var(--accent);border-radius:5px}.features{grid-template-columns:repeat(3,1fr);margin-top:24px}.feature{min-height:175px;display:flex;flex-direction:column;justify-content:space-between}.symbol{font-size:27px;color:var(--blue)}.feature p{font-size:12px;color:var(--muted);line-height:1.5}.two{grid-template-columns:1fr 1fr;margin-top:24px}.lineitem{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;border:1px solid var(--line);border-radius:14px;background:#102035;margin-top:9px}.lineitem b{font-size:13px}.lineitem small{display:block;color:var(--muted);margin-top:3px}.formrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}input,select{background:#0b1928;border:1px solid var(--line);border-radius:11px;padding:11px;color:var(--text);min-width:0}.recordstats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:16px}.recordstats .card{padding:14px}.recordstats strong{font:25px Georgia,serif}.timerbox{text-align:center;max-width:760px;margin:25px auto}.timer{display:flex;justify-content:center;align-items:center;gap:9px;margin:25px 0}.digit{font:clamp(60px,12vw,110px) Georgia,serif;line-height:1;background:linear-gradient(#2b4056,#17283b);border:1px solid #b7d5ed33;border-radius:16px;padding:12px 20px;min-width:100px;box-shadow:inset 0 1px #fff2,0 12px 24px #0004}.colon{font-size:55px;color:#9cb1c4}.center{justify-content:center}.settingsgrid{grid-template-columns:repeat(2,1fr);margin-top:23px}.setting{padding:17px;border:1px solid var(--line);border-radius:16px;background:#102035}.setting p{font-size:12px;color:var(--muted);line-height:1.5}/* Navegação horizontal glass com estado principal e submenu contextual */
@@ -1146,19 +1146,42 @@ body:before,body:after{display:none!important;filter:none!important}
 }
 </style>
 
+
+<style id="grafia-learning-system">
+.study-view#study-cycle .study-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+#study-cycle .lineitem{margin:0;cursor:pointer}#study-cycle .lineitem:hover,.topic-row:hover{border-color:#8ecdf077;background:#172d43}
+.topic-accordion{margin-top:9px;min-width:0}
+.topic-row{appearance:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px;width:100%;border:1px solid var(--line);border-radius:14px;background:#102035;color:var(--text);font:inherit;text-align:left;cursor:pointer;transition:border-color .2s ease,background .2s ease}
+.topic-row:hover{border-color:#8ecdf077;background:#172d43}
+.topic-row[aria-expanded="true"]{border-radius:14px 14px 0 0;border-color:#8ecdf077;background:#172d43}
+.topic-row:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.topic-info{display:block;min-width:0;flex:1}
+.topic-title-line{display:flex;align-items:center;gap:9px;min-width:0}
+.topic-title-line b{min-width:0;overflow-wrap:anywhere}
+.topic-time{flex:none;margin-left:auto;padding:5px 9px;border:1px solid rgba(142,205,240,.2);border-radius:999px;background:rgba(142,205,240,.09);color:#b7dce9;font-size:10px;font-weight:750;white-space:nowrap;font-variant-numeric:tabular-nums}
+.topic-row small{display:block;color:var(--muted);margin-top:5px}
+.topic-chevron{display:inline-block;flex:none;font-size:18px;line-height:1;transition:transform .2s ease;color:var(--blue)}
+.topic-row[aria-expanded="true"] .topic-chevron{transform:rotate(180deg)}
+.topic-progress{height:5px;background:#071522;border-radius:8px;overflow:hidden;margin-top:9px}.topic-progress i{display:block;height:100%;background:linear-gradient(90deg,#62b5d6,#a9d8cb)}
+.topic-panel-wrap[hidden]{display:none!important}
+.learning-panel{margin:0;padding:16px;border:1px solid #8ecdf077;border-top:0;border-radius:0 0 14px 14px;background:linear-gradient(145deg,#172d43,#102035)}
+.check-step{display:flex;align-items:center;gap:12px;padding:15px;border:1px solid var(--line);border-radius:14px;background:#102035;margin-top:9px}.check-step input{width:20px;height:20px;accent-color:#8ecdf0}.check-step.locked{opacity:.48}.check-step strong{display:block}.check-step small{display:block;color:var(--muted);margin-top:3px}.check-step .step-date{margin-left:auto;font-size:11px;color:var(--muted);text-align:right}.review-card{padding:17px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#1b3048e8,#102035e8)}.review-card h3{margin:0 0 5px}.review-meta{color:var(--muted);font-size:12px;line-height:1.6}.review-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.review-tag{display:inline-block;border-radius:20px;padding:5px 9px;background:#8ecdf01c;color:var(--blue);font-size:10px}.recommendation-home{margin-top:18px;padding:18px 20px}.recommendation-home-line{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:8px}.recommendation-home-line h2{font:24px Georgia,serif;margin:0;min-width:0}.recommendation-list-head{display:flex;justify-content:space-between;align-items:center;margin:16px 0 12px;color:var(--muted);font-size:12px}.recommendation-list{display:grid;gap:8px}.recommendation-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#172d43e8,#102035e8);color:var(--text);font:inherit;text-align:left;width:100%;cursor:pointer}.recommendation-number{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}.recommendation-topic{min-width:0}.recommendation-topic b{display:block;font-size:13px;overflow-wrap:anywhere}.recommendation-topic small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.recommendation-status{font-size:10px;color:var(--muted);white-space:nowrap}.recommendation-row.is-current{border-color:rgba(142,205,240,.55);background:linear-gradient(145deg,rgba(46,87,111,.58),rgba(16,32,53,.95));box-shadow:inset 0 0 0 1px rgba(142,205,240,.08)}.recommendation-row.is-current .recommendation-status{color:#a9d8cb;font-weight:800}.recommendation-row.is-passed{opacity:.58}.recommendation-row.is-passed .recommendation-status{color:#a9d8cb}@media(max-width:580px){.recommendation-home-line{align-items:flex-start;flex-direction:column}.recommendation-home-line button{width:100%}.recommendation-row{grid-template-columns:28px minmax(0,1fr) auto;padding:11px 10px;gap:8px}.recommendation-status{font-size:9px}}
+.learning-modal{position:fixed;inset:0;z-index:100;background:#020812c9;display:grid;place-items:center;padding:18px}.learning-modal[hidden]{display:none}.learning-modal .modal-card{width:min(460px,100%);background:#172a40;border:1px solid #b6d7ed38;border-radius:22px;padding:22px;box-shadow:0 25px 80px #0009}.learning-modal label{display:block;margin:14px 0 6px;color:var(--muted);font-size:12px}.learning-modal select{width:100%}.learning-modal .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+@media(max-width:700px){#study-reviews .grid.subjects{grid-template-columns:repeat(2,minmax(0,1fr))}.check-step{align-items:flex-start}.check-step .step-date{font-size:10px}}
+</style>
 </head><body>
 <div class="app">
-<header class="top"><div class="brand"><div class="logo">G</div><div><div class="brandname">Grafia Study</div></div></div><div style="display:flex;align-items:center;gap:12px"><span class="date" id="date"></span><button class="settings" onclick="page('settings')">⚙ <span>Configurações</span></button></div></header>
+<header class="top"><div class="brand"><div class="logo">G</div><div><div class="brandname">Grafia Study</div></div></div><div style="display:flex;align-items:center;gap:12px"><span class="date" id="date"></span><button class="settings" id="installAppButton" type="button" onclick="installGrafiaApp()">↓ <span>Instalar app</span></button><button class="settings" onclick="page('settings')">⚙ <span>Configurações</span></button></div></header>
 <main>
 <section class="page active" id="home"><h1>Visão geral</h1>
-<div class="grid homegrid"><article class="card hero"><div class="eyebrow">Visão geral</div><h2 style="font:26px Georgia,serif;margin-top:8px">Seu progresso nos estudos</h2><div class="stats"><div class="stat"><strong>12h 40min</strong><span>Tempo estudado</span></div><div class="stat"><strong>18</strong><span>Atividades registradas</span></div><div class="stat"><strong>62%</strong><span>Progresso do ciclo</span></div></div><div class="track"><i></i></div></article>
+<div class="grid homegrid"><article class="card hero"><div class="eyebrow">Visão geral</div><h2 style="font:26px Georgia,serif;margin-top:8px">Seu progresso nos estudos</h2><div class="stats"><div class="stat"><strong>12h 40min</strong><span>Tempo estudado</span></div><div class="stat"><strong id="homeActivityCount">0</strong><span>Atividades registradas</span></div><div class="stat"><strong>62%</strong><span>Progresso do ciclo</span></div></div><div class="track"><i></i></div></article>
 <article class="card"><div class="eyebrow">Retomar</div><h2 style="font:25px Georgia,serif;margin-top:8px">Próxima sessão</h2><div class="quick"><div class="quickitem"><div class="quickicon">∑</div><div><b>Matemática</b><small>Funções · 50 minutos</small></div></div><div class="quickitem"><div class="quickicon">◷</div><div><b>Etapa do ciclo</b></div></div></div><button class="primary" style="width:100%;margin-top:16px" onclick="page('timer')">Iniciar sessão ↗</button></article></div>
 <div class="sectionhead"><div><div class="eyebrow">Organização</div><h2>Matérias do ciclo</h2></div><button class="secondary" onclick="page('study')">Ver ciclo</button></div>
 <div class="grid subjects">
 <div class="subject" style="--accent:#80bce4;--w:72%"><div class="subjecttop"><span class="mark" style="background:#80bce422">∑</span><span class="pill">16h</span></div><h3>Matemática</h3><p>72% do planejado</p><div class="mini"><i style="width:72%"></i></div></div>
 <div class="subject" style="--accent:#b6a9e6;--w:55%"><div class="subjecttop"><span class="mark" style="background:#b6a9e622">⚗</span><span class="pill">8h</span></div><h3>Biologia</h3><p>55% do planejado</p><div class="mini"><i style="width:55%"></i></div></div>
 <div class="subject" style="--accent:#e0c48c;--w:43%"><div class="subjecttop"><span class="mark" style="background:#e0c48c22">⌬</span><span class="pill">7h</span></div><h3>Química</h3><p>43% do planejado</p><div class="mini"><i style="width:43%"></i></div></div>
-<div class="subject" style="--accent:#9bd3c6;--w:68%"><div class="subjecttop"><span class="mark" style="background:#9bd3c622">⌁</span><span class="pill">6h</span></div><h3>História</h3><p>68% do planejado</p><div class="mini"><i style="width:68%"></i></div></div></div></section>
+<div class="subject" style="--accent:#9bd3c6;--w:68%"><div class="subjecttop"><span class="mark" style="background:#9bd3c622">⌁</span><span class="pill">6h</span></div><h3>História</h3><p>68% do planejado</p><div class="mini"><i style="width:68%"></i></div></div></div><article class="card recommendation-home"><div class="eyebrow">Assunto recomendado</div><div class="recommendation-home-line"><h2 id="recommendedTopicName">Matemática Básica</h2><button class="secondary" type="button" onclick="openRecommendationList()">Ver lista</button></div></article></section>
 
 <section class="page" id="study">
   <div class="study-view active" id="study-overview">
@@ -1169,7 +1192,7 @@ body:before,body:after{display:none!important;filter:none!important}
 
   <div class="study-view" id="study-cycle">
     <div class="eyebrow">Matérias / Ciclo</div><h1>Ciclo de estudos</h1>
-    <div class="sectionhead"><div><h2>Distribuição do ciclo</h2></div><span class="pill">62 horas</span></div>
+    <div class="sectionhead"><div><h2>Distribuição do ciclo</h2></div><span class="pill">70 horas semanais</span></div>
     <div class="card study-list">
       <div class="lineitem"><div><b>Matemática</b><small>16 horas planejadas</small></div><span class="pill">16h</span></div>
       <div class="lineitem"><div><b>Biologia</b><small>8 horas planejadas</small></div><span class="pill">8h</span></div>
@@ -1202,21 +1225,115 @@ body:before,body:after{display:none!important;filter:none!important}
       <label for="topicSubject" class="field-label">Matéria</label>
       <select id="topicSubject" class="topic-select"><option value="">Selecione uma matéria</option><option>Matemática</option><option>Biologia</option><option>Química</option><option>Física</option><option>História</option><option>Geografia</option><option>Filosofia e Sociologia</option><option>Linguagens</option></select>
       <div class="topics-empty" id="topicsEmpty"><div class="empty-symbol">⌕</div><strong>Escolha uma matéria</strong></div>
-      <div class="topics-selected" id="topicsSelected" hidden><div class="eyebrow">Matéria selecionada</div><h2 id="topicsSelectedName"></h2></div>
+      <div class="topics-selected" id="topicsSelected" hidden><div class="eyebrow">Matéria selecionada</div><h2 id="topicsSelectedName"></h2><div class="grid" id="topicList"></div></div>
     </div>
   </div>
 
-  <div class="study-view" id="study-guide">
-    <div class="eyebrow">Matérias</div><h1>Guia de estudos</h1>
-    <div class="grid two guide-grid">
-      <article class="card guide-card"><span class="symbol">▤</span><h2>Organização dos conteúdos</h2></article>
-      <article class="card guide-card"><span class="symbol">⌁</span><h2>Consulta rápida</h2></article>
+  <div class="study-view" id="study-reviews">
+    <div class="eyebrow">Memorização</div><h1>Revisões</h1>
+    <div class="grid subjects" id="reviewSummary"></div>
+    <div class="sectionhead"><div><div class="eyebrow">Fila de revisão</div><h2>Assuntos programados</h2></div><select id="reviewFilter" aria-label="Filtrar revisões"><option value="all">Todas</option><option value="today">Hoje</option><option value="overdue">Atrasadas</option><option value="upcoming">Próximas</option><option value="done">Consolidadas</option></select></div>
+    <div class="grid" id="reviewList"></div>
+    <div class="sectionhead"><div><div class="eyebrow">Registro permanente</div><h2>Histórico de revisões</h2></div></div><div class="card" id="reviewHistory"></div>
+  </div>
+  <div class="study-view" id="study-recommendations">
+    <div class="eyebrow">Planejamento</div><h1>Ordem de estudos</h1>
+    <div class="recommendation-list-head"><span id="recommendationProgress">0/100</span><button class="secondary" type="button" onclick="exitStudyNav()">Voltar</button></div>
+    <div class="recommendation-list" id="recommendationList"></div>
+  </div>
+
+</section>
+<section class="page" id="records">
+  <div class="record-view active" id="record-questions">
+    <div class="eyebrow">Registros / Questões</div><h1>Questões</h1>
+    <div class="record-summary" id="questionSummary"></div>
+    <div class="grid two record-layout">
+      <article class="card record-form-card">
+        <h2>Nova atividade</h2>
+        <div class="record-fields">
+          <label>Matéria<select id="questionDiscipline"></select></label>
+          <label>Assunto (opcional)<select id="questionTopic"><option value="">Selecione um assunto</option></select></label>
+          <label class="wide">Nome da atividade<input id="questionName" maxlength="100" placeholder="Ex.: Lista de exercícios 01"></label>
+          <label>Data<input id="questionDate" type="date"></label>
+          <label>Total de questões<input id="questionTotal" type="number" min="1" step="1" placeholder="Ex.: 20"></label>
+          <label>Acertos<input id="questionCorrect" type="number" min="0" step="1" placeholder="Ex.: 16"></label>
+          <label>Em branco<input id="questionBlank" type="number" min="0" step="1" value="0"></label>
+        </div>
+        <div class="record-calculated" id="questionErrorsPreview">Erros: —</div>
+        <div class="record-actions"><button class="primary" id="saveQuestionBtn" type="button" onclick="saveQuestionRecord()">Salvar atividade</button><button class="secondary" id="cancelQuestionEdit" type="button" onclick="cancelRecordEdit('questions')" hidden>Cancelar edição</button></div>
+      </article>
+      <article class="card"><h2>Histórico de questões</h2><div class="record-list" id="questionRecordList"></div></article>
+    </div>
+  </div>
+
+  <div class="record-view" id="record-exams">
+    <div class="eyebrow">Registros / Provas</div><h1>Provas</h1>
+    <div class="record-summary" id="examSummary"></div>
+    <div class="grid two record-layout">
+      <article class="card record-form-card">
+        <h2>Registrar prova</h2>
+        <div class="record-fields">
+          <label class="wide">Nome ou identificação<input id="examName" maxlength="120" placeholder="Ex.: ENEM 2025"></label>
+          <label>Data<input id="examDate" type="date"></label>
+          <label>Realização<select id="examScope"><option value="complete">Completa</option><option value="partial">Parcial</option></select></label>
+          <label class="wide">Forma de registro<select id="examMode" onchange="setAssessmentMode('exam')"><option value="total">Resultado geral</option><option value="discipline">Por matéria</option></select></label>
+        </div>
+        <div class="assessment-total-fields" id="examTotalFields">
+          <div class="record-fields">
+            <label>Total realizado<input id="examTotal" type="number" min="1" step="1" placeholder="Questões realizadas"></label>
+            <label>Acertos<input id="examCorrect" type="number" min="0" step="1" placeholder="Acertos"></label>
+            <label>Em branco<input id="examBlank" type="number" min="0" step="1" value="0"></label>
+            <label>Total original <span class="muted">(opcional)</span><input id="examOriginalTotal" type="number" min="1" step="1" placeholder="Se for parcial"></label>
+          </div>
+          <div class="record-calculated" id="examErrorsPreview">Erros: —</div>
+        </div>
+        <div id="examBreakdownFields" hidden>
+          <div class="assessment-rows" id="examBreakdownRows"></div>
+          <button class="secondary" type="button" onclick="addAssessmentRow('exam')">+ Adicionar matéria</button>
+          <div class="record-calculated" id="examBreakdownPreview">O total geral será calculado pelas matérias informadas.</div>
+          <label class="assessment-original">Total original <span class="muted">(opcional, para provas parciais)</span><input id="examBreakdownOriginal" type="number" min="1" step="1" placeholder="Total de questões da prova"></label>
+        </div>
+        <label class="wide record-note">Observações <span class="muted">(opcional)</span><textarea id="examNotes" rows="2" placeholder="Anotações sobre a realização"></textarea></label>
+        <div class="record-actions"><button class="primary" id="saveExamBtn" type="button" onclick="saveAssessmentRecord('exam')">Salvar prova</button><button class="secondary" id="cancelExamEdit" type="button" onclick="cancelRecordEdit('exam')" hidden>Cancelar edição</button></div>
+      </article>
+      <article class="card"><h2>Histórico de provas</h2><div class="record-list" id="examRecordList"></div></article>
+    </div>
+  </div>
+
+  <div class="record-view" id="record-mocks">
+    <div class="eyebrow">Registros / Simulados</div><h1>Simulados</h1>
+    <div class="record-summary" id="mockSummary"></div>
+    <div class="grid two record-layout">
+      <article class="card record-form-card">
+        <h2>Registrar simulado</h2>
+        <div class="record-fields">
+          <label class="wide">Nome ou identificação<input id="mockName" maxlength="120" placeholder="Ex.: Simulado ENEM — edição 01"></label>
+          <label>Data<input id="mockDate" type="date"></label>
+          <label>Realização<select id="mockScope"><option value="complete">Completo</option><option value="partial">Parcial</option></select></label>
+          <label class="wide">Forma de registro<select id="mockMode" onchange="setAssessmentMode('mock')"><option value="total">Resultado geral</option><option value="discipline">Por matéria</option></select></label>
+        </div>
+        <div class="assessment-total-fields" id="mockTotalFields">
+          <div class="record-fields">
+            <label>Total realizado<input id="mockTotal" type="number" min="1" step="1" placeholder="Questões realizadas"></label>
+            <label>Acertos<input id="mockCorrect" type="number" min="0" step="1" placeholder="Acertos"></label>
+            <label>Em branco<input id="mockBlank" type="number" min="0" step="1" value="0"></label>
+            <label>Total original <span class="muted">(opcional)</span><input id="mockOriginalTotal" type="number" min="1" step="1" placeholder="Se for parcial"></label>
+          </div>
+          <div class="record-calculated" id="mockErrorsPreview">Erros: —</div>
+        </div>
+        <div id="mockBreakdownFields" hidden>
+          <div class="assessment-rows" id="mockBreakdownRows"></div>
+          <button class="secondary" type="button" onclick="addAssessmentRow('mock')">+ Adicionar matéria</button>
+          <div class="record-calculated" id="mockBreakdownPreview">O total geral será calculado pelas matérias informadas.</div>
+          <label class="assessment-original">Total original <span class="muted">(opcional, para simulados parciais)</span><input id="mockBreakdownOriginal" type="number" min="1" step="1" placeholder="Total de questões do simulado"></label>
+        </div>
+        <label class="wide record-note">Observações <span class="muted">(opcional)</span><textarea id="mockNotes" rows="2" placeholder="Anotações sobre a realização"></textarea></label>
+        <div class="record-actions"><button class="primary" id="saveMockBtn" type="button" onclick="saveAssessmentRecord('mock')">Salvar simulado</button><button class="secondary" id="cancelMockEdit" type="button" onclick="cancelRecordEdit('mock')" hidden>Cancelar edição</button></div>
+      </article>
+      <article class="card"><h2>Histórico de simulados</h2><div class="record-list" id="mockRecordList"></div></article>
     </div>
   </div>
 </section>
-<section class="page" id="records"><div class="eyebrow">Acompanhamento</div><h1>Registros</h1><div class="grid two">
-<article class="card"><h2>Registrar atividade</h2><div class="formrow"><select id="rs"><option>Matemática</option><option>Biologia</option><option>Química</option><option>Física</option><option>História</option><option>Geografia</option><option>Linguagens</option></select><input id="rn" placeholder="Nome da atividade"></div><div class="formrow"><input id="rq" type="number" min="0" placeholder="Questões"><input id="rh" type="number" min="0" placeholder="Acertos"></div><button class="primary" style="margin-top:13px" onclick="addRecord()">Salvar registro</button></article>
-<article class="card"><h2>Resumo</h2><div class="recordstats"><div class="card"><strong id="count">18</strong><div class="small">Atividades</div></div><div class="card"><strong>246</strong><div class="small">Questões</div></div><div class="card"><strong>78%</strong><div class="small">Aproveitamento</div></div></div></article></div><div class="sectionhead"><div><div class="eyebrow">Recentes</div><h2>Atividades registradas</h2></div></div><div class="card" id="list"><div class="lineitem"><div><b>Lista de funções</b><small>Matemática · 20 questões · 16 acertos</small></div><span class="pill">Hoje</span></div><div class="lineitem"><div><b>Revisão de citologia</b><small>Biologia · 15 questões · 12 acertos</small></div><span class="pill">Ontem</span></div></div></section>
 
 <section class="page" id="performance"><div class="eyebrow">Análise</div><h1>Desempenho</h1><div class="grid two"><article class="card"><h2>Tempo de estudo</h2><div class="stats"><div class="stat"><strong>12h40</strong><span>Esta semana</span></div><div class="stat"><strong>2h06</strong><span>Média diária</span></div></div><div style="display:flex;align-items:end;gap:10px;height:145px;padding:20px 5px 0"><i style="height:45%" class="bar"></i><i style="height:76%" class="bar"></i><i style="height:58%" class="bar"></i><i style="height:92%" class="bar"></i><i style="height:65%" class="bar"></i><i style="height:35%" class="bar"></i><i style="height:15%" class="bar"></i></div><style>.bar{flex:1;background:linear-gradient(#8ec9e9,#527ca6);border-radius:8px 8px 2px 2px}
 /* Final match to the reference: a softly frosted active pill and unified teal accents. */
@@ -1247,7 +1364,7 @@ body:before,body:after{display:none!important;filter:none!important}
 .timer-battery-icon:after{content:"";position:absolute;right:-3px;top:2px;width:2px;height:4px;border-radius:0 1px 1px 0;background:currentColor}
 .timer-battery-icon i{display:block;width:0;height:100%;border-radius:1px;background:currentColor}
 @media(max-width:700px){.timer-studio.is-fullscreen .timer-device-status{top:max(8px,env(safe-area-inset-top));right:max(9px,env(safe-area-inset-right));font-size:10px;gap:8px;padding:5px 7px}}
-</style></article><article class="card"><h2>Resultados de atividades</h2><div class="stats"><div class="stat"><strong>78%</strong><span>Aproveitamento</span></div><div class="stat"><strong>246</strong><span>Questões respondidas</span></div></div><div class="lineitem"><div><b>Provas</b><small>Resultados e histórico</small></div><button class="secondary" onclick="toast('Área de provas em planejamento')">Consultar</button></div><div class="lineitem"><div><b>Simulados</b><small>Desempenho por simulado</small></div><button class="secondary" onclick="toast('Área de simulados em planejamento')">Consultar</button></div></article></div></section>
+</style></article><article class="card"><h2>Resultados de atividades</h2><div class="stats"><div class="stat"><strong id="performanceAccuracy">—</strong><span>Aproveitamento</span></div><div class="stat"><strong id="performanceQuestionCount">0</strong><span>Questões respondidas</span></div></div><div class="lineitem"><div><b>Provas e simulados</b><small>Resultados integrados ao aproveitamento geral</small></div><button class="secondary" onclick="page('records')">Abrir registros</button></div></article></div><div class="sectionhead"><div><div class="eyebrow">Resultados integrados</div><h2>Desempenho por matéria</h2></div></div><div class="record-summary" id="disciplinePerformanceGrid"></div></section>
 
 <section class="page" id="timer">
   <h1>Cronômetro</h1>
@@ -1362,27 +1479,33 @@ body:before,body:after{display:none!important;filter:none!important}
     <button class="nav-item" data-id="timer" onclick="page('timer')"><span class="nav-icon">◷</span><span class="nav-label">Tempo</span></button>
   </div>
   <div class="nav-sub" id="navSub" aria-hidden="true">
-    <button class="nav-parent" type="button" onclick="exitStudyNav()" aria-label="Sair da área de estudos e voltar à navegação principal" title="Sair da área de estudos"><span class="nav-parent-icon">▤</span><span>Sair</span><span class="return-mark">↙</span></button>
+    <button class="nav-parent" type="button" onclick="exitStudyNav()" aria-label="Voltar à navegação principal" title="Voltar"><span class="nav-parent-icon">↙</span><span>Voltar</span><span class="return-mark">↙</span></button>
     <span class="nav-divider" aria-hidden="true"></span>
-    <div class="nav-sub-items" id="navSubItems">
+    <div class="nav-sub-items" id="studyNavItems">
       <button class="nav-item sub-item" data-sub="cycle" onclick="openStudyArea('cycle')"><span class="nav-icon">⟳</span><span class="nav-label">Ciclo</span></button>
       <button class="nav-item sub-item" data-sub="subjects" onclick="openStudyArea('subjects')"><span class="nav-icon">▤</span><span class="nav-label">Matérias e áreas</span></button>
-      <button class="nav-item sub-item" data-sub="topics" onclick="openStudyArea('topics')"><span class="nav-icon">⌕</span><span class="nav-label">Assuntos</span></button>
-      <button class="nav-item sub-item" data-sub="guide" onclick="openStudyArea('guide')"><span class="nav-icon">◫</span><span class="nav-label">Guia de estudos</span></button>
+      <button class="nav-item sub-item" data-sub="reviews" onclick="openStudyArea('reviews')"><span class="nav-icon">↻</span><span class="nav-label">Revisões</span></button>
+    </div>
+    <div class="nav-sub-items" id="recordNavItems" hidden>
+      <button class="nav-item record-sub-item active" data-record-sub="questions" onclick="openRecordArea('questions')"><span class="nav-icon">▧</span><span class="nav-label">Questões</span></button>
+      <button class="nav-item record-sub-item" data-record-sub="exams" onclick="openRecordArea('exams')"><span class="nav-icon">▤</span><span class="nav-label">Provas</span></button>
+      <button class="nav-item record-sub-item" data-record-sub="mocks" onclick="openRecordArea('mocks')"><span class="nav-icon">▣</span><span class="nav-label">Simulados</span></button>
     </div>
   </div>
 </nav><div class="toast" id="toast"></div>
 <script>
 const ids=['home','study','records','performance','timer','settings'];
-const studyAreas=['cycle','subjects','topics','guide'];
+const studyAreas=['cycle','subjects','topics','reviews','recommendations'];
 const navElement=document.getElementById('nav');
 let lastMainPage='home';
 function setPageContent(id){ids.forEach(x=>document.getElementById(x).classList.toggle('active',x===id));}
 function page(id){
   if(id==='study'){enterStudyNav();return;}
+  if(id==='records'){enterRecordsNav();return;}
   if(id!=='settings') lastMainPage=id;
   setPageContent(id);
   navElement.classList.remove('is-sub');
+  document.getElementById('studyNavItems').hidden=false;document.getElementById('recordNavItems').hidden=true;
   document.getElementById('navMain').setAttribute('aria-hidden','false');
   document.getElementById('navSub').setAttribute('aria-hidden','true');
   document.querySelectorAll('.nav-main .nav-item').forEach(b=>{const active=b.dataset.id===id;b.classList.toggle('active',active);b.setAttribute('aria-current',active?'page':'false');});
@@ -1392,8 +1515,10 @@ function page(id){
 }
 function enterStudyNav(){
   setPageContent('study');
+  document.getElementById('studyNavItems').hidden=false;
+  document.getElementById('recordNavItems').hidden=true;
   showStudyView('cycle');
-  document.getElementById('navSubItems').scrollLeft=0;
+  document.getElementById('studyNavItems').scrollLeft=0;
   navElement.hidden=false;navElement.style.display='flex';navElement.classList.add('is-sub');
   document.getElementById('navMain').setAttribute('aria-hidden','true');
   document.getElementById('navSub').setAttribute('aria-hidden','false');
@@ -1402,20 +1527,43 @@ function enterStudyNav(){
   showStudyView('cycle');
   scrollTo({top:0,behavior:'auto'});
 }
+function enterRecordsNav(){
+  setPageContent('records');
+  document.getElementById('studyNavItems').hidden=true;
+  document.getElementById('recordNavItems').hidden=false;
+  navElement.hidden=false;navElement.style.display='flex';navElement.classList.add('is-sub');
+  document.getElementById('navMain').setAttribute('aria-hidden','true');
+  document.getElementById('navSub').setAttribute('aria-hidden','false');
+  document.querySelector('.settings').style.display='none';
+  document.querySelectorAll('.nav-main .nav-item').forEach(b=>{b.classList.toggle('active',b.dataset.id==='records');b.setAttribute('aria-current',b.dataset.id==='records'?'page':'false');});
+  openRecordArea('questions');
+  document.getElementById('recordNavItems').scrollLeft=0;
+  scrollTo({top:0,behavior:'auto'});
+}
+function openRecordArea(name){
+  if(!['questions','exams','mocks'].includes(name))return;
+  const requestedCategory=name==='exams'?'exam':name==='mocks'?'mock':'questions';
+  if(window.currentRecordEditCategory&&window.currentRecordEditCategory!==requestedCategory&&window.cancelRecordEdit)window.cancelRecordEdit();
+  document.querySelectorAll('.record-view').forEach(v=>v.classList.toggle('active',v.id==='record-'+name));
+  document.querySelectorAll('.record-sub-item').forEach(b=>{const active=b.dataset.recordSub===name;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active?'true':'false');});
+  if(window.refreshRecordViews)window.refreshRecordViews();
+  scrollTo({top:0,behavior:'auto'});
+}
 function exitStudyNav(){
   const destination=lastMainPage || 'home';
   page(destination);
 }
 function showStudyView(name){
   document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-'+name));
-  document.querySelectorAll('.sub-item').forEach(b=>{const active=b.dataset.sub===name;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active?'true':'false');});
+  const navName=name==='topics'?'subjects':name;
+  document.querySelectorAll('.sub-item').forEach(b=>{const active=b.dataset.sub===navName;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active?'true':'false');});
 }
 function openStudyArea(name){if(!studyAreas.includes(name))return;showStudyView(name);const active=document.querySelector('.sub-item[data-sub="'+name+'"]');if(active)active.scrollIntoView({block:'nearest',inline:'nearest',behavior:'auto'});scrollTo({top:0,behavior:'auto'});}
 document.getElementById('topicSubject').addEventListener('change',event=>{const value=event.target.value;document.getElementById('topicsEmpty').hidden=!!value;document.getElementById('topicsSelected').hidden=!value;document.getElementById('topicsSelectedName').textContent=value;});
 navElement.addEventListener('keydown',event=>{
   if(event.key==='Escape'&&navElement.classList.contains('is-sub')){exitStudyNav();return;}
   if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
-  const group=navElement.classList.contains('is-sub')?Array.from(document.querySelectorAll('.nav-sub-items .nav-item')):Array.from(document.querySelectorAll('.nav-main .nav-item'));
+  const group=navElement.classList.contains('is-sub')?Array.from(document.querySelectorAll('#'+(document.getElementById('recordNavItems').hidden?'studyNavItems':'recordNavItems')+' .nav-item')):Array.from(document.querySelectorAll('.nav-main .nav-item'));
   const index=group.indexOf(document.activeElement);if(index<0)return;event.preventDefault();let next=index;
   if(event.key==='ArrowLeft')next=(index-1+group.length)%group.length;else if(event.key==='ArrowRight')next=(index+1)%group.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=group.length-1;group[next].focus();
 });
@@ -1898,10 +2046,403 @@ restoreTimerInterface();
 function exportData(){let blob=new Blob([JSON.stringify({prototype:'Grafia Study',createdAt:new Date().toISOString(),note:'Arquivo demonstrativo, sem dados reais.'},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='grafia-study-prototipo.json';a.click();URL.revokeObjectURL(a.href);toast('Arquivo demonstrativo exportado.')}
 drawTimer(true);
 </script>
-<style id="grafia-mini-clock-cleanup">.timer-studio:not(.is-fullscreen) .timer-fullscreen-clock,.timer-studio:not(.is-fullscreen) .timer-device-status{display:none!important}</style>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(err => console.warn('Falha ao registrar o modo offline:', err)));
+<style id="grafia-mini-clock-cleanup">.timer-studio:not(.is-fullscreen) .timer-fullscreen-clock,.timer-studio:not(.is-fullscreen) .timer-device-status{display:none!important}
+/* Registros: navegação contextual e formulários integrados ao Glass atual */
+#studyNavItems[hidden],#recordNavItems[hidden],[hidden]{display:none!important}
+.record-view{display:none;animation:studyViewIn .24s ease-out}.record-view.active{display:block}
+.record-layout{align-items:start;margin-top:20px}
+.record-form-card{display:flex;flex-direction:column;gap:14px}
+.record-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:2px 0 4px}
+.record-fields label,.assessment-original{display:flex;flex-direction:column;gap:7px;font-size:12px;color:var(--muted);min-width:0}
+.record-fields label.wide,.record-note{grid-column:1/-1}
+.record-fields input,.record-fields select,.record-fields textarea,.assessment-original input{width:100%;min-width:0}
+.record-calculated{font-size:12px;color:#aee2d6;padding:9px 12px;border:1px solid rgba(174,226,214,.16);background:rgba(87,167,145,.08);border-radius:12px}
+.record-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:20px}
+.record-stat{padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,rgba(34,54,81,.62),rgba(16,29,49,.6));box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.record-stat strong{display:block;font:26px Georgia,serif}.record-stat span{font-size:10px;color:var(--muted)}
+.record-list{display:grid;gap:9px;margin-top:12px}.record-entry{padding:13px;border:1px solid var(--line);border-radius:15px;background:rgba(8,22,39,.38)}
+.record-entry-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.record-entry b{font-size:13px}.record-entry small{display:block;color:var(--muted);font-size:11px;line-height:1.5;margin-top:4px}.record-entry-actions{display:flex;gap:6px;flex:0 0 auto}.record-entry-actions button{padding:6px 9px;font-size:10px}.record-badge{font-size:9px;color:#b9d9f4;background:rgba(142,205,240,.11);border-radius:20px;padding:5px 8px;white-space:nowrap}
+.assessment-rows{display:grid;gap:10px;margin:4px 0 10px}.assessment-row{padding:12px;border:1px solid var(--line);border-radius:14px;background:rgba(7,19,34,.38)}
+.assessment-row-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.assessment-row-fields label{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:11px}.assessment-row-fields label:first-child{grid-column:1/-1}.assessment-row-fields input,.assessment-row-fields select{width:100%;min-width:0}.assessment-row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:11px;color:var(--muted)}.assessment-row-head button{font-size:10px;padding:5px 8px}.assessment-total-fields{margin-top:12px}.assessment-original{margin-top:12px}.record-note{display:flex;flex-direction:column;gap:7px;color:var(--muted);font-size:12px}.record-actions{display:flex;gap:8px;flex-wrap:wrap}.record-actions button{flex:1}.record-note textarea{width:100%;resize:vertical;background:#0b1928;border:1px solid var(--line);border-radius:11px;padding:11px;color:var(--text);font:inherit}
+@media(max-width:850px){.record-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.record-layout{grid-template-columns:1fr}}
+@media(max-width:580px){.record-fields{grid-template-columns:1fr}.record-fields label.wide,.record-note{grid-column:auto}.record-summary{gap:8px}.record-stat{padding:12px}.record-stat strong{font-size:23px}.record-entry-head{flex-direction:column}.record-entry-actions{width:100%}.record-entry-actions button{flex:1}.assessment-row-fields{grid-template-columns:1fr 1fr}}
+</style>
+<script id="grafia-pwa-controller">
+(()=>{
+  let installPrompt=null;
+  const installButton=document.getElementById('installAppButton');
+  const isStandalone=()=>window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+  function refreshInstallButton(){
+    if(!installButton)return;
+    installButton.hidden=isStandalone();
+  }
+  window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;refreshInstallButton();});
+  window.addEventListener('appinstalled',()=>{installPrompt=null;refreshInstallButton();if(typeof toast==='function')toast('Grafia Study instalado.');});
+  window.installGrafiaApp=async function(){
+    if(isStandalone()){refreshInstallButton();return;}
+    if(installPrompt){installPrompt.prompt();const choice=await installPrompt.userChoice;installPrompt=null;if(choice&&choice.outcome==='accepted'&&typeof toast==='function')toast('Instalação iniciada.');return;}
+    const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+    const message=ios?'Para instalar: abra no Safari, toque em Compartilhar e escolha “Adicionar à Tela de Início”.':'Para instalar: abra o menu ⋮ do navegador e escolha “Instalar app” ou “Adicionar à tela inicial”.';
+    if(typeof toast==='function')toast(message);else alert(message);
+  };
+  refreshInstallButton();
+  if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(err=>console.warn('Falha ao ativar o modo offline:',err)));}
+})();
+</script>
+
+<script id="grafia-learning-engine">
+(()=>{
+const STORE='grafia-study-learning-v1';
+const disciplines={
+'Matemática':['Matemática Básica','Razão e Proporção','Porcentagem','Escala','Interpretação de Gráficos e Tabelas','Estatística','Média, Moda e Mediana','Função do 1º Grau','Função do 2º Grau','Geometria Plana','Geometria Espacial','Matemática Financeira','Probabilidade','Análise Combinatória','Trigonometria'],
+'Linguagens':['Interpretação de Texto','Gêneros Literários e Textuais','Estratégias Argumentativas','Variedades Linguísticas','Funções da Linguagem','Escolas Literárias','Linguagem Digital'],
+'Biologia':['Ecologia','Biomas','Fisiologia Humana','Metabolismo Energético','Citologia','Genética e Biotecnologia','Parasitologia','Bioquímica'],
+'Química':['Estudo da Matéria','Estrutura Atômica','Tabela Periódica','Funções Inorgânicas','Estequiometria','Solubilidade','Termoquímica','Cinética','Equilíbrio Químico','Eletroquímica','Química Orgânica','Isomeria','Reações Orgânicas','Química Ambiental','Separação de Misturas'],
+'Física':['Unidades de Medida','Movimento e Lançamentos','Dinâmica e Leis de Newton','Hidrostática','Trabalho e Energia','Termologia','Óptica Geométrica','Ondas','Eletrostática','Eletrodinâmica'],
+'Geografia':['Agricultura','Geografia Urbana','Geografia Populacional','Globalização','Cartografia','Estrutura da Terra','Fontes de Energia','Questão Ambiental','Atualidades'],
+'História do Brasil':['Expansão Mercantil','Grandes Navegações','Sistema Colonial','Expansão Territorial','Economia Mineradora','Processo de Independência','Segundo Reinado','República Oligárquica','Era Vargas','Regime Militar','Brasil Atual'],
+'História Geral':['Grécia Antiga','Civilização Romana','Sistema Feudal','Baixa Idade Média','Renascimento e Mercantilismo','Absolutismo e Revolução Industrial','Iluminismo e Independência dos EUA','Revolução Francesa','Era Napoleônica e Neocolonialismo','1ª e 2ª Guerra Mundial','Guerra Fria'],
+'Filosofia':['Escola Helenística','Escola Sofística','Aristóteles, Sócrates e Platão','Racionalismo Moderno','Kant e Nietzsche','Filosofia Medieval e Moderna'],
+'Sociologia':['Cidadania, Cultura e Educação','Política, Poder e Estado','Capitalismo','Economia e Sociedade','Indústria Cultural','Max Weber','Sociologia Contemporânea','O Mundo Globalizado']};
+const recommendationSequence = [{"number":1,"discipline":"Matemática","topic":"Matemática Básica"},{"number":2,"discipline":"Linguagens","topic":"Interpretação de Texto"},{"number":3,"discipline":"Biologia","topic":"Ecologia"},{"number":4,"discipline":"Química","topic":"Estudo da Matéria"},{"number":5,"discipline":"Física","topic":"Unidades de Medida"},{"number":6,"discipline":"Geografia","topic":"Cartografia"},{"number":7,"discipline":"História do Brasil","topic":"Expansão Mercantil"},{"number":8,"discipline":"Filosofia","topic":"Escola Sofística"},{"number":9,"discipline":"Sociologia","topic":"Cidadania, Cultura e Educação"},{"number":10,"discipline":"Matemática","topic":"Razão e Proporção"},{"number":11,"discipline":"Linguagens","topic":"Gêneros Literários e Textuais"},{"number":12,"discipline":"Biologia","topic":"Biomas"},{"number":13,"discipline":"Química","topic":"Estrutura Atômica"},{"number":14,"discipline":"Física","topic":"Movimento e Lançamentos"},{"number":15,"discipline":"Geografia","topic":"Agricultura"},{"number":16,"discipline":"História do Brasil","topic":"Grandes Navegações"},{"number":17,"discipline":"História Geral","topic":"Grécia Antiga"},{"number":18,"discipline":"Filosofia","topic":"Escola Helenística"},{"number":19,"discipline":"Sociologia","topic":"Política, Poder e Estado"},{"number":20,"discipline":"Matemática","topic":"Porcentagem"},{"number":21,"discipline":"Linguagens","topic":"Estratégias Argumentativas"},{"number":22,"discipline":"Biologia","topic":"Fisiologia Humana"},{"number":23,"discipline":"Química","topic":"Tabela Periódica"},{"number":24,"discipline":"Física","topic":"Dinâmica e Leis de Newton"},{"number":25,"discipline":"Geografia","topic":"Geografia Urbana"},{"number":26,"discipline":"História do Brasil","topic":"Sistema Colonial"},{"number":27,"discipline":"História Geral","topic":"Civilização Romana"},{"number":28,"discipline":"Filosofia","topic":"Aristóteles, Sócrates e Platão"},{"number":29,"discipline":"Sociologia","topic":"Capitalismo"},{"number":30,"discipline":"Matemática","topic":"Escala"},{"number":31,"discipline":"Linguagens","topic":"Variedades Linguísticas"},{"number":32,"discipline":"Biologia","topic":"Metabolismo Energético"},{"number":33,"discipline":"Química","topic":"Funções Inorgânicas"},{"number":34,"discipline":"Física","topic":"Hidrostática"},{"number":35,"discipline":"Geografia","topic":"Geografia Populacional"},{"number":36,"discipline":"História do Brasil","topic":"Expansão Territorial"},{"number":37,"discipline":"História Geral","topic":"Sistema Feudal"},{"number":38,"discipline":"Filosofia","topic":"Racionalismo Moderno"},{"number":39,"discipline":"Sociologia","topic":"Economia e Sociedade"},{"number":40,"discipline":"Matemática","topic":"Interpretação de Gráficos e Tabelas"},{"number":41,"discipline":"Linguagens","topic":"Funções da Linguagem"},{"number":42,"discipline":"Biologia","topic":"Citologia"},{"number":43,"discipline":"Química","topic":"Estequiometria"},{"number":44,"discipline":"Física","topic":"Trabalho e Energia"},{"number":45,"discipline":"Geografia","topic":"Globalização"},{"number":46,"discipline":"História do Brasil","topic":"Economia Mineradora"},{"number":47,"discipline":"História Geral","topic":"Baixa Idade Média"},{"number":48,"discipline":"Filosofia","topic":"Kant e Nietzsche"},{"number":49,"discipline":"Sociologia","topic":"Indústria Cultural"},{"number":50,"discipline":"Matemática","topic":"Estatística"},{"number":51,"discipline":"Linguagens","topic":"Escolas Literárias"},{"number":52,"discipline":"Biologia","topic":"Genética e Biotecnologia"},{"number":53,"discipline":"Química","topic":"Solubilidade"},{"number":54,"discipline":"Física","topic":"Termologia"},{"number":55,"discipline":"Geografia","topic":"Estrutura da Terra"},{"number":56,"discipline":"História do Brasil","topic":"Processo de Independência"},{"number":57,"discipline":"História Geral","topic":"Renascimento e Mercantilismo"},{"number":58,"discipline":"Filosofia","topic":"Filosofia Medieval e Moderna"},{"number":59,"discipline":"Sociologia","topic":"Max Weber"},{"number":60,"discipline":"Matemática","topic":"Média, Moda e Mediana"},{"number":61,"discipline":"Linguagens","topic":"Linguagem Digital"},{"number":62,"discipline":"Biologia","topic":"Parasitologia"},{"number":63,"discipline":"Química","topic":"Termoquímica"},{"number":64,"discipline":"Física","topic":"Óptica Geométrica"},{"number":65,"discipline":"Geografia","topic":"Fontes de Energia"},{"number":66,"discipline":"História do Brasil","topic":"Segundo Reinado"},{"number":67,"discipline":"História Geral","topic":"Absolutismo e Revolução Industrial"},{"number":68,"discipline":"Sociologia","topic":"Sociologia Contemporânea"},{"number":69,"discipline":"Matemática","topic":"Função do 1º Grau"},{"number":70,"discipline":"Biologia","topic":"Bioquímica"},{"number":71,"discipline":"Química","topic":"Cinética"},{"number":72,"discipline":"Física","topic":"Ondas"},{"number":73,"discipline":"Geografia","topic":"Questão Ambiental"},{"number":74,"discipline":"História do Brasil","topic":"República Oligárquica"},{"number":75,"discipline":"História Geral","topic":"Iluminismo e Independência dos EUA"},{"number":76,"discipline":"Sociologia","topic":"O Mundo Globalizado"},{"number":77,"discipline":"Matemática","topic":"Função do 2º Grau"},{"number":78,"discipline":"Química","topic":"Equilíbrio Químico"},{"number":79,"discipline":"Física","topic":"Eletrostática"},{"number":80,"discipline":"Geografia","topic":"Atualidades"},{"number":81,"discipline":"História do Brasil","topic":"Era Vargas"},{"number":82,"discipline":"História Geral","topic":"Revolução Francesa"},{"number":83,"discipline":"Matemática","topic":"Geometria Plana"},{"number":84,"discipline":"Química","topic":"Eletroquímica"},{"number":85,"discipline":"Física","topic":"Eletrodinâmica"},{"number":86,"discipline":"História do Brasil","topic":"Regime Militar"},{"number":87,"discipline":"História Geral","topic":"Era Napoleônica e Neocolonialismo"},{"number":88,"discipline":"Matemática","topic":"Geometria Espacial"},{"number":89,"discipline":"Química","topic":"Química Orgânica"},{"number":90,"discipline":"História do Brasil","topic":"Brasil Atual"},{"number":91,"discipline":"História Geral","topic":"1ª e 2ª Guerra Mundial"},{"number":92,"discipline":"Matemática","topic":"Matemática Financeira"},{"number":93,"discipline":"Química","topic":"Isomeria"},{"number":94,"discipline":"História Geral","topic":"Guerra Fria"},{"number":95,"discipline":"Matemática","topic":"Probabilidade"},{"number":96,"discipline":"Química","topic":"Reações Orgânicas"},{"number":97,"discipline":"Matemática","topic":"Análise Combinatória"},{"number":98,"discipline":"Química","topic":"Química Ambiental"},{"number":99,"discipline":"Matemática","topic":"Trigonometria"},{"number":100,"discipline":"Química","topic":"Separação de Misturas"}];
+const hours={'Matemática':16,'Redação':8,'Biologia':8,'Química':7,'Física':6,'História':7,'Geografia':6,'Filosofia + Sociologia':6,'Linguagens':6};
+const steps=['Aula','Questões','Caderno de erros','Anki','Revisão'];
+const intervals=[1,7,21,45];
+const blank=()=>({version:1,topics:{},records:[],sessions:[],reviewEvents:[]});
+let data;try{data={...blank(),...JSON.parse(localStorage.getItem(STORE)||'{}')};}catch{data=blank();}
+const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(data));}catch(e){toast('Não foi possível salvar. Libere espaço no navegador.');}};
+const uid=()=>crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(16).slice(2);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dateKey=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`;};
+const addDays=(date,n)=>{let d=new Date(date);d.setDate(d.getDate()+n);return d.toISOString();};
+const topicId=(discipline,topic)=>discipline+'::'+topic;
+function hasFinishedInitialLearning(entry){
+ const state=data.topics[topicId(entry.discipline,entry.topic)];
+ return !!(state&&Array.isArray(state.steps)&&state.steps.slice(0,4).length===4&&state.steps.slice(0,4).every(Boolean));
 }
+function getRecommendationState(){
+ const statuses=recommendationSequence.map(entry=>({...entry,passed:hasFinishedInitialLearning(entry)}));
+ const current=statuses.find(entry=>!entry.passed)||null;
+ return {statuses,current,passed:statuses.filter(entry=>entry.passed).length};
+}
+function renderRecommendationList(){
+ const box=document.getElementById('recommendationList');if(!box)return;
+ const state=getRecommendationState();
+ const progress=document.getElementById('recommendationProgress');if(progress)progress.textContent=`${state.passed}/100`;
+ box.innerHTML=state.statuses.map(entry=>{
+  const current=!!state.current&&entry.number===state.current.number;
+  const status=entry.passed?'Já estudado':current?'Recomendado':'Na sequência';
+  return `<button type="button" class="recommendation-row ${current?'is-current':''} ${entry.passed?'is-passed':''}" data-open-recommendation="${entry.number}" aria-label="Abrir checklist de ${esc(entry.topic)}"><span class="recommendation-number">${String(entry.number).padStart(2,'0')}</span><span class="recommendation-topic"><b>${esc(entry.topic)}</b><small>${esc(entry.discipline)}</small></span><span class="recommendation-status">${status}</span></button>`;
+ }).join('');
+ box.querySelectorAll('[data-open-recommendation]').forEach(button=>{
+  const entry=recommendationSequence.find(item=>item.number===Number(button.dataset.openRecommendation));
+  if(!entry)return;
+  button.addEventListener('click',()=>{
+   page('study');
+   openStudyArea('topics');
+   const selector=document.getElementById('topicSubject');
+   selector.value=entry.discipline;selector.dispatchEvent(new Event('change'));
+   openTopic(entry.discipline,entry.topic);
+  });
+ });
+}
+function refreshRecommendationUI(){
+ const state=getRecommendationState();
+ const name=document.getElementById('recommendedTopicName');
+ if(name)name.textContent=state.current?state.current.topic:'Lista concluída';
+ const list=document.getElementById('recommendationList');if(list)renderRecommendationList();
+}
+function stateFor(d,t){let id=topicId(d,t);return data.topics[id]||(data.topics[id]={id,discipline:d,topic:t,steps:[],events:[],difficulty:'medium',incidence:'medium',enrolled:false,cycle:0,completed:false,createdAt:new Date().toISOString()});}
+function normalizeRecordCategory(r){return r.category||'questions';}
+function matchesDiscipline(recordDiscipline,requested){
+ const aliases={
+  'História do Brasil':['História do Brasil','História'],
+  'História Geral':['História Geral','História'],
+  'Filosofia':['Filosofia','Filosofia e Sociologia'],
+  'Sociologia':['Sociologia','Filosofia e Sociologia']
+ };
+ return (aliases[requested]||[requested]).includes(recordDiscipline);
+}
+function collectRecordResults({discipline=null,topic=null}={}){
+ let total=0,correct=0,blank=0;
+ for(const r of data.records){
+  if(Array.isArray(r.breakdown)&&r.breakdown.length){
+   for(const part of r.breakdown){
+    if(discipline&&!matchesDiscipline(part.discipline,discipline))continue;
+    if(topic&&(!part.topic||!topicMatches(part.topic,topic)))continue;
+    total+=Number(part.total||0);correct+=Number(part.correct||0);blank+=Number(part.blank||0);
+   }
+  }else{
+   if(discipline&&!matchesDiscipline(r.discipline||'',discipline))continue;
+   if(topic&&(!r.topic||!topicMatches(r.topic,topic)))continue;
+   // Global-only exams/simulations have no discipline assignment and must not be distributed artificially.
+   if(discipline&&!r.discipline)continue;
+   total+=Number(r.total||0);correct+=Number(r.correct||0);blank+=Number(r.blank||0);
+  }
+ }
+ return {total,correct,blank,errors:Math.max(0,total-correct-blank)};
+}
+function accuracy(d,t){
+ const specific=collectRecordResults({discipline:d,topic:t});
+ const source=specific.total>0?specific:collectRecordResults({discipline:d});
+ if(!source.total)return {value:null,source:'Sem dados',n:0};
+ return {value:source.correct/source.total,source:specific.total>0?'Assunto':'Média da matéria',n:source.total};
+}
+
+let activeStarted=0,activeAccum=0,activeContext=null;
+const normalizeText=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR').replace(/\s+/g,' ').trim();
+function topicMatches(a,b){return normalizeText(a)===normalizeText(b);}
+function disciplineMatches(sessionDiscipline,discipline){
+ const aliases={
+  'História do Brasil':['História','História do Brasil'],
+  'História Geral':['História','História Geral'],
+  'Filosofia':['Filosofia e Sociologia','Filosofia'],
+  'Sociologia':['Filosofia e Sociologia','Sociologia']
+ };
+ return (aliases[discipline]||[discipline]).includes(sessionDiscipline);
+}
+function formatStudyTime(seconds){const total=Math.max(0,Math.floor(seconds||0)),minutes=Math.floor(total/60),hours=Math.floor(minutes/60),rest=minutes%60;if(hours)return `${hours}h ${String(rest).padStart(2,'0')}min`;return `${minutes}min`;}
+function elapsed(d,t){
+ let total=data.sessions.filter(s=>disciplineMatches(s.discipline,d)&&topicMatches(s.topic,t)).reduce((a,s)=>a+Number(s.seconds||0),0);
+ if(activeContext&&disciplineMatches(activeContext.discipline,d)&&topicMatches(activeContext.topic,t))total+=activeAccum+(activeStarted?Math.max(0,Math.floor((Date.now()-activeStarted)/1000)):0);
+ return total;
+}
+function refreshTopicTimes(){
+ document.querySelectorAll('.topic-time').forEach(el=>el.textContent=formatStudyTime(elapsed(el.dataset.discipline,el.dataset.timeTopic)));
+ document.querySelectorAll('[data-topic-total]').forEach(el=>el.textContent=formatStudyTime(elapsed(el.dataset.discipline,el.dataset.timeTopic)));
+}
+function renderTopics(d,expandTopic=undefined){
+ let box=document.getElementById('topicList');if(!box)return;
+ if(expandTopic!==undefined)expandedTopic=expandTopic;
+ else if(!selected||selected.d!==d)expandedTopic=null;
+ selected=expandedTopic?{d,t:expandedTopic}:null;
+ box.innerHTML=(disciplines[d]||[]).map(t=>{
+  let x=stateFor(d,t),done=x.steps.filter(Boolean).length,isOpen=expandedTopic===t;
+  return `<div class="topic-accordion"><button class="topic-row" type="button" data-topic="${esc(t)}" aria-expanded="${isOpen?'true':'false'}"><span class="topic-info"><span class="topic-title-line"><b>${esc(t)}</b><span class="topic-time" data-discipline="${esc(d)}" data-time-topic="${esc(t)}">${formatStudyTime(elapsed(d,t))}</span></span><small>${done}/5 etapas${x.enrolled?' · Na fila de revisões':''}</small><span class="topic-progress"><i style="width:${done*20}%"></i></span></span><span class="topic-chevron" aria-hidden="true">⌄</span></button><div class="topic-panel-wrap" id="topicPanel-${esc(t).replace(/[^a-zA-Z0-9_-]/g,'-')}" ${isOpen?'':'hidden'}><div class="card learning-panel" id="topicDetail"></div></div></div>`;
+ }).join('');
+ box.querySelectorAll('[data-topic]').forEach(el=>el.onclick=()=>{
+  let topic=el.dataset.topic;
+  renderTopics(d,expandedTopic===topic?null:topic);
+ });
+ if(expandedTopic){let panel=box.querySelector('#topicDetail');if(panel)renderTopicPanel(d,expandedTopic,panel);}
+}
+function renderTopicPanel(d,t,panel){
+ selected={d,t};let x=stateFor(d,t),a=accuracy(d,t),time=elapsed(d,t);
+ panel.innerHTML=`<div class="sectionhead" style="margin-top:0"><div><div class="eyebrow">Checklist de aprendizagem</div><h2>${esc(t)}</h2></div><span class="pill">${x.steps.filter(Boolean).length}/5</span></div><div id="stepList"></div><div class="lineitem"><div><b>Desempenho em questões</b><small>${a.value===null?'Ainda sem resultados':Math.round(a.value*100)+'% · '+a.source+' · '+a.n+' questões'}</small></div><span class="pill" data-topic-total data-discipline="${esc(d)}" data-time-topic="${esc(t)}">${formatStudyTime(time)}</span></div><div class="review-actions"><button class="secondary" id="enrollReview">${x.enrolled?'Ver revisões':'Adicionar às revisões'}</button><button class="secondary" id="startTopicTimer">Iniciar cronômetro</button></div>`;
+ renderSteps();
+ panel.querySelector('#enrollReview').onclick=()=>x.enrolled?openStudyArea('reviews'):enrollPrompt(d,t);
+ panel.querySelector('#startTopicTimer').onclick=()=>page('timer');
+}
+function openTopic(d,t){
+ let select=document.getElementById('topicSubject');
+ if(select&&select.value!==d){select.value=d;select.dispatchEvent(new Event('change'));}
+ renderTopics(d,t);
+}
+function renderSteps(){let {d,t}=selected,x=stateFor(d,t),box=document.getElementById('stepList');box.innerHTML=steps.map((name,i)=>{let done=!!x.steps[i],locked=i>0&&!x.steps[i-1],stamp=x.events.filter(e=>e.step===i).slice(-1)[0]?.at;return `<label class="check-step ${locked?'locked':''}"><input type="checkbox" data-step="${i}" ${done?'checked':''} ${locked?'disabled':''}><span><strong>${name}</strong>${done?'<small>Concluída</small>':''}</span><span class="step-date">${stamp?new Date(stamp).toLocaleString('pt-BR'):(locked?'Bloqueada':'Pendente')}</span></label>`}).join('');box.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>toggleStep(Number(el.dataset.step),el.checked));}
+function toggleStep(i,checked){let {d,t}=selected,x=stateFor(d,t);if(checked&&i>0&&!x.steps[i-1]){toast('Conclua a etapa anterior primeiro.');renderSteps();return;}if(!checked){if(!confirm('Desmarcar esta etapa? O histórico de confirmações será preservado. As etapas seguintes também voltarão a ficar pendentes.')){renderSteps();return;}for(let j=i;j<5;j++)x.steps[j]=false;x.events.push({type:'undo',step:i,at:new Date().toISOString()});}else{x.steps[i]=true;x.events.push({type:'complete',step:i,at:new Date().toISOString()});}save();renderTopics(d,t);refreshRecommendationUI();if(x.steps.slice(0,3).every(Boolean)&&!x.enrolled&&!x.prompted){x.prompted=true;save();enrollPrompt(d,t,true);}}
+function enrollPrompt(d,t,auto=false){let x=stateFor(d,t),modal=document.getElementById('learningModal');modal.hidden=false;modal.querySelector('[data-modal-title]').textContent='Adicionar às revisões';modal.querySelector('#modalDifficulty').value=x.difficulty||'medium';modal.querySelector('#modalIncidence').value=x.incidence||'medium';modal.querySelector('#modalSkip').onclick=()=>{modal.hidden=true;toast('Você pode adicionar este assunto às revisões depois.');};modal.querySelector('#modalSave').onclick=()=>{x.difficulty=modal.querySelector('#modalDifficulty').value;x.incidence=modal.querySelector('#modalIncidence').value;x.enrolled=true;x.cycle=(x.cycle||0)+1;x.completed=false;x.reviewIndex=0;x.nextReviewAt=addDays(new Date(),intervals[0]);x.events.push({type:'enrolled',at:new Date().toISOString(),cycle:x.cycle});save();modal.hidden=true;renderReviews();toast('Assunto adicionado às revisões.');};}
+function renderReviews(){let items=Object.values(data.topics).filter(x=>x.enrolled),today=dateKey(new Date()),f=document.getElementById('reviewFilter')?.value||'all';let due=items.filter(x=>x.nextReviewAt&&dateKey(x.nextReviewAt)<=today&&!x.completed).length,over=items.filter(x=>x.nextReviewAt&&dateKey(x.nextReviewAt)<today&&!x.completed).length,up=items.filter(x=>x.nextReviewAt&&dateKey(x.nextReviewAt)>today&&!x.completed).length,done=items.filter(x=>x.completed).length;let sum=document.getElementById('reviewSummary');if(sum)sum.innerHTML=[['Hoje',due,''],['Atrasadas',over,''],['Próximas',up,''],['Consolidadas',done,'']].map(a=>`<div class="subject"><div class="eyebrow">${a[0]}</div><strong style="font:30px Georgia,serif">${a[1]}</strong></div>`).join('');let list=document.getElementById('reviewList');if(!list)return;let filtered=items.filter(x=>{let k=x.nextReviewAt?dateKey(x.nextReviewAt):'';return f==='all'?true:f==='today'?k===today&&!x.completed:f==='overdue'?k<today&&!x.completed:f==='upcoming'?k>today&&!x.completed:f==='done'?x.completed:false;}).sort((a,b)=>(a.nextReviewAt||'').localeCompare(b.nextReviewAt||''));list.innerHTML=filtered.length?filtered.map(x=>{let a=accuracy(x.discipline,x.topic),idx=x.reviewIndex||0;return `<article class="review-card"><h3>${esc(x.topic)}</h3><div class="review-meta">${esc(x.discipline)} · ${esc(x.difficulty)} · Revisão ${Math.min(idx+1,4)} de 4<br>${a.value===null?'Desempenho sem dados':Math.round(a.value*100)+'% · '+a.source+' ('+a.n+' questões)'}<br>${x.completed?'Ciclo consolidado':x.nextReviewAt?'Próxima: '+new Date(x.nextReviewAt).toLocaleDateString('pt-BR'):'Sem data'}</div><div class="review-actions">${!x.completed?`<button class="primary" data-review="${esc(x.id)}">Registrar revisão</button>`:''}<button class="secondary" data-topic-open="${esc(x.id)}">Checklist</button></div></article>`}).join(''):'<div class="card muted">Nenhum assunto nesta categoria.</div>';list.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>completeReview(b.dataset.review));list.querySelectorAll('[data-topic-open]').forEach(b=>b.onclick=()=>{let x=data.topics[b.dataset.topicOpen];openStudyArea('topics');document.getElementById('topicSubject').value=x.discipline;document.getElementById('topicSubject').dispatchEvent(new Event('change'));openTopic(x.discipline,x.topic);});let hist=document.getElementById('reviewHistory');if(hist){let ev=items.flatMap(x=>x.events.filter(e=>e.type==='review').map(e=>({x,e}))).sort((a,b)=>b.e.at.localeCompare(a.e.at));hist.innerHTML=ev.length?ev.map(({x,e})=>`<div class="lineitem"><div><b>${esc(x.topic)}</b><small>${new Date(e.at).toLocaleString('pt-BR')} · ${e.index}/4 · ${e.result||'Revisão registrada'}</small></div><span class="pill">Ciclo ${e.cycle}</span></div>`).join(''):'<span class="muted">As revisões concluídas aparecerão aqui.</span>';}}
+function completeReview(id){let x=data.topics[id];if(!x)return;let a=accuracy(x.discipline,x.topic),suggest=a.value!==null&&a.value<.6?1:a.value!==null&&a.value<.85?Math.max(2,intervals[Math.min(x.reviewIndex||0,3)]):intervals[Math.min(x.reviewIndex||0,3)];x.events.push({type:'review',at:new Date().toISOString(),index:(x.reviewIndex||0)+1,cycle:x.cycle,result:a.value===null?'Sem resultado':Math.round(a.value*100)+'%',accuracySource:a.source,questions:a.n});x.reviewIndex=(x.reviewIndex||0)+1;if(x.reviewIndex>=4){x.completed=true;x.nextReviewAt=null;}else{x.nextReviewAt=addDays(new Date(),suggest); }save();renderReviews();toast(x.completed?'Ciclo concluído. Histórico preservado.':'Revisão registrada.');}
+function initUI(){let modal=document.createElement('div');modal.id='learningModal';modal.className='learning-modal';modal.hidden=true;modal.innerHTML=`<div class="modal-card"><div class="eyebrow">Planejamento de revisão</div><h2 data-modal-title>Adicionar às revisões</h2><label for="modalDifficulty">Dificuldade pessoal</label><select id="modalDifficulty"><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select><label for="modalIncidence">Incidência no ENEM</label><select id="modalIncidence"><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select><div class="modal-actions"><button class="secondary" id="modalSkip">Agora não</button><button class="primary" id="modalSave">Adicionar</button></div></div>`;document.body.append(modal);
+let select=document.getElementById('topicSubject');select.addEventListener('change',()=>{let d=select.value;document.getElementById('topicsEmpty').hidden=!!d;document.getElementById('topicsSelected').hidden=!d;document.getElementById('topicsSelectedName').textContent=d;if(d){selected=null;expandedTopic=null;renderTopics(d,null);}});
+let revFilter=document.getElementById('reviewFilter');revFilter?.addEventListener('change',renderReviews);
+window.populateTimerTopics=function(subject,selected=''){let select=document.getElementById('timerTopic');if(!select)return;let opts=subject==='História'?[...(disciplines['História do Brasil']||[]),...(disciplines['História Geral']||[])]:subject==='Filosofia e Sociologia'?[...(disciplines.Filosofia||[]),...(disciplines.Sociologia||[])]:disciplines[subject]||[];select.innerHTML='<option value="">Selecione um assunto</option>';opts.forEach(t=>{let o=document.createElement('option');o.value=t;o.textContent=t;select.append(o);});let other=document.createElement('option');other.value='__other__';other.textContent='Outro assunto…';select.append(other);let wrap=document.getElementById('timerTopicCustomWrap'),input=document.getElementById('timerTopicCustom');if(selected&&opts.includes(selected)){select.value=selected;if(wrap)wrap.hidden=true;}else if(selected){select.value='__other__';if(wrap)wrap.hidden=false;if(input)input.value=selected==='Outro assunto'?'':selected;}else if(wrap)wrap.hidden=true;};
+
+const timerSubjectSelect=document.getElementById('timerSubject');
+if(timerSubjectSelect){
+ window.populateTimerTopics(timerSubjectSelect.value,timerState.topic||'');
+ timerSubjectSelect.addEventListener('change',()=>window.populateTimerTopics(timerSubjectSelect.value,''));
+}
+let cycle=document.querySelector('#study-cycle .study-list');if(cycle){let list=Object.entries(hours).map(([d,h])=>`<div class="lineitem" data-cycle-subject="${esc(d)}"><div><b>${esc(d)}</b><small>${h} horas planejadas</small></div><span class="pill">${h}h</span></div>`).join('');cycle.innerHTML=list;}
+let dir=document.querySelector('.subject-directory');if(dir){dir.innerHTML=Object.entries(disciplines).map(([d,topics])=>`<div class="subject" data-dir="${esc(d)}"><div class="subjecttop"><span class="mark">▤</span><span class="pill">${topics.length} assuntos</span></div><h3>${esc(d)}</h3><p>Área de estudo</p></div>`).join('');}
+// Registros integrados: cada atividade é um evento único; os recortes por matéria/assunto são detalhes do mesmo evento.
+const recordDisciplines=Object.keys(disciplines);
+const recordToday=()=>new Date().toISOString().slice(0,10);
+const selectMarkup=(id,values,placeholder='Selecione')=>`<select id="${id}"><option value="">${placeholder}</option>${values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}</select>`;
+function fillTopicSelect(select,discipline,selected=''){
+ if(!select)return;
+ const topics=discipline?(disciplines[discipline]||[]):[];
+ select.innerHTML='<option value="">Assunto (opcional)</option>'+topics.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('');
+ if(selected)select.value=selected;
+}
+const qDiscipline=document.getElementById('questionDiscipline');
+if(qDiscipline){qDiscipline.innerHTML=recordDisciplines.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');fillTopicSelect(document.getElementById('questionTopic'),qDiscipline.value);qDiscipline.addEventListener('change',()=>fillTopicSelect(document.getElementById('questionTopic'),qDiscipline.value));document.getElementById('questionDate').value=recordToday();}
+function setAssessmentMode(kind){
+ const mode=document.getElementById(kind+'Mode').value;
+ document.getElementById(kind+'TotalFields').hidden=mode!=='total';
+ document.getElementById(kind+'BreakdownFields').hidden=mode!=='discipline';
+}
+window.setAssessmentMode=setAssessmentMode;
+function addAssessmentRow(kind){
+ const host=document.getElementById(kind+'BreakdownRows');if(!host)return;
+ const row=document.createElement('div');row.className='assessment-row';
+ const idx=host.children.length+1;
+ row.innerHTML=`<div class="assessment-row-head"><b>Matéria ${idx}</b><button class="secondary" type="button" data-remove-row>Remover</button></div><div class="assessment-row-fields"><label>Matéria${selectMarkup('',recordDisciplines,'Selecione a matéria').replace('<select id="">','<select data-discipline>')}</label><label>Assunto <span>(opcional)</span><select data-topic><option value="">Assunto (opcional)</option></select></label><label>Total realizado<input data-total type="number" min="1" step="1" placeholder="Total"></label><label>Acertos<input data-correct type="number" min="0" step="1" placeholder="Acertos"></label><label>Em branco<input data-blank type="number" min="0" step="1" value="0"></label></div>`;
+ host.append(row);
+ const disc=row.querySelector('[data-discipline]');disc.addEventListener('change',()=>fillTopicSelect(row.querySelector('[data-topic]'),disc.value));
+ row.querySelectorAll('input').forEach(inp=>inp.addEventListener('input',()=>updateBreakdownPreview(kind)));
+ row.querySelector('[data-remove-row]').onclick=()=>{row.remove();[...host.children].forEach((x,i)=>x.querySelector('.assessment-row-head b').textContent='Matéria '+(i+1));updateBreakdownPreview(kind);};
+ updateBreakdownPreview(kind);
+}
+window.addAssessmentRow=addAssessmentRow;
+function readBreakdown(kind){
+ const rows=[...document.querySelectorAll('#'+kind+'BreakdownRows .assessment-row')];
+ const breakdown=[],seen=new Set();
+ for(const row of rows){
+  const discipline=row.querySelector('[data-discipline]').value,topic=row.querySelector('[data-topic]').value;
+  const total=Number(row.querySelector('[data-total]').value),correct=Number(row.querySelector('[data-correct]').value),blank=Number(row.querySelector('[data-blank]').value||0);
+  if(!discipline&&!row.querySelector('[data-total]').value&&!row.querySelector('[data-correct]').value)continue;
+  if(!discipline||!Number.isInteger(total)||!Number.isInteger(correct)||!Number.isInteger(blank)||total<=0||correct<0||blank<0||correct+blank>total)throw new Error('Confira os dados de cada matéria.');
+  const uniqueKey=discipline+'::'+(topic||'');if(seen.has(uniqueKey))throw new Error('Remova resultados duplicados para a mesma matéria e assunto.');seen.add(uniqueKey);
+  breakdown.push({discipline,topic,total,correct,blank,errors:total-correct-blank});
+ }
+ if(!breakdown.length)throw new Error('Adicione pelo menos uma matéria com resultado.');
+ return breakdown;
+}
+function updateBreakdownPreview(kind){
+ const host=document.getElementById(kind+'BreakdownPreview');if(!host)return;
+ let total=0,correct=0,blank=0;
+ document.querySelectorAll('#'+kind+'BreakdownRows .assessment-row').forEach(row=>{total+=Number(row.querySelector('[data-total]').value||0);correct+=Number(row.querySelector('[data-correct]').value||0);blank+=Number(row.querySelector('[data-blank]').value||0);});
+ host.textContent=total?`Total geral: ${total} questões · ${correct} acertos · ${Math.max(0,total-correct-blank)} erros · ${blank} em branco`:'O total geral será calculado pelas matérias informadas.';
+}
+function setupErrorPreview(prefix){
+ const total=document.getElementById(prefix+'Total'),correct=document.getElementById(prefix+'Correct'),blank=document.getElementById(prefix+'Blank'),preview=document.getElementById(prefix+'ErrorsPreview');
+ if(!total||!correct||!blank||!preview)return;
+ const update=()=>{const t=Number(total.value),c=Number(correct.value),b=Number(blank.value||0);preview.textContent=t>0&&c>=0&&b>=0&&c+b<=t?`Erros: ${t-c-b}`:'Erros: —';};[total,correct,blank].forEach(x=>x.addEventListener('input',update));update();
+}
+setupErrorPreview('question');setupErrorPreview('exam');setupErrorPreview('mock');
+function metricsFor(records){const total=records.reduce((a,r)=>a+Number(r.total||0),0),correct=records.reduce((a,r)=>a+Number(r.correct||0),0),blank=records.reduce((a,r)=>a+Number(r.blank||0),0);return {activities:records.length,total,correct,blank,errors:Math.max(0,total-correct-blank),accuracy:total?correct/total:null};}
+function categoryOf(r){return r.category||'questions';}
+function dateOf(r){return r.date||r.at||r.createdAt||new Date().toISOString();}
+function formatRecordDate(value){const d=new Date(value+'T00:00:00');return Number.isNaN(d.getTime())?new Date(value).toLocaleDateString('pt-BR'):d.toLocaleDateString('pt-BR');}
+function allRecordMetrics(){return metricsFor(data.records);}
+function collectGroupResults(included,legacy=[]){
+ let total=0,correct=0,blank=0;
+ for(const r of data.records){
+  if(Array.isArray(r.breakdown)&&r.breakdown.length){
+   for(const part of r.breakdown){if(!included.includes(part.discipline)&&!legacy.includes(part.discipline))continue;total+=Number(part.total||0);correct+=Number(part.correct||0);blank+=Number(part.blank||0);}
+  }else if(included.includes(r.discipline)||legacy.includes(r.discipline)){
+   total+=Number(r.total||0);correct+=Number(r.correct||0);blank+=Number(r.blank||0);
+  }
+ }
+ return {total,correct,blank,errors:Math.max(0,total-correct-blank),accuracy:total?correct/total:null};
+}
+function renderDisciplinePerformance(){
+ const host=document.getElementById('disciplinePerformanceGrid');if(!host)return;
+ const groups=[
+  ['Matemática',['Matemática']],['Linguagens',['Linguagens']],['Biologia',['Biologia']],['Química',['Química']],['Física',['Física']],['Geografia',['Geografia']],['História',['História do Brasil','História Geral'],['História']],['Filosofia e Sociologia',['Filosofia','Sociologia'],['Filosofia e Sociologia']]
+ ];
+ host.innerHTML=groups.map(([label,subjects,legacy=[]])=>{const m=collectGroupResults(subjects,legacy);return `<div class="record-stat"><strong>${m.accuracy===null?'—':Math.round(m.accuracy*100)+'%'}</strong><span>${esc(label)} · ${m.total} questões</span></div>`;}).join('');
+}
+function refreshRecordViews(){
+ const byCategory={questions:data.records.filter(r=>categoryOf(r)==='questions'),exam:data.records.filter(r=>categoryOf(r)==='exam'),mock:data.records.filter(r=>categoryOf(r)==='mock')};
+ const total=allRecordMetrics();
+ document.getElementById('homeActivityCount')?.replaceChildren(document.createTextNode(String(total.activities)));
+ document.getElementById('performanceAccuracy')?.replaceChildren(document.createTextNode(total.accuracy===null?'—':Math.round(total.accuracy*100)+'%'));
+ document.getElementById('performanceQuestionCount')?.replaceChildren(document.createTextNode(String(total.total)));
+ document.getElementById('count')?.replaceChildren(document.createTextNode(String(total.activities)));
+ document.getElementById('recordQuestionTotal')?.replaceChildren(document.createTextNode(String(total.total)));
+ document.getElementById('recordOverallAccuracy')?.replaceChildren(document.createTextNode(total.accuracy===null?'—':Math.round(total.accuracy*100)+'%'));
+ renderDisciplinePerformance();
+ ['questions','exam','mock'].forEach((key)=>{
+  const m=metricsFor(byCategory[key]),summary=document.getElementById(key==='questions'?'questionSummary':key==='exam'?'examSummary':'mockSummary');
+  if(summary)summary.innerHTML=[['Atividades',m.activities],['Questões',m.total],['Acertos',m.correct],['Aproveitamento',m.accuracy===null?'—':Math.round(m.accuracy*100)+'%']].map(([label,value])=>`<div class="record-stat"><strong>${value}</strong><span>${label}</span></div>`).join('');
+  renderRecordList(key,byCategory[key]);
+ });
+}
+window.refreshRecordViews=refreshRecordViews;
+function renderRecordList(kind,records){
+ const id=kind==='questions'?'questionRecordList':kind==='exam'?'examRecordList':'mockRecordList',box=document.getElementById(id);if(!box)return;
+ const ordered=[...records].sort((a,b)=>dateOf(b).localeCompare(dateOf(a)));
+ box.innerHTML=ordered.length?ordered.map(r=>{
+  const pct=r.total?Math.round((r.correct/r.total)*100)+'%':'—',catLabel=kind==='questions'?'Questões':kind==='exam'?'Prova':'Simulado';
+  const resultDetail=r.breakdown?.length?r.breakdown.map(x=>`${esc(x.discipline)}${x.topic?' · '+esc(x.topic):''}: ${x.correct}/${x.total} acertos · ${x.errors??Math.max(0,x.total-x.correct-(x.blank||0))} erros · ${x.blank||0} em branco`).join('<br>'):`${r.correct} acertos · ${r.errors??Math.max(0,r.total-r.correct-(r.blank||0))} erros · ${r.blank||0} em branco`;
+  const partial=r.scope==='partial'?'<span class="record-badge">Parcial</span>':'';
+  const quantityText=r.scope==='partial'&&r.sourceTotal?`${r.total} de ${r.sourceTotal} questões`:`${r.total} questões`;
+  return `<article class="record-entry"><div class="record-entry-head"><div><b>${esc(r.name||catLabel)}</b><small>${formatRecordDate(dateOf(r))} · ${quantityText} · ${pct}<br>${resultDetail}</small>${r.notes?`<small>${esc(r.notes)}</small>`:''}</div><div class="record-entry-actions">${partial}<button class="secondary" type="button" data-edit-record="${esc(r.id)}">Editar</button><button class="secondary" type="button" data-delete-record="${esc(r.id)}">Excluir</button></div></div></article>`;
+ }).join(''):'<div class="muted">Nenhum registro nesta categoria.</div>';
+ box.querySelectorAll('[data-delete-record]').forEach(btn=>btn.onclick=()=>deleteRecord(btn.dataset.deleteRecord));
+ box.querySelectorAll('[data-edit-record]').forEach(btn=>btn.onclick=()=>editRecord(btn.dataset.editRecord));
+}
+function deleteRecord(id){if(!confirm('Excluir este registro? Os indicadores relacionados serão recalculados.'))return;data.records=data.records.filter(r=>r.id!==id);if(recordEditingId===id)cancelRecordEdit('all');save();refreshRecordViews();renderReviews();toast('Registro excluído.');}
+let recordEditingId=null;
+function cancelRecordEdit(kind='all'){recordEditingId=null;window.currentRecordEditCategory=null;const kinds=kind==='all'?['questions','exam','mock']:[kind];kinds.forEach(k=>{const p=k==='questions'?'question':k;const fields=k==='questions'?['questionName','questionTotal','questionCorrect','questionBlank']: [p+'Name',p+'Total',p+'Correct',p+'Blank',p+'OriginalTotal',p+'Notes',p+'BreakdownOriginal'];fields.forEach(id=>{const el=document.getElementById(id);if(el){el.value=id.endsWith('Blank')?'0':'';el.dispatchEvent(new Event('input'));}});if(k==='questions'){document.getElementById('questionDate').value=recordToday();document.getElementById('questionDiscipline').value=recordDisciplines[0];fillTopicSelect(document.getElementById('questionTopic'),recordDisciplines[0]);document.getElementById('saveQuestionBtn').textContent='Salvar atividade';document.getElementById('cancelQuestionEdit').hidden=true;}else{document.getElementById(p+'Date').value=recordToday();document.getElementById(p+'Scope').value='complete';document.getElementById(p+'Mode').value='total';setAssessmentMode(p);document.getElementById(p+'BreakdownRows').innerHTML='';document.getElementById('save'+(k==='exam'?'Exam':'Mock')+'Btn').textContent=k==='exam'?'Salvar prova':'Salvar simulado';document.getElementById('cancel'+(k==='exam'?'Exam':'Mock')+'Edit').hidden=true;}});}
+window.cancelRecordEdit=cancelRecordEdit;
+function editRecord(id){const r=data.records.find(x=>x.id===id);if(!r)return;if(categoryOf(r)==='questions'){page('records');openRecordArea('questions');recordEditingId=id;window.currentRecordEditCategory='questions';document.getElementById('questionName').value=r.name||'';document.getElementById('questionDiscipline').value=r.discipline||recordDisciplines[0];fillTopicSelect(document.getElementById('questionTopic'),r.discipline||recordDisciplines[0],r.topic||'');document.getElementById('questionDate').value=(r.date||dateOf(r)).slice(0,10);document.getElementById('questionTotal').value=r.total||'';document.getElementById('questionCorrect').value=r.correct||0;document.getElementById('questionBlank').value=r.blank||0;document.getElementById('questionTotal').dispatchEvent(new Event('input'));document.getElementById('saveQuestionBtn').textContent='Salvar alterações';document.getElementById('cancelQuestionEdit').hidden=false;}else{const kind=categoryOf(r),p=kind==='exam'?'exam':'mock';page('records');openRecordArea(kind==='exam'?'exams':'mocks');recordEditingId=id;window.currentRecordEditCategory=kind;document.getElementById(p+'Name').value=r.name||'';document.getElementById(p+'Date').value=(r.date||dateOf(r)).slice(0,10);document.getElementById(p+'Scope').value=r.scope||'complete';document.getElementById(p+'Notes').value=r.notes||'';document.getElementById(p+'Mode').value=r.mode||((r.breakdown||[]).length?'discipline':'total');setAssessmentMode(p);if(document.getElementById(p+'Mode').value==='discipline'){document.getElementById(p+'BreakdownRows').innerHTML='';(r.breakdown||[]).forEach(part=>{addAssessmentRow(p);const row=document.querySelector('#'+p+'BreakdownRows .assessment-row:last-child');row.querySelector('[data-discipline]').value=part.discipline;fillTopicSelect(row.querySelector('[data-topic]'),part.discipline,part.topic||'');row.querySelector('[data-total]').value=part.total;row.querySelector('[data-correct]').value=part.correct;row.querySelector('[data-blank]').value=part.blank||0;});document.getElementById(p+'BreakdownOriginal').value=r.sourceTotal||'';updateBreakdownPreview(p);}else{document.getElementById(p+'Total').value=r.total||'';document.getElementById(p+'Correct').value=r.correct||0;document.getElementById(p+'Blank').value=r.blank||0;document.getElementById(p+'OriginalTotal').value=r.sourceTotal||'';document.getElementById(p+'Total').dispatchEvent(new Event('input'));}document.getElementById('save'+(kind==='exam'?'Exam':'Mock')+'Btn').textContent='Salvar alterações';document.getElementById('cancel'+(kind==='exam'?'Exam':'Mock')+'Edit').hidden=false;}scrollTo({top:0,behavior:'smooth'});}
+window.editRecord=editRecord;
+window.deleteRecord=deleteRecord;
+function validateCounts(total,correct,blank){return Number.isInteger(total)&&Number.isInteger(correct)&&Number.isInteger(blank)&&total>0&&correct>=0&&blank>=0&&correct+blank<=total;}
+function saveQuestionRecord(){
+ const name=document.getElementById('questionName').value.trim(),discipline=qDiscipline.value,topic=document.getElementById('questionTopic').value,total=Number(document.getElementById('questionTotal').value),correct=Number(document.getElementById('questionCorrect').value),blank=Number(document.getElementById('questionBlank').value||0),date=document.getElementById('questionDate').value;
+ if(!name||!discipline||!date||!validateCounts(total,correct,blank)){toast('Confira os dados da atividade.');return;}
+ const record={id:recordEditingId||uid(),category:'questions',name,discipline,topic,total,correct,blank,errors:total-correct-blank,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString()};if(recordEditingId){const idx=data.records.findIndex(x=>x.id===recordEditingId);if(idx>=0){record.createdAt=data.records[idx].createdAt||record.createdAt;data.records[idx]=record;}else data.records.push(record);}else data.records.push(record);cancelRecordEdit('questions');save();refreshRecordViews();renderReviews();toast('Atividade salva.');
+}
+window.saveQuestionRecord=saveQuestionRecord;
+function saveAssessmentRecord(kind){
+ const prefix=kind==='exam'?'exam':'mock',category=kind==='exam'?'exam':'mock',name=document.getElementById(prefix+'Name').value.trim(),date=document.getElementById(prefix+'Date').value,scope=document.getElementById(prefix+'Scope').value,mode=document.getElementById(prefix+'Mode').value,notes=document.getElementById(prefix+'Notes').value.trim();
+ if(!name||!date){toast('Informe o nome e a data.');return;}
+ let total=0,correct=0,blank=0,breakdown=[],sourceTotal=null;
+ try{
+  if(mode==='discipline'){
+   breakdown=readBreakdown(prefix);total=breakdown.reduce((a,x)=>a+x.total,0);correct=breakdown.reduce((a,x)=>a+x.correct,0);blank=breakdown.reduce((a,x)=>a+x.blank,0);sourceTotal=Number(document.getElementById(prefix+'BreakdownOriginal').value)||null;
+  }else{
+   total=Number(document.getElementById(prefix+'Total').value);correct=Number(document.getElementById(prefix+'Correct').value);blank=Number(document.getElementById(prefix+'Blank').value||0);sourceTotal=Number(document.getElementById(prefix+'OriginalTotal').value)||null;
+   if(!validateCounts(total,correct,blank))throw new Error('Confira a quantidade de questões, acertos e questões em branco.');
+  }
+  if(sourceTotal!==null&&(!Number.isInteger(sourceTotal)||sourceTotal<total))throw new Error('O total original não pode ser menor que o total realizado.');
+ }catch(e){toast(e.message||'Confira os resultados.');return;}
+ if(scope==='complete'&&sourceTotal!==null&&sourceTotal!==total){toast('Uma avaliação completa deve ter o total original igual ao total realizado.');return;}
+ const record={id:recordEditingId||uid(),category,name,scope,mode,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString(),total,correct,blank,errors:total-correct-blank,sourceTotal,breakdown,notes};
+ if(recordEditingId){const idx=data.records.findIndex(x=>x.id===recordEditingId);if(idx>=0){record.createdAt=data.records[idx].createdAt||record.createdAt;data.records[idx]=record;}else data.records.push(record);}else data.records.push(record);
+ cancelRecordEdit(prefix);save();refreshRecordViews();renderReviews();toast(kind==='exam'?'Prova salva.':'Simulado salvo.');
+}
+window.saveAssessmentRecord=saveAssessmentRecord;
+['exam','mock'].forEach(kind=>{document.getElementById(kind+'Date').value=recordToday();});
+refreshRecordViews();
+// Tempo por assunto: contabiliza sessões, tempo em andamento e grava ao pausar/finalizar.
+const oldStart=window.startTimer,oldPause=window.pauseTimer,oldFinish=window.finishTimer,oldReset=window.resetTimer;
+function collectActiveSeconds(){if(activeStarted){activeAccum+=Math.max(0,Math.floor((Date.now()-activeStarted)/1000));activeStarted=0;}}
+function persistActiveSeconds(){
+ if(activeAccum>0&&activeContext){data.sessions.push({id:uid(),discipline:activeContext.discipline,topic:activeContext.topic,seconds:activeAccum,at:new Date().toISOString()});save();activeAccum=0;}
+ refreshTopicTimes();
+}
+window.startTimer=function(){
+ const wasRunning=timerState.status==='running';
+ oldStart();
+ if(!wasRunning&&timerState.status==='running'){
+  if(activeAccum>0)persistActiveSeconds();
+  activeContext={discipline:timerState.subject||'Matemática',topic:timerState.topic||''};
+  activeStarted=Date.now();
+ }
+ refreshTopicTimes();
+};
+window.pauseTimer=function(){if(timerState.status==='running')collectActiveSeconds();oldPause();persistActiveSeconds();};
+window.finishTimer=function(){if(timerState.status==='running')collectActiveSeconds();oldFinish();persistActiveSeconds();activeContext=null;};
+window.resetTimer=function(){if(timerState.status==='running')collectActiveSeconds();persistActiveSeconds();activeContext=null;activeStarted=0;oldReset();};
+// Keep the value in the subject row current while the timer is running.
+if(timerState.status==='running'){
+ activeContext={discipline:timerState.subject||'Matemática',topic:timerState.topic||''};
+ activeStarted=Date.now();
+}
+setInterval(()=>{
+ if(timerState.status!=='running'&&activeStarted){collectActiveSeconds();persistActiveSeconds();activeContext=null;}
+ refreshTopicTimes();
+},1000);
+window.addEventListener('pagehide',()=>{if(timerState.status==='running')collectActiveSeconds();persistActiveSeconds();});
+// Import/export now includes learning history while retaining timer settings.
+window.exportData=function(){let payload={app:'Grafia Study',version:1,exportedAt:new Date().toISOString(),learning:data,timer:timerState,timerPresets:customTimerPresets};let blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='grafia-study-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('Backup exportado.');};
+// Restore a backup exported by this build, preserving a recoverable local snapshot first.
+let importInput=document.querySelector('#settings input[type=file]');if(importInput){importInput.onchange=async()=>{let file=importInput.files?.[0];if(!file)return;try{let payload=JSON.parse(await file.text());if(!payload.learning||!payload.learning.topics||!Array.isArray(payload.learning.records)||!Array.isArray(payload.learning.sessions))throw new Error('Formato inválido');if(!confirm('Importar este backup substituirá os dados atuais de aprendizagem e registros. Um backup atual será baixado antes. Continuar?')){importInput.value='';return;}window.exportData();data={...blank(),...payload.learning};save();if(payload.timer){timerState={...defaultTimerState(),...payload.timer};saveTimerState();}if(Array.isArray(payload.timerPresets)){customTimerPresets=payload.timerPresets;saveCustomTimerPresets();}toast('Backup importado. Recarregue a página para atualizar todos os dados.');setTimeout(()=>location.reload(),900);}catch(e){toast('Não foi possível importar: arquivo inválido.');}finally{importInput.value='';}};}
+// Expand selectors to the complete recovered subject catalog.
+const recordSelect=document.getElementById('rs');if(recordSelect){recordSelect.innerHTML=['Matemática','Biologia','Química','Física','História','Geografia','Filosofia e Sociologia','Linguagens'].map(v=>`<option>${v}</option>`).join('');}
+const topicSelect=document.getElementById('topicSubject');if(topicSelect){topicSelect.innerHTML='<option value="">Selecione uma matéria</option>'+Object.keys(disciplines).map(v=>`<option>${esc(v)}</option>`).join('');}
+renderReviews();
+refreshRecommendationUI();
+}
+// Add a revision category to the nested study navigation and render after base scripts initialize.
+let baseOpen=window.openStudyArea;window.openStudyArea=function(name){if(name==='reviews'){document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-reviews'));document.querySelectorAll('.sub-item').forEach(b=>b.classList.toggle('active',b.dataset.sub==='reviews'));renderReviews();scrollTo({top:0,behavior:'auto'});return;}if(name==='recommendations'){document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-recommendations'));document.querySelectorAll('.sub-item').forEach(b=>b.classList.remove('active'));renderRecommendationList();scrollTo({top:0,behavior:'auto'});return;}baseOpen(name);};
+window.openRecommendationList=function(){page('study');openStudyArea('recommendations');};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initUI);else initUI();
+})();
 </script>
 </body></html>
