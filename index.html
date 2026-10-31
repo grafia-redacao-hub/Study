@@ -1,16 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Grafia Study: organize seus estudos, registre atividades e acompanhe seu tempo de estudo.">
-<meta name="theme-color" content="#091321">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Grafia Study">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<meta name="theme-color" content="#04191d"><title>Grafia Study</title>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Grafia Study: organize seus estudos, registre atividades e acompanhe seu tempo de estudo." name="description"/>
+<meta content="#091321" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="Grafia Study" name="apple-mobile-web-app-title"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<link href="icons/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="icons/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="#04191d" name="theme-color"/><title>Grafia Study</title>
 <style>
 :root{--bg:#091321;--panel:#172a40;--panel2:#102035;--line:#b6d7ed24;--text:#edf3fa;--muted:#9aacc0;--blue:#8ecdf0;--mint:#a9d8cb;--lav:#c8c0ec;--sand:#e7d3a9}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#1b3048,transparent 35%),var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1400px;margin:auto;padding:25px 28px 110px}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:30px}.brand{display:flex;align-items:center;gap:12px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(145deg,#9bd8f4,#647fc0);display:grid;place-items:center;color:#0b1b2b;font-weight:900;font-size:23px}.brandname{font:24px Georgia,serif}.sub{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}.date{color:var(--muted);font-size:12px}.settings{background:#1b3048;border:1px solid var(--line);color:var(--text);padding:11px 15px;border-radius:14px;font-weight:650}.page{display:none;animation:appear .2s}.page.active{display:block}@keyframes appear{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:none}}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--blue);font-weight:800;text-transform:uppercase}h1{font:500 clamp(32px,4vw,48px) Georgia,serif;margin:8px 0}h2{font-size:17px;margin:0 0 8px}h3{font-size:14px;margin:13px 0 5px}.lead,.muted{color:var(--muted);line-height:1.6}.lead{max-width:650px}.grid{display:grid;gap:17px}.homegrid{grid-template-columns:1.5fr .9fr;margin-top:25px}.card{background:linear-gradient(145deg,#1b3048e8,#102035e8);border:1px solid var(--line);border-radius:22px;padding:21px;box-shadow:0 18px 50px #0003;backdrop-filter:blur(16px)}.hero{min-height:235px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #8dc9ed22;border-radius:50%;right:-55px;top:-75px;box-shadow:0 0 0 28px #8dc9ed08,0 0 0 58px #8dc9ed06}.stats{display:flex;gap:30px;flex-wrap:wrap;margin-top:25px}.stat strong{display:block;font:30px Georgia,serif}.stat span,.small{font-size:11px;color:var(--muted)}.track{height:7px;max-width:500px;background:#081522;border-radius:9px;margin-top:17px;overflow:hidden}.track i{display:block;width:62%;height:100%;background:linear-gradient(90deg,#72b4df,#a9d8cb)}.quick{display:grid;gap:11px;margin-top:15px}.quickitem{display:flex;align-items:center;gap:12px;background:#0c1a29aa;border:1px solid var(--line);border-radius:15px;padding:12px}.quickicon{width:37px;height:37px;border-radius:12px;background:#8ecdf022;display:grid;place-items:center;color:var(--blue);font-size:18px}.quickitem b{display:block;font-size:13px}.quickitem small{color:var(--muted)}.primary,.secondary{border-radius:12px;padding:11px 15px;font-weight:700}.primary{border:0;background:linear-gradient(135deg,#9bd8f4,#6eadd8);color:#0b1b2a}.secondary{border:1px solid var(--line);background:#263d56;color:var(--text)}.sectionhead{display:flex;align-items:end;justify-content:space-between;margin:31px 0 15px}.sectionhead h2{font:25px Georgia,serif;margin:5px 0 0}.subjects{grid-template-columns:repeat(4,1fr)}.subject{border:1px solid var(--line);border-radius:17px;padding:15px;background:#172b41b8;min-height:126px}.subjecttop{display:flex;justify-content:space-between}.mark{width:30px;height:30px;border-radius:10px;display:grid;place-items:center}.pill{font-size:10px;color:var(--blue);background:#8ecdf01c;border-radius:20px;padding:6px 9px}.subject p{font-size:11px;color:var(--muted);margin:0}.mini{height:4px;background:#081522;margin-top:13px;border-radius:5px}.mini i{display:block;height:100%;width:var(--w);background:var(--accent);border-radius:5px}.features{grid-template-columns:repeat(3,1fr);margin-top:24px}.feature{min-height:175px;display:flex;flex-direction:column;justify-content:space-between}.symbol{font-size:27px;color:var(--blue)}.feature p{font-size:12px;color:var(--muted);line-height:1.5}.two{grid-template-columns:1fr 1fr;margin-top:24px}.lineitem{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;border:1px solid var(--line);border-radius:14px;background:#102035;margin-top:9px}.lineitem b{font-size:13px}.lineitem small{display:block;color:var(--muted);margin-top:3px}.formrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}input,select{background:#0b1928;border:1px solid var(--line);border-radius:11px;padding:11px;color:var(--text);min-width:0}.recordstats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:16px}.recordstats .card{padding:14px}.recordstats strong{font:25px Georgia,serif}.timerbox{text-align:center;max-width:760px;margin:25px auto}.timer{display:flex;justify-content:center;align-items:center;gap:9px;margin:25px 0}.digit{font:clamp(60px,12vw,110px) Georgia,serif;line-height:1;background:linear-gradient(#2b4056,#17283b);border:1px solid #b7d5ed33;border-radius:16px;padding:12px 20px;min-width:100px;box-shadow:inset 0 1px #fff2,0 12px 24px #0004}.colon{font-size:55px;color:#9cb1c4}.center{justify-content:center}.settingsgrid{grid-template-columns:repeat(2,1fr);margin-top:23px}.setting{padding:17px;border:1px solid var(--line);border-radius:16px;background:#102035}.setting p{font-size:12px;color:var(--muted);line-height:1.5}/* Navegação horizontal glass com estado principal e submenu contextual */
@@ -193,7 +194,8 @@ input::placeholder{color:#7f93aa}
 .nav-divider{background:linear-gradient(transparent,rgba(222,231,255,.42),transparent)}
 .toast{background:linear-gradient(135deg,rgba(35,56,83,.96),rgba(39,39,73,.95));border:1px solid rgba(192,221,255,.22);box-shadow:0 18px 45px rgba(0,3,17,.42),inset 0 1px 0 rgba(255,255,255,.1);backdrop-filter:blur(18px)}
 @media(max-width:850px){.app{padding-left:24px;padding-right:24px}}
-@media(max-width:580px){.app{padding:15px 14px 112px}.top{min-height:66px;padding:10px 11px;margin-bottom:26px;border-radius:19px}.logo{width:41px;height:41px;border-radius:14px}.brandname{font-size:21px}.sub{font-size:8px;letter-spacing:1.8px}.settings{padding:10px 11px;border-radius:13px}.card,.setting{border-radius:20px}.hero{min-height:240px}.sectionhead{margin-top:30px}.subject{border-radius:17px}.nav{bottom:12px}}
+@media(max-width:580px){.app{padding:15px 14px 112px}.top{min-height:66px;padding:10px 11px;margin-bottom:26px;border-radius:19px}.logo{width:41px;height:41px;border-radius:14px}.brandname{font-size:21px}.sub{font-size:8px;letter-spacing:1.8px}.settings{padding:10px 11px;border-radius:13px}
+ .settings-icon-only{width:42px;height:42px;padding:0}.card,.setting{border-radius:20px}.hero{min-height:240px}.sectionhead{margin-top:30px}.subject{border-radius:17px}.nav{bottom:12px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 
@@ -482,6 +484,7 @@ body:after{
   transition:transform .2s ease,background .2s ease,border-color .2s ease
 }
 .settings:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.4);background:linear-gradient(145deg,rgba(240,245,255,.23),rgba(175,159,226,.13))}
+.settings-icon-only{width:46px;height:46px;padding:0;display:inline-grid;place-items:center;font-size:0;line-height:0}.settings-mark{display:block;width:21px;height:21px;flex:none;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transform:translate(0,0)}
 .eyebrow{color:#c0a5ff;text-shadow:0 0 18px rgba(173,130,255,.19);letter-spacing:2.1px}
 h1{color:#f5f4fb;letter-spacing:-1.3px;text-shadow:0 5px 32px rgba(169,173,234,.1)}
 h2{color:#f0f2fb}
@@ -632,6 +635,7 @@ input:focus,select:focus{border-color:rgba(198,173,255,.55);box-shadow:0 0 0 3px
  .logo{width:41px;height:41px;border-radius:14px}
  .brandname{font-size:21px}.sub{font-size:8px;letter-spacing:1.8px}
  .settings{padding:10px 11px;border-radius:13px}
+ .settings-icon-only{width:42px;height:42px;padding:0}
  .card,.setting{border-radius:20px}
  .hero{min-height:240px}
  .sectionhead{margin-top:30px}
@@ -642,8 +646,6 @@ input:focus,select:focus{border-color:rgba(198,173,255,.55);box-shadow:0 0 0 3px
  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
-
-
 <style id="grafia-glass-calibration">
 /* Calibração visual: mais frost, menos dispersão cromática e bordas refrativas. */
 .card,.setting,.subject,.quickitem,.lineitem,.study-entry,.topics-empty,.topics-selected,.timerbox{
@@ -722,8 +724,6 @@ input:focus,select:focus{border-color:rgba(198,173,255,.55);box-shadow:0 0 0 3px
   }
 }
 </style>
-
-
 <style id="grafia-glass-mobile-nav">
 @media(max-width:700px){
   .nav{min-height:68px;padding:6px 7px;overflow:visible}
@@ -751,8 +751,6 @@ input:focus,select:focus{border-color:rgba(198,173,255,.55);box-shadow:0 0 0 3px
   .nav{width:calc(100vw - 14px);max-width:calc(100vw - 14px)}
 }
 </style>
-
-
 <style id="grafia-glass-mobile-nav-order">
 @media(max-width:700px){
   .nav .nav-main button.nav-item{
@@ -770,7 +768,6 @@ input:focus,select:focus{border-color:rgba(198,173,255,.55);box-shadow:0 0 0 3px
   .nav .nav-main button.nav-item .nav-label{font-size:8px!important}
 }
 </style>
-
 <style id="grafia-teal-refraction-final">
 /* ===== Grafia Study · Teal Refraction Glass =====
    Palette based on the supplied teal/cyan glass navigation reference. */
@@ -1028,7 +1025,6 @@ body:before,body:after{display:none!important;filter:none!important}
  .timer-studio.is-fullscreen .flip-colon{font-size:clamp(28px,7vw,46px)!important}
 }
 </style>
-
 <style id="grafia-timer-clean-normal">
 /* Tela normal: apenas modalidade, contexto, contador e controles essenciais. */
 #timer>.eyebrow{display:none!important}
@@ -1047,7 +1043,6 @@ body:before,body:after{display:none!important;filter:none!important}
 }
 @media(prefers-reduced-motion:reduce){.timer-studio,.timer-face,.timer-mode{transition:none!important}}
 </style>
-
 <style id="grafia-timer-reference-scale">
 /* Dígitos em escala de destaque, aproximando a proporção da referência. */
 @media (orientation:landscape) and (min-width:600px){
@@ -1102,8 +1097,6 @@ body:before,body:after{display:none!important;filter:none!important}
   .timer-studio.is-fullscreen .timer-actions{margin-top:4px!important}
 }
 </style>
-
-
 <style id="grafia-timer-hour-transition">
 /* A reorganização só anima no instante em que o formato muda para HH:MM:SS. */
 .timer-studio .flip-display.has-hours{gap:clamp(3px,.8vw,11px)!important}
@@ -1145,8 +1138,6 @@ body:before,body:after{display:none!important;filter:none!important}
  .timer-studio .flip-unit-entering,.timer-studio .flip-separator-entering{opacity:1;transform:none}
 }
 </style>
-
-
 <style id="grafia-learning-system">
 .study-view#study-cycle .study-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
 #study-cycle .lineitem{margin:0;cursor:pointer}#study-cycle .lineitem:hover,.topic-row:hover{border-color:#8ecdf077;background:#172d43}
@@ -1169,329 +1160,391 @@ body:before,body:after{display:none!important;filter:none!important}
 .learning-modal{position:fixed;inset:0;z-index:100;background:#020812c9;display:grid;place-items:center;padding:18px}.learning-modal[hidden]{display:none}.learning-modal .modal-card{width:min(460px,100%);background:#172a40;border:1px solid #b6d7ed38;border-radius:22px;padding:22px;box-shadow:0 25px 80px #0009}.learning-modal label{display:block;margin:14px 0 6px;color:var(--muted);font-size:12px}.learning-modal select{width:100%}.learning-modal .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
 @media(max-width:700px){#study-reviews .grid.subjects{grid-template-columns:repeat(2,minmax(0,1fr))}.check-step{align-items:flex-start}.check-step .step-date{font-size:10px}}
 </style>
+<style id="grafia-cycle-v2">
+/* Ciclo de estudos: cartões glass em azul-petróleo, inspirados na referência enviada. */
+#study-cycle{--cycle-ink:#e7f5f4;--cycle-muted:#9dbdbe;--cycle-line:rgba(173,226,224,.19);--cycle-teal:#6dc8c5}
+.cycle-header{margin-bottom:18px}
+.cycle-subtitle{margin:8px 0 0;color:var(--cycle-muted);font-size:13px;line-height:1.5}
+.cycle-overview-card,.cycle-subject-card,.cycle-complete-screen{position:relative;overflow:hidden;border:1px solid var(--cycle-line);border-radius:25px;background:linear-gradient(145deg,rgba(23,76,80,.64),rgba(5,32,38,.82) 58%,rgba(20,43,58,.72));box-shadow:inset 0 1px 0 rgba(231,255,252,.09),0 18px 40px rgba(0,8,13,.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.cycle-overview-card{padding:22px;margin:20px 0 30px}
+.cycle-overview-card:before,.cycle-subject-card:before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(222,255,251,.35),transparent);pointer-events:none}
+.cycle-overview-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.cycle-kicker{font-size:9px;letter-spacing:.22em;font-weight:850;color:#88c9c8}
+.cycle-overview-top h2{font:28px Georgia,serif;margin:7px 0 4px;color:var(--cycle-ink)}
+.cycle-overview-top p{margin:0;color:var(--cycle-muted);font-size:11px}
+.cycle-hour-total{white-space:nowrap;border:1px solid rgba(189,236,232,.24);background:rgba(174,234,226,.09);border-radius:30px;padding:9px 13px;color:#c6e9e5;font-size:11px;font-weight:750}
+.cycle-summary-stats{display:flex;gap:clamp(18px,5vw,48px);flex-wrap:wrap;margin:24px 0 4px}
+.cycle-summary-stats div{display:flex;flex-direction:column;gap:4px}
+.cycle-summary-stats strong{font:27px Georgia,serif;color:#f0faf8}
+.cycle-summary-stats span{font-size:10px;color:var(--cycle-muted)}
+.cycle-overall-track{height:7px;border-radius:20px;background:rgba(0,12,17,.65);overflow:hidden;margin-top:17px}
+.cycle-overall-track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#45aeb2,#a6e5d8);box-shadow:0 0 14px rgba(89,204,197,.28);transition:width .25s ease}
+.cycle-section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:25px 0 14px}
+.cycle-section-head h2{font:27px Georgia,serif;margin:5px 0 0;color:#e5f0f4}
+.cycle-section-note{font-size:10px;color:var(--cycle-muted);text-align:right}
+.cycle-subject-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.cycle-subject-card{padding:17px;min-width:0;display:flex;flex-direction:column;gap:11px;transition:border-color .2s,transform .2s}
+.cycle-subject-card.is-complete{border-color:rgba(130,224,192,.38);background:linear-gradient(145deg,rgba(25,89,78,.62),rgba(5,37,39,.86) 65%,rgba(19,49,57,.75))}
+.cycle-subject-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cycle-subject-icon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;border:1px solid rgba(191,239,234,.22);background:linear-gradient(145deg,rgba(188,245,239,.19),rgba(63,159,166,.14));color:#d2f2ee;font-size:19px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.cycle-target-pill{border:1px solid rgba(175,228,224,.2);background:rgba(165,226,218,.09);border-radius:30px;padding:7px 10px;color:#c5e7e3;font-size:10px;font-weight:750;white-space:nowrap}
+.cycle-subject-card h3{font-size:16px;margin:2px 0 0;color:#e9f6f5}
+.cycle-subject-meta{font-size:11px;color:var(--cycle-muted);min-height:17px}
+.cycle-subject-progress{height:6px;border-radius:10px;background:rgba(0,13,18,.7);overflow:hidden}
+.cycle-subject-progress i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#4caeb4,#b2e8dc);transition:width .2s}
+.cycle-subject-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:3px}
+.cycle-subject-status{font-size:10px;font-weight:750;color:#a7cbca}
+.cycle-subject-card.is-complete .cycle-subject-status{color:#a8e5c8}
+.cycle-complete-button,.cycle-reopen-button{font-size:10px!important;padding:8px 10px!important;border-radius:11px!important}
+.cycle-complete-button{border:1px solid rgba(156,222,206,.25)!important;background:rgba(110,187,174,.13)!important;color:#dcf5ee!important}
+.cycle-complete-button:hover,.cycle-reopen-button:hover{filter:brightness(1.13)}
+.cycle-complete-screen{margin-top:26px;padding:clamp(24px,5vw,42px);text-align:center}
+.cycle-complete-screen[hidden]{display:none!important}
+.cycle-complete-screen h2{font:clamp(29px,5vw,40px) Georgia,serif;margin:12px auto;max-width:600px;color:#f1fbf8}
+.cycle-complete-screen p{color:var(--cycle-muted);max-width:540px;margin:0 auto;line-height:1.6;font-size:13px}
+.cycle-confetti{font-size:38px;color:#9be0d1;margin-bottom:8px;text-shadow:0 0 22px rgba(121,229,201,.35)}
+.cycle-complete-stats{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin:23px 0}
+.cycle-complete-stats div{display:flex;flex-direction:column;gap:4px}
+.cycle-complete-stats strong{font:25px Georgia,serif;color:#d8f3eb}
+.cycle-complete-stats span{font-size:10px;color:var(--cycle-muted)}
+.cycle-restart-button{min-width:190px;padding:13px 20px!important}
+.cycle-chart-heading{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-top:22px}
+.cycle-chart-heading span{font-size:12px;font-weight:750}
+.cycle-chart-heading small{font-size:10px;color:var(--muted)}
+.cycle-time-chart{display:grid;gap:9px;margin-top:13px}
+.cycle-time-row{display:grid;grid-template-columns:minmax(110px,160px) 1fr 54px;gap:10px;align-items:center;font-size:10px}
+.cycle-time-row span:first-child{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cycle-time-row strong{text-align:right;color:var(--text);font-size:10px;font-weight:650}
+.cycle-time-track{height:7px;border-radius:10px;background:rgba(0,0,0,.28);overflow:hidden}
+.cycle-time-track i{height:100%;display:block;border-radius:inherit;background:linear-gradient(90deg,#4eabb2,#a8ded3)}
+.cycle-chart-empty{color:var(--muted);font-size:11px;padding:18px 0}
+.cycle-history-heading{margin-top:32px}
+.cycle-history-list{display:grid;gap:12px}
+.cycle-history-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(25,53,68,.78),rgba(12,28,42,.82));border-radius:18px;padding:16px}
+.cycle-history-card summary{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none}
+.cycle-history-card summary::-webkit-details-marker{display:none}
+.cycle-history-card summary strong{font-size:13px}
+.cycle-history-date{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.cycle-history-metrics{display:flex;gap:18px;flex-wrap:wrap;margin-top:13px}
+.cycle-history-metrics div{display:flex;flex-direction:column;gap:3px}
+.cycle-history-metrics strong{font:20px Georgia,serif}
+.cycle-history-metrics span{font-size:9px;color:var(--muted)}
+.cycle-history-breakdown{border-top:1px solid var(--line);margin-top:13px;padding-top:10px;display:grid;gap:7px}
+.cycle-history-breakdown .lineitem{margin:0;padding:9px 11px}
+@media(max-width:520px){.cycle-overview-card{padding:18px}.cycle-overview-top h2{font-size:25px}.cycle-summary-stats{gap:17px}.cycle-summary-stats strong{font-size:23px}.cycle-subject-grid{gap:12px}.cycle-subject-card{padding:14px;gap:9px;border-radius:20px}.cycle-subject-card h3{font-size:14px}.cycle-subject-icon{width:36px;height:36px}.cycle-section-head{align-items:start;flex-direction:column}.cycle-section-note{text-align:left}.cycle-time-row{grid-template-columns:98px 1fr 48px;gap:7px}.cycle-history-card summary{align-items:flex-start;flex-direction:column}}
+</style>
 </head><body>
 <div class="app">
-<header class="top"><div class="brand"><div class="logo">G</div><div><div class="brandname">Grafia Study</div></div></div><div style="display:flex;align-items:center;gap:12px"><span class="date" id="date"></span><button class="settings" id="installAppButton" type="button" onclick="installGrafiaApp()">↓ <span>Instalar app</span></button><button class="settings" onclick="page('settings')">⚙ <span>Configurações</span></button></div></header>
+<header class="top"><div class="brand"><div class="logo">G</div><div><div class="brandname">Grafia Study</div></div></div><div style="display:flex;align-items:center;gap:12px"><span class="date" id="date"></span><button class="settings settings-icon-only" onclick="page('settings')" type="button" aria-label="Configurações" title="Configurações"><svg class="settings-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z"/><path d="m19.4 13.5 1.1.9-1.1 1.9-1.4-.5a7.9 7.9 0 0 1-1.4.8l-.2 1.5h-2.2l-.4-1.4a7.7 7.7 0 0 1-1.6 0l-.8 1.2-1.9-1.1.5-1.4a7.9 7.9 0 0 1-.8-1.4l-1.5-.2v-2.2l1.4-.4a7.7 7.7 0 0 1 0-1.6l-1.2-.8 1.1-1.9 1.4.5a7.9 7.9 0 0 1 1.4-.8l.2-1.5h2.2l.4 1.4a7.7 7.7 0 0 1 1.6 0l.8-1.2 1.9 1.1-.5 1.4a7.9 7.9 0 0 1 .8 1.4l1.5.2v2.2l-1.4.4a7.7 7.7 0 0 1 0 1.6Z"/></svg></button></div></header>
 <main>
 <section class="page active" id="home"><h1>Visão geral</h1>
-<div class="grid homegrid"><article class="card hero"><div class="eyebrow">Visão geral</div><h2 style="font:26px Georgia,serif;margin-top:8px">Seu progresso nos estudos</h2><div class="stats"><div class="stat"><strong>12h 40min</strong><span>Tempo estudado</span></div><div class="stat"><strong id="homeActivityCount">0</strong><span>Atividades registradas</span></div><div class="stat"><strong>62%</strong><span>Progresso do ciclo</span></div></div><div class="track"><i></i></div></article>
-<article class="card"><div class="eyebrow">Retomar</div><h2 style="font:25px Georgia,serif;margin-top:8px">Próxima sessão</h2><div class="quick"><div class="quickitem"><div class="quickicon">∑</div><div><b>Matemática</b><small>Funções · 50 minutos</small></div></div><div class="quickitem"><div class="quickicon">◷</div><div><b>Etapa do ciclo</b></div></div></div><button class="primary" style="width:100%;margin-top:16px" onclick="page('timer')">Iniciar sessão ↗</button></article></div>
+<div class="grid homegrid"><article class="card hero"><div class="eyebrow">Visão geral</div><h2 style="font:26px Georgia,serif;margin-top:8px">Seu progresso nos estudos</h2><div class="stats"><div class="stat"><strong id="homeStudyTime">0min</strong><span>Tempo estudado</span></div><div class="stat"><strong id="homeActivityCount">0</strong><span>Atividades registradas</span></div><div class="stat"><strong id="homeCycleProgress">0%</strong><span>Progresso do ciclo</span></div></div><div class="track"><i id="homeCycleProgressBar" style="width:0%"></i></div></article>
+<article class="card"><div class="eyebrow">Retomar</div><h2 style="font:25px Georgia,serif;margin-top:8px">Próxima sessão</h2><div class="quick"><div class="quickitem"><div class="quickicon">◷</div><div><b>Próxima sessão</b><small>Escolha uma matéria no cronômetro para começar.</small></div></div></div><button class="primary" onclick="page('timer')" style="width:100%;margin-top:16px">Iniciar sessão ↗</button></article></div>
 <div class="sectionhead"><div><div class="eyebrow">Organização</div><h2>Matérias do ciclo</h2></div><button class="secondary" onclick="page('study')">Ver ciclo</button></div>
-<div class="grid subjects">
-<div class="subject" style="--accent:#80bce4;--w:72%"><div class="subjecttop"><span class="mark" style="background:#80bce422">∑</span><span class="pill">16h</span></div><h3>Matemática</h3><p>72% do planejado</p><div class="mini"><i style="width:72%"></i></div></div>
-<div class="subject" style="--accent:#b6a9e6;--w:55%"><div class="subjecttop"><span class="mark" style="background:#b6a9e622">⚗</span><span class="pill">8h</span></div><h3>Biologia</h3><p>55% do planejado</p><div class="mini"><i style="width:55%"></i></div></div>
-<div class="subject" style="--accent:#e0c48c;--w:43%"><div class="subjecttop"><span class="mark" style="background:#e0c48c22">⌬</span><span class="pill">7h</span></div><h3>Química</h3><p>43% do planejado</p><div class="mini"><i style="width:43%"></i></div></div>
-<div class="subject" style="--accent:#9bd3c6;--w:68%"><div class="subjecttop"><span class="mark" style="background:#9bd3c622">⌁</span><span class="pill">6h</span></div><h3>História</h3><p>68% do planejado</p><div class="mini"><i style="width:68%"></i></div></div></div><article class="card recommendation-home"><div class="eyebrow">Assunto recomendado</div><div class="recommendation-home-line"><h2 id="recommendedTopicName">Matemática Básica</h2><button class="secondary" type="button" onclick="openRecommendationList()">Ver lista</button></div></article></section>
-
+<div aria-label="Resumo das matérias do ciclo" class="grid subjects" id="homeCycleSubjectGrid"><div class="muted">As matérias aparecerão conforme o ciclo for atualizado.</div></div><article class="card recommendation-home"><div class="eyebrow">Assunto recomendado</div><div class="recommendation-home-line"><h2 id="recommendedTopicName">Matemática Básica</h2><button class="secondary" onclick="openRecommendationList()" type="button">Ver lista</button></div></article></section>
 <section class="page" id="study">
-  <div class="study-view active" id="study-overview">
-    <div class="eyebrow">Matérias</div><h1>Área de estudos</h1>
-    
-    <div class="card study-welcome"><div class="welcome-symbol">▤</div><div><h2>Matérias e planejamento</h2></div></div>
-  </div>
-
-  <div class="study-view" id="study-cycle">
-    <div class="eyebrow">Matérias / Ciclo</div><h1>Ciclo de estudos</h1>
-    <div class="sectionhead"><div><h2>Distribuição do ciclo</h2></div><span class="pill">70 horas semanais</span></div>
-    <div class="card study-list">
-      <div class="lineitem"><div><b>Matemática</b><small>16 horas planejadas</small></div><span class="pill">16h</span></div>
-      <div class="lineitem"><div><b>Biologia</b><small>8 horas planejadas</small></div><span class="pill">8h</span></div>
-      <div class="lineitem"><div><b>Química</b><small>7 horas planejadas</small></div><span class="pill">7h</span></div>
-      <div class="lineitem"><div><b>Física</b><small>6 horas planejadas</small></div><span class="pill">6h</span></div>
-      <div class="lineitem"><div><b>História</b><small>7 horas planejadas</small></div><span class="pill">7h</span></div>
-      <div class="lineitem"><div><b>Geografia</b><small>6 horas planejadas</small></div><span class="pill">6h</span></div>
-      <div class="lineitem"><div><b>Filosofia e Sociologia</b><small>6 horas planejadas</small></div><span class="pill">6h</span></div>
-      <div class="lineitem"><div><b>Linguagens</b><small>6 horas planejadas</small></div><span class="pill">6h</span></div>
-    </div>
-  </div>
-
-  <div class="study-view" id="study-subjects">
-    <div class="eyebrow">Matérias / Organização</div><h1>Matérias e áreas</h1>
-    <div class="grid subjects subject-directory">
-      <div class="subject" style="--accent:#80bce4"><div class="subjecttop"><span class="mark" style="background:#80bce422">∑</span><span class="pill">16h</span></div><h3>Matemática</h3><p>Exatas</p></div>
-      <div class="subject" style="--accent:#b6a9e6"><div class="subjecttop"><span class="mark" style="background:#b6a9e622">⚗</span><span class="pill">8h</span></div><h3>Biologia</h3><p>Ciências da natureza</p></div>
-      <div class="subject" style="--accent:#e0c48c"><div class="subjecttop"><span class="mark" style="background:#e0c48c22">⌬</span><span class="pill">7h</span></div><h3>Química</h3><p>Ciências da natureza</p></div>
-      <div class="subject" style="--accent:#9bd3c6"><div class="subjecttop"><span class="mark" style="background:#9bd3c622">ϟ</span><span class="pill">6h</span></div><h3>Física</h3><p>Ciências da natureza</p></div>
-      <div class="subject" style="--accent:#d9aebc"><div class="subjecttop"><span class="mark" style="background:#d9aebc22">⌛</span><span class="pill">7h</span></div><h3>História</h3><p>Humanidades</p></div>
-      <div class="subject" style="--accent:#a8c6df"><div class="subjecttop"><span class="mark" style="background:#a8c6df22">◎</span><span class="pill">6h</span></div><h3>Geografia</h3><p>Humanidades</p></div>
-      <div class="subject" style="--accent:#c6b9e8"><div class="subjecttop"><span class="mark" style="background:#c6b9e822">◇</span><span class="pill">6h</span></div><h3>Filosofia e Sociologia</h3><p>Humanidades</p></div>
-      <div class="subject" style="--accent:#e4c6a3"><div class="subjecttop"><span class="mark" style="background:#e4c6a322">Aa</span><span class="pill">6h</span></div><h3>Linguagens</h3><p>Linguagens</p></div>
-    </div>
-  </div>
-
-  <div class="study-view" id="study-topics">
-    <div class="eyebrow">Matérias</div><h1>Assuntos</h1>
-    <div class="card topics-card">
-      <label for="topicSubject" class="field-label">Matéria</label>
-      <select id="topicSubject" class="topic-select"><option value="">Selecione uma matéria</option><option>Matemática</option><option>Biologia</option><option>Química</option><option>Física</option><option>História</option><option>Geografia</option><option>Filosofia e Sociologia</option><option>Linguagens</option></select>
-      <div class="topics-empty" id="topicsEmpty"><div class="empty-symbol">⌕</div><strong>Escolha uma matéria</strong></div>
-      <div class="topics-selected" id="topicsSelected" hidden><div class="eyebrow">Matéria selecionada</div><h2 id="topicsSelectedName"></h2><div class="grid" id="topicList"></div></div>
-    </div>
-  </div>
-
-  <div class="study-view" id="study-reviews">
-    <div class="eyebrow">Memorização</div><h1>Revisões</h1>
-    <div class="grid subjects" id="reviewSummary"></div>
-    <div class="sectionhead"><div><div class="eyebrow">Fila de revisão</div><h2>Assuntos programados</h2></div><select id="reviewFilter" aria-label="Filtrar revisões"><option value="all">Todas</option><option value="today">Hoje</option><option value="overdue">Atrasadas</option><option value="upcoming">Próximas</option><option value="done">Consolidadas</option></select></div>
-    <div class="grid" id="reviewList"></div>
-    <div class="sectionhead"><div><div class="eyebrow">Registro permanente</div><h2>Histórico de revisões</h2></div></div><div class="card" id="reviewHistory"></div>
-  </div>
-  <div class="study-view" id="study-recommendations">
-    <div class="eyebrow">Planejamento</div><h1>Ordem de estudos</h1>
-    <div class="recommendation-list-head"><span id="recommendationProgress">0/100</span><button class="secondary" type="button" onclick="exitStudyNav()">Voltar</button></div>
-    <div class="recommendation-list" id="recommendationList"></div>
-  </div>
-
+<div class="study-view active" id="study-overview">
+<div class="eyebrow">Matérias</div><h1>Área de estudos</h1>
+<div class="card study-welcome"><div class="welcome-symbol">▤</div><div><h2>Matérias e planejamento</h2></div></div>
+</div>
+<div class="study-view" id="study-cycle">
+<div class="cycle-header">
+<div>
+<div class="eyebrow">Matérias / Ciclo</div>
+<h1>Ciclo de estudos</h1>
+<p class="cycle-subtitle" id="cycleSubtitle">Organize o tempo de cada matéria e acompanhe sua conclusão.</p>
+</div>
+</div>
+<section class="cycle-overview-card">
+<div class="cycle-overview-top">
+<div>
+<span class="cycle-kicker">CICLO ATUAL</span>
+<h2 id="cycleNumberLabel">Ciclo 1</h2>
+<p id="cycleStartedLabel">Iniciado hoje</p>
+</div>
+<span class="cycle-hour-total" id="cyclePlannedHours">70h planejadas</span>
+</div>
+<div class="cycle-summary-stats">
+<div><strong id="cycleStudiedTime">0min</strong><span>Tempo estudado</span></div>
+<div><strong id="cycleCompletionPercent">0%</strong><span>Matérias concluídas</span></div>
+<div><strong id="cycleCompletedCount">0/9</strong><span>Conclusões</span></div>
+</div>
+<div class="cycle-overall-track"><i id="cycleOverallBar" style="width:0%"></i></div>
+</section>
+<div class="cycle-section-head">
+<div><div class="eyebrow">ORGANIZAÇÃO</div><h2>Matérias do ciclo</h2></div>
+<span class="cycle-section-note" id="cycleSectionNote">O tempo é atualizado pelo cronômetro</span>
+</div>
+<div class="cycle-subject-grid" id="cycleSubjectGrid"></div>
+<section class="cycle-complete-screen" hidden="" id="cycleCompleteView">
+<div aria-hidden="true" class="cycle-confetti">✦</div>
+<div class="eyebrow">ETAPA FINALIZADA</div>
+<h2>Parabéns! Você concluiu seu ciclo.</h2>
+<p id="cycleCompletionSummary">Todas as matérias foram concluídas e os resultados foram salvos no histórico.</p>
+<div class="cycle-complete-stats" id="cycleCompletionStats"></div>
+<button class="primary cycle-restart-button" id="restartCycleBtn" type="button">Reiniciar ciclo ↗</button>
+</section>
+</div>
+<div class="study-view" id="study-subjects">
+<div class="eyebrow">Matérias / Organização</div><h1>Matérias e áreas</h1>
+<div class="grid subjects subject-directory">
+<div class="subject" style="--accent:#80bce4"><div class="subjecttop"><span class="mark" style="background:#80bce422">∑</span><span class="pill">16h</span></div><h3>Matemática</h3><p>Exatas</p></div>
+<div class="subject" style="--accent:#b6a9e6"><div class="subjecttop"><span class="mark" style="background:#b6a9e622">⚗</span><span class="pill">8h</span></div><h3>Biologia</h3><p>Ciências da natureza</p></div>
+<div class="subject" style="--accent:#e0c48c"><div class="subjecttop"><span class="mark" style="background:#e0c48c22">⌬</span><span class="pill">7h</span></div><h3>Química</h3><p>Ciências da natureza</p></div>
+<div class="subject" style="--accent:#9bd3c6"><div class="subjecttop"><span class="mark" style="background:#9bd3c622">ϟ</span><span class="pill">6h</span></div><h3>Física</h3><p>Ciências da natureza</p></div>
+<div class="subject" style="--accent:#d9aebc"><div class="subjecttop"><span class="mark" style="background:#d9aebc22">⌛</span><span class="pill">7h</span></div><h3>História</h3><p>Humanidades</p></div>
+<div class="subject" style="--accent:#a8c6df"><div class="subjecttop"><span class="mark" style="background:#a8c6df22">◎</span><span class="pill">6h</span></div><h3>Geografia</h3><p>Humanidades</p></div>
+<div class="subject" style="--accent:#c6b9e8"><div class="subjecttop"><span class="mark" style="background:#c6b9e822">◇</span><span class="pill">6h</span></div><h3>Filosofia e Sociologia</h3><p>Humanidades</p></div>
+<div class="subject" style="--accent:#e4c6a3"><div class="subjecttop"><span class="mark" style="background:#e4c6a322">Aa</span><span class="pill">6h</span></div><h3>Linguagens</h3><p>Linguagens</p></div>
+</div>
+</div>
+<div class="study-view" id="study-topics">
+<div class="eyebrow">Matérias</div><h1>Assuntos</h1>
+<div class="card topics-card">
+<label class="field-label" for="topicSubject">Matéria</label>
+<select class="topic-select" id="topicSubject"><option value="">Selecione uma matéria</option><option>Matemática</option><option>Biologia</option><option>Química</option><option>Física</option><option>História</option><option>Geografia</option><option>Filosofia e Sociologia</option><option>Linguagens</option></select>
+<div class="topics-empty" id="topicsEmpty"><div class="empty-symbol">⌕</div><strong>Escolha uma matéria</strong></div>
+<div class="topics-selected" hidden="" id="topicsSelected"><div class="eyebrow">Matéria selecionada</div><h2 id="topicsSelectedName"></h2><div class="grid" id="topicList"></div></div>
+</div>
+</div>
+<div class="study-view" id="study-reviews">
+<div class="eyebrow">Memorização</div><h1>Revisões</h1>
+<div class="grid subjects" id="reviewSummary"></div>
+<div class="sectionhead"><div><div class="eyebrow">Fila de revisão</div><h2>Assuntos programados</h2></div><select aria-label="Filtrar revisões" id="reviewFilter"><option value="all">Todas</option><option value="today">Hoje</option><option value="overdue">Atrasadas</option><option value="upcoming">Próximas</option><option value="done">Consolidadas</option></select></div>
+<div class="grid" id="reviewList"></div>
+<div class="sectionhead"><div><div class="eyebrow">Registro permanente</div><h2>Histórico de revisões</h2></div></div><div class="card" id="reviewHistory"></div>
+</div>
+<div class="study-view" id="study-recommendations">
+<div class="eyebrow">Planejamento</div><h1>Ordem de estudos</h1>
+<div class="recommendation-list-head"><span id="recommendationProgress">0/100</span><button class="secondary" onclick="exitStudyNav()" type="button">Voltar</button></div>
+<div class="recommendation-list" id="recommendationList"></div>
+</div>
 </section>
 <section class="page" id="records">
-  <div class="record-view active" id="record-questions">
-    <div class="eyebrow">Registros / Questões</div><h1>Questões</h1>
-    <div class="record-summary" id="questionSummary"></div>
-    <div class="grid two record-layout">
-      <article class="card record-form-card">
-        <h2>Nova atividade</h2>
-        <div class="record-fields">
-          <label>Matéria<select id="questionDiscipline"></select></label>
-          <label>Assunto (opcional)<select id="questionTopic"><option value="">Selecione um assunto</option></select></label>
-          <label class="wide">Nome da atividade<input id="questionName" maxlength="100" placeholder="Ex.: Lista de exercícios 01"></label>
-          <label>Data<input id="questionDate" type="date"></label>
-          <label>Total de questões<input id="questionTotal" type="number" min="1" step="1" placeholder="Ex.: 20"></label>
-          <label>Acertos<input id="questionCorrect" type="number" min="0" step="1" placeholder="Ex.: 16"></label>
-          <label>Em branco<input id="questionBlank" type="number" min="0" step="1" value="0"></label>
-        </div>
-        <div class="record-calculated" id="questionErrorsPreview">Erros: —</div>
-        <div class="record-actions"><button class="primary" id="saveQuestionBtn" type="button" onclick="saveQuestionRecord()">Salvar atividade</button><button class="secondary" id="cancelQuestionEdit" type="button" onclick="cancelRecordEdit('questions')" hidden>Cancelar edição</button></div>
-      </article>
-      <article class="card"><h2>Histórico de questões</h2><div class="record-list" id="questionRecordList"></div></article>
-    </div>
-  </div>
-
-  <div class="record-view" id="record-exams">
-    <div class="eyebrow">Registros / Provas</div><h1>Provas</h1>
-    <div class="record-summary" id="examSummary"></div>
-    <div class="grid two record-layout">
-      <article class="card record-form-card">
-        <h2>Registrar prova</h2>
-        <div class="record-fields">
-          <label class="wide">Nome ou identificação<input id="examName" maxlength="120" placeholder="Ex.: ENEM 2025"></label>
-          <label>Data<input id="examDate" type="date"></label>
-          <label>Realização<select id="examScope"><option value="complete">Completa</option><option value="partial">Parcial</option></select></label>
-          <label class="wide">Forma de registro<select id="examMode" onchange="setAssessmentMode('exam')"><option value="total">Resultado geral</option><option value="discipline">Por matéria</option></select></label>
-        </div>
-        <div class="assessment-total-fields" id="examTotalFields">
-          <div class="record-fields">
-            <label>Total realizado<input id="examTotal" type="number" min="1" step="1" placeholder="Questões realizadas"></label>
-            <label>Acertos<input id="examCorrect" type="number" min="0" step="1" placeholder="Acertos"></label>
-            <label>Em branco<input id="examBlank" type="number" min="0" step="1" value="0"></label>
-            <label>Total original <span class="muted">(opcional)</span><input id="examOriginalTotal" type="number" min="1" step="1" placeholder="Se for parcial"></label>
-          </div>
-          <div class="record-calculated" id="examErrorsPreview">Erros: —</div>
-        </div>
-        <div id="examBreakdownFields" hidden>
-          <div class="assessment-rows" id="examBreakdownRows"></div>
-          <button class="secondary" type="button" onclick="addAssessmentRow('exam')">+ Adicionar matéria</button>
-          <div class="record-calculated" id="examBreakdownPreview">O total geral será calculado pelas matérias informadas.</div>
-          <label class="assessment-original">Total original <span class="muted">(opcional, para provas parciais)</span><input id="examBreakdownOriginal" type="number" min="1" step="1" placeholder="Total de questões da prova"></label>
-        </div>
-        <label class="wide record-note">Observações <span class="muted">(opcional)</span><textarea id="examNotes" rows="2" placeholder="Anotações sobre a realização"></textarea></label>
-        <div class="record-actions"><button class="primary" id="saveExamBtn" type="button" onclick="saveAssessmentRecord('exam')">Salvar prova</button><button class="secondary" id="cancelExamEdit" type="button" onclick="cancelRecordEdit('exam')" hidden>Cancelar edição</button></div>
-      </article>
-      <article class="card"><h2>Histórico de provas</h2><div class="record-list" id="examRecordList"></div></article>
-    </div>
-  </div>
-
-  <div class="record-view" id="record-mocks">
-    <div class="eyebrow">Registros / Simulados</div><h1>Simulados</h1>
-    <div class="record-summary" id="mockSummary"></div>
-    <div class="grid two record-layout">
-      <article class="card record-form-card">
-        <h2>Registrar simulado</h2>
-        <div class="record-fields">
-          <label class="wide">Nome ou identificação<input id="mockName" maxlength="120" placeholder="Ex.: Simulado ENEM — edição 01"></label>
-          <label>Data<input id="mockDate" type="date"></label>
-          <label>Realização<select id="mockScope"><option value="complete">Completo</option><option value="partial">Parcial</option></select></label>
-          <label class="wide">Forma de registro<select id="mockMode" onchange="setAssessmentMode('mock')"><option value="total">Resultado geral</option><option value="discipline">Por matéria</option></select></label>
-        </div>
-        <div class="assessment-total-fields" id="mockTotalFields">
-          <div class="record-fields">
-            <label>Total realizado<input id="mockTotal" type="number" min="1" step="1" placeholder="Questões realizadas"></label>
-            <label>Acertos<input id="mockCorrect" type="number" min="0" step="1" placeholder="Acertos"></label>
-            <label>Em branco<input id="mockBlank" type="number" min="0" step="1" value="0"></label>
-            <label>Total original <span class="muted">(opcional)</span><input id="mockOriginalTotal" type="number" min="1" step="1" placeholder="Se for parcial"></label>
-          </div>
-          <div class="record-calculated" id="mockErrorsPreview">Erros: —</div>
-        </div>
-        <div id="mockBreakdownFields" hidden>
-          <div class="assessment-rows" id="mockBreakdownRows"></div>
-          <button class="secondary" type="button" onclick="addAssessmentRow('mock')">+ Adicionar matéria</button>
-          <div class="record-calculated" id="mockBreakdownPreview">O total geral será calculado pelas matérias informadas.</div>
-          <label class="assessment-original">Total original <span class="muted">(opcional, para simulados parciais)</span><input id="mockBreakdownOriginal" type="number" min="1" step="1" placeholder="Total de questões do simulado"></label>
-        </div>
-        <label class="wide record-note">Observações <span class="muted">(opcional)</span><textarea id="mockNotes" rows="2" placeholder="Anotações sobre a realização"></textarea></label>
-        <div class="record-actions"><button class="primary" id="saveMockBtn" type="button" onclick="saveAssessmentRecord('mock')">Salvar simulado</button><button class="secondary" id="cancelMockEdit" type="button" onclick="cancelRecordEdit('mock')" hidden>Cancelar edição</button></div>
-      </article>
-      <article class="card"><h2>Histórico de simulados</h2><div class="record-list" id="mockRecordList"></div></article>
-    </div>
-  </div>
+<div class="record-view active" id="record-questions">
+<div class="eyebrow">Registros / Questões</div><h1>Questões</h1>
+<div class="record-summary" id="questionSummary"></div>
+<div class="grid two record-layout">
+<article class="card record-form-card">
+<h2>Nova atividade</h2>
+<div class="record-fields">
+<label>Matéria<select id="questionDiscipline"></select></label>
+<label>Assunto (opcional)<select id="questionTopic"><option value="">Selecione um assunto</option></select></label>
+<label class="wide">Nome da atividade<input id="questionName" maxlength="100" placeholder="Ex.: Lista de exercícios 01"/></label>
+<label>Data<input id="questionDate" type="date"/></label>
+<label>Total de questões<input id="questionTotal" min="1" placeholder="Ex.: 20" step="1" type="number"/></label>
+<label>Acertos<input id="questionCorrect" min="0" placeholder="Ex.: 16" step="1" type="number"/></label>
+<label>Em branco<input id="questionBlank" min="0" step="1" type="number" value="0"/></label>
+</div>
+<div class="record-calculated" id="questionErrorsPreview">Erros: —</div>
+<div class="record-actions"><button class="primary" id="saveQuestionBtn" onclick="saveQuestionRecord()" type="button">Salvar atividade</button><button class="secondary" hidden="" id="cancelQuestionEdit" onclick="cancelRecordEdit('questions')" type="button">Cancelar edição</button></div>
+</article>
+<article class="card"><h2>Histórico de questões</h2><div class="record-list" id="questionRecordList"></div></article>
+</div>
+</div>
+<div class="record-view" id="record-exams">
+<div class="eyebrow">Registros / Provas</div><h1>Provas</h1>
+<div class="record-summary" id="examSummary"></div>
+<div class="grid two record-layout">
+<article class="card record-form-card">
+<h2>Registrar prova</h2>
+<div class="record-fields">
+<label class="wide">Nome ou identificação<input id="examName" maxlength="120" placeholder="Ex.: ENEM 2025"/></label>
+<label>Data<input id="examDate" type="date"/></label>
+<label>Realização<select id="examScope"><option value="complete">Completa</option><option value="partial">Parcial</option></select></label>
+<label class="wide">Forma de registro<select id="examMode" onchange="setAssessmentMode('exam')"><option value="total">Resultado geral</option><option value="discipline">Por matéria</option></select></label>
+</div>
+<div class="assessment-total-fields" id="examTotalFields">
+<div class="record-fields">
+<label>Total realizado<input id="examTotal" min="1" placeholder="Questões realizadas" step="1" type="number"/></label>
+<label>Acertos<input id="examCorrect" min="0" placeholder="Acertos" step="1" type="number"/></label>
+<label>Em branco<input id="examBlank" min="0" step="1" type="number" value="0"/></label>
+<label>Total original <span class="muted">(opcional)</span><input id="examOriginalTotal" min="1" placeholder="Se for parcial" step="1" type="number"/></label>
+</div>
+<div class="record-calculated" id="examErrorsPreview">Erros: —</div>
+</div>
+<div hidden="" id="examBreakdownFields">
+<div class="assessment-rows" id="examBreakdownRows"></div>
+<button class="secondary" onclick="addAssessmentRow('exam')" type="button">+ Adicionar matéria</button>
+<div class="record-calculated" id="examBreakdownPreview">O total geral será calculado pelas matérias informadas.</div>
+<label class="assessment-original">Total original <span class="muted">(opcional, para provas parciais)</span><input id="examBreakdownOriginal" min="1" placeholder="Total de questões da prova" step="1" type="number"/></label>
+</div>
+<label class="wide record-note">Observações <span class="muted">(opcional)</span><textarea id="examNotes" placeholder="Anotações sobre a realização" rows="2"></textarea></label>
+<div class="record-actions"><button class="primary" id="saveExamBtn" onclick="saveAssessmentRecord('exam')" type="button">Salvar prova</button><button class="secondary" hidden="" id="cancelExamEdit" onclick="cancelRecordEdit('exam')" type="button">Cancelar edição</button></div>
+</article>
+<article class="card"><h2>Histórico de provas</h2><div class="record-list" id="examRecordList"></div></article>
+</div>
+</div>
+<div class="record-view" id="record-mocks">
+<div class="eyebrow">Registros / Simulados</div><h1>Simulados</h1>
+<div class="record-summary" id="mockSummary"></div>
+<div class="grid two record-layout">
+<article class="card record-form-card">
+<h2>Registrar simulado</h2>
+<div class="record-fields">
+<label class="wide">Nome ou identificação<input id="mockName" maxlength="120" placeholder="Ex.: Simulado ENEM — edição 01"/></label>
+<label>Data<input id="mockDate" type="date"/></label>
+<label>Realização<select id="mockScope"><option value="complete">Completo</option><option value="partial">Parcial</option></select></label>
+<label class="wide">Forma de registro<select id="mockMode" onchange="setAssessmentMode('mock')"><option value="total">Resultado geral</option><option value="discipline">Por matéria</option></select></label>
+</div>
+<div class="assessment-total-fields" id="mockTotalFields">
+<div class="record-fields">
+<label>Total realizado<input id="mockTotal" min="1" placeholder="Questões realizadas" step="1" type="number"/></label>
+<label>Acertos<input id="mockCorrect" min="0" placeholder="Acertos" step="1" type="number"/></label>
+<label>Em branco<input id="mockBlank" min="0" step="1" type="number" value="0"/></label>
+<label>Total original <span class="muted">(opcional)</span><input id="mockOriginalTotal" min="1" placeholder="Se for parcial" step="1" type="number"/></label>
+</div>
+<div class="record-calculated" id="mockErrorsPreview">Erros: —</div>
+</div>
+<div hidden="" id="mockBreakdownFields">
+<div class="assessment-rows" id="mockBreakdownRows"></div>
+<button class="secondary" onclick="addAssessmentRow('mock')" type="button">+ Adicionar matéria</button>
+<div class="record-calculated" id="mockBreakdownPreview">O total geral será calculado pelas matérias informadas.</div>
+<label class="assessment-original">Total original <span class="muted">(opcional, para simulados parciais)</span><input id="mockBreakdownOriginal" min="1" placeholder="Total de questões do simulado" step="1" type="number"/></label>
+</div>
+<label class="wide record-note">Observações <span class="muted">(opcional)</span><textarea id="mockNotes" placeholder="Anotações sobre a realização" rows="2"></textarea></label>
+<div class="record-actions"><button class="primary" id="saveMockBtn" onclick="saveAssessmentRecord('mock')" type="button">Salvar simulado</button><button class="secondary" hidden="" id="cancelMockEdit" onclick="cancelRecordEdit('mock')" type="button">Cancelar edição</button></div>
+</article>
+<article class="card"><h2>Histórico de simulados</h2><div class="record-list" id="mockRecordList"></div></article>
+</div>
+</div>
 </section>
-
-<section class="page" id="performance"><div class="eyebrow">Análise</div><h1>Desempenho</h1><div class="grid two"><article class="card"><h2>Tempo de estudo</h2><div class="stats"><div class="stat"><strong>12h40</strong><span>Esta semana</span></div><div class="stat"><strong>2h06</strong><span>Média diária</span></div></div><div style="display:flex;align-items:end;gap:10px;height:145px;padding:20px 5px 0"><i style="height:45%" class="bar"></i><i style="height:76%" class="bar"></i><i style="height:58%" class="bar"></i><i style="height:92%" class="bar"></i><i style="height:65%" class="bar"></i><i style="height:35%" class="bar"></i><i style="height:15%" class="bar"></i></div><style>.bar{flex:1;background:linear-gradient(#8ec9e9,#527ca6);border-radius:8px 8px 2px 2px}
-/* Final match to the reference: a softly frosted active pill and unified teal accents. */
-.nav-item.active{
-  background:linear-gradient(135deg,rgba(218,238,237,.18),rgba(165,198,197,.12))!important;
-  border:1px solid rgba(218,245,243,.09);
-  box-shadow:inset 0 1px 0 rgba(241,255,254,.12),inset 0 -1px 0 rgba(130,191,191,.05);
-}
-.nav-item.active .nav-icon{
-  background:transparent!important;color:#f5ffff!important;
-  box-shadow:none!important;transform:none!important;
-}
-.nav-sub-items .nav-item.active{background:linear-gradient(135deg,rgba(218,238,237,.17),rgba(165,198,197,.1))!important}
-.subject .mini i{background:linear-gradient(90deg,#4aaab3,#83d4d0 58%,#b9e8df)!important;box-shadow:0 0 13px rgba(82,190,193,.3)!important}
-.subject .mark{background:linear-gradient(145deg,rgba(178,239,239,.2),rgba(56,159,170,.15))!important}
-
-
-/* Indicadores discretos do dispositivo: somente na tela cheia */
-.timer-device-status{display:none}
-.timer-studio.is-fullscreen .timer-device-status{
-  display:flex!important;position:fixed;z-index:20;top:max(12px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));
-  align-items:center;gap:12px;padding:6px 9px;border:1px solid rgba(190,215,235,.13);border-radius:10px;
-  background:rgba(12,23,36,.48);color:rgba(235,243,250,.78);font:500 11px/1.2 system-ui,sans-serif;
-  letter-spacing:.04em;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)
-}
-.timer-battery{display:flex;align-items:center;gap:5px}
-.timer-battery-icon{position:relative;display:inline-flex;width:19px;height:10px;border:1px solid currentColor;border-radius:2px;padding:1px;opacity:.85}
-.timer-battery-icon:after{content:"";position:absolute;right:-3px;top:2px;width:2px;height:4px;border-radius:0 1px 1px 0;background:currentColor}
-.timer-battery-icon i{display:block;width:0;height:100%;border-radius:1px;background:currentColor}
-@media(max-width:700px){.timer-studio.is-fullscreen .timer-device-status{top:max(8px,env(safe-area-inset-top));right:max(9px,env(safe-area-inset-right));font-size:10px;gap:8px;padding:5px 7px}}
-</style></article><article class="card"><h2>Resultados de atividades</h2><div class="stats"><div class="stat"><strong id="performanceAccuracy">—</strong><span>Aproveitamento</span></div><div class="stat"><strong id="performanceQuestionCount">0</strong><span>Questões respondidas</span></div></div><div class="lineitem"><div><b>Provas e simulados</b><small>Resultados integrados ao aproveitamento geral</small></div><button class="secondary" onclick="page('records')">Abrir registros</button></div></article></div><div class="sectionhead"><div><div class="eyebrow">Resultados integrados</div><h2>Desempenho por matéria</h2></div></div><div class="record-summary" id="disciplinePerformanceGrid"></div></section>
-
+<section class="page" id="performance"><div class="eyebrow">Análise</div><h1>Desempenho</h1><div class="grid two"><article class="card">
+<h2>Tempo de estudo</h2>
+<div class="stats">
+<div class="stat"><strong id="performanceCycleTime">0min</strong><span>Neste ciclo</span></div>
+<div class="stat"><strong id="performanceDailyAverage">0min</strong><span>Média diária</span></div>
+</div>
+<div class="cycle-chart-heading"><span>Tempo por matéria</span><small>Somente o ciclo atual</small></div>
+<div class="cycle-time-chart" id="cycleSubjectTimeChart"><div class="cycle-chart-empty">Os tempos aparecerão conforme você estudar.</div></div>
+</article><article class="card"><h2>Resultados de atividades</h2><div class="stats"><div class="stat"><strong id="performanceAccuracy">—</strong><span>Aproveitamento</span></div><div class="stat"><strong id="performanceQuestionCount">0</strong><span>Questões respondidas</span></div></div><div class="lineitem"><div><b>Provas e simulados</b><small>Resultados integrados ao aproveitamento geral</small></div><button class="secondary" onclick="page('records')">Abrir registros</button></div></article></div><div class="sectionhead"><div><div class="eyebrow">Resultados integrados</div><h2>Desempenho por matéria</h2></div></div><div class="record-summary" id="disciplinePerformanceGrid"></div>
+<div class="sectionhead cycle-history-heading">
+<div><div class="eyebrow">SEU PERCURSO</div><h2>Histórico de ciclos</h2></div>
+</div>
+<section class="cycle-history-list" id="cycleHistoryList"><div class="card muted">Os ciclos concluídos ficarão salvos aqui.</div></section>
+</section>
 <section class="page" id="timer">
-  <h1>Cronômetro</h1>
-  <div class="card timerbox timer-studio">
-    <button class="timer-fullscreen-exit" id="timerFullscreenExit" type="button" onclick="toggleTimerFullscreen(false)" aria-label="Sair da tela cheia" title="Sair da tela cheia">×</button>
-    <div class="timer-toolbar">
-      <div class="timer-mode-tabs" role="tablist" aria-label="Modalidades do cronômetro">
-        <button class="timer-mode active" type="button" data-mode="stopwatch" role="tab" aria-selected="true" onclick="setTimerMode('stopwatch')">Cronômetro</button>
-        <button class="timer-mode" type="button" data-mode="countdown" role="tab" aria-selected="false" onclick="setTimerMode('countdown')">Regressivo</button>
-        <button class="timer-mode" type="button" data-mode="pomodoro" role="tab" aria-selected="false" onclick="setTimerMode('pomodoro')">Pomodoro</button>
-        <button class="timer-mode" type="button" data-mode="custom" role="tab" aria-selected="false" onclick="setTimerMode('custom')">Personalizado</button>
-      </div>
-      <div class="timer-study-pickers">
-        <label class="timer-subject-wrap">Matéria
+<h1>Cronômetro</h1>
+<div class="card timerbox timer-studio">
+<button aria-label="Sair da tela cheia" class="timer-fullscreen-exit" id="timerFullscreenExit" onclick="toggleTimerFullscreen(false)" title="Sair da tela cheia" type="button">×</button>
+<div class="timer-toolbar">
+<div aria-label="Modalidades do cronômetro" class="timer-mode-tabs" role="tablist">
+<button aria-selected="true" class="timer-mode active" data-mode="stopwatch" onclick="setTimerMode('stopwatch')" role="tab" type="button">Cronômetro</button>
+<button aria-selected="false" class="timer-mode" data-mode="countdown" onclick="setTimerMode('countdown')" role="tab" type="button">Regressivo</button>
+<button aria-selected="false" class="timer-mode" data-mode="pomodoro" onclick="setTimerMode('pomodoro')" role="tab" type="button">Pomodoro</button>
+<button aria-selected="false" class="timer-mode" data-mode="custom" onclick="setTimerMode('custom')" role="tab" type="button">Personalizado</button>
+</div>
+<div class="timer-study-pickers">
+<label class="timer-subject-wrap">Matéria
           <select id="timerSubject">
-            <option>Matemática</option><option>Biologia</option><option>Química</option><option>Física</option>
-            <option>História</option><option>Geografia</option><option>Filosofia e Sociologia</option><option>Linguagens</option>
-          </select>
-        </label>
-        <label class="timer-subject-wrap">Assunto
+<option>Matemática</option><option>Biologia</option><option>Química</option><option>Física</option>
+<option>História</option><option>Geografia</option><option>Filosofia e Sociologia</option><option>Linguagens</option>
+<option value="Redação">Redação</option></select>
+</label>
+<label class="timer-subject-wrap">Assunto
           <select id="timerTopic"><option value="">Selecione um assunto</option></select>
-        </label>
-        <label class="timer-subject-wrap timer-topic-custom-wrap" id="timerTopicCustomWrap" hidden>Outro assunto
-          <input id="timerTopicCustom" type="text" maxlength="70" placeholder="Digite o assunto">
-        </label>
-        <button class="timer-fullscreen-toggle" id="timerFullscreenBtn" type="button" onclick="toggleTimerFullscreen()" aria-pressed="false">⛶ Tela cheia</button>
-      </div>
-    </div>
-
-    <div class="timer-face">
-      <div class="timer-face-top">
-        <div class="timer-face-caption" aria-hidden="true"></div>
-        <div class="timer-phase" id="timerPhase" hidden></div>
-        <div class="timer-fullscreen-meta" aria-live="off">
-          <span class="timer-fullscreen-brand">Grafia Study / Sessão</span>
-          <span class="timer-fullscreen-date" id="timerFullscreenDate"></span>
-        </div>
-        <time class="timer-fullscreen-clock" id="timerFullscreenClock"></time>
-        <div class="timer-device-status" id="timerDeviceStatus" aria-label="Hora atual e bateria">
-          <time id="timerDeviceClock">--:--</time>
-          <span class="timer-battery"><span class="timer-battery-icon" aria-hidden="true"><i id="timerBatteryLevel"></i></span><span id="timerBatteryText">—%</span></span>
-        </div>
-      </div>
-      <div class="flip-display" id="flipDisplay" aria-live="off"></div>
-      <div class="timer-state" id="timerStatus">PRONTO</div>
-      <div class="timer-session-note" id="timerSessionNote"></div>
-      <div class="timer-actions">
-        <button class="primary" id="timerStart" type="button" onclick="toggleTimer()">▶ Iniciar</button>
-        <button class="secondary" id="timerNext" type="button" onclick="advanceTimerPhase()" hidden>Próxima etapa</button>
-        <button class="secondary" id="timerReset" type="button" onclick="resetTimer()">↺ Reiniciar</button>
-        <button class="timer-finish" id="timerFinish" type="button" onclick="finishTimer()" hidden>Finalizar</button>
-      </div>
-    </div>
-
-    <div class="timer-config" id="timerConfig">
-      <section class="timer-config-panel" data-config="countdown" hidden>
-        <div class="timer-config-heading"><strong>Temporizador regressivo</strong></div>
-        <div class="timer-fields compact">
-          <label>Minutos<input id="countMinutes" type="number" min="0" max="599" value="25"></label>
-          <label>Segundos<input id="countSeconds" type="number" min="0" max="59" value="0"></label>
-        </div>
-      </section>
-
-      <section class="timer-config-panel" data-config="pomodoro" hidden>
-        <div class="timer-config-heading"><strong>Pomodoro</strong></div>
-        <div class="timer-presets">
-          <button type="button" class="timer-preset active" data-preset="25" onclick="applyPomodoroPreset(25)">25 / 5</button>
-          <button type="button" class="timer-preset" data-preset="50" onclick="applyPomodoroPreset(50)">50 / 10</button>
-          <button type="button" class="timer-preset" data-preset="custom" onclick="applyPomodoroPreset('custom')">Personalizar</button>
-        </div>
-        <div class="timer-fields">
-          <label>Foco (min)<input id="pomFocus" type="number" min="1" max="240" value="25"></label>
-          <label>Pausa curta (min)<input id="pomBreak" type="number" min="1" max="60" value="5"></label>
-          <label>Pausa longa (min)<input id="pomLong" type="number" min="1" max="120" value="20"></label>
-          <label>Ciclos de foco<input id="pomRounds" type="number" min="1" max="20" value="4"></label>
-          <label>Pausa longa a cada<input id="pomLongEvery" type="number" min="2" max="20" value="4"></label>
-        </div>
-        <label class="timer-check"><input id="pomAuto" type="checkbox" checked> Alternar etapas automaticamente</label>
-      </section>
-
-      <section class="timer-config-panel" data-config="custom" hidden>
-        <div class="timer-config-heading"><strong>Sequência personalizada</strong></div>
-        <div class="timer-fields">
-          <label class="wide">Nome da sequência<input id="customName" type="text" maxlength="42" placeholder="Ex.: Estudo aprofundado"></label>
-          <label>Estudo (min)<input id="customFocus" type="number" min="1" max="240" value="45"></label>
-          <label>Descanso (min)<input id="customBreak" type="number" min="0" max="120" value="10"></label>
-          <label>Repetições<input id="customRounds" type="number" min="1" max="20" value="3"></label>
-          <label class="wide">Configurações salvas<select id="customSaved"><option value="">Escolha uma configuração</option></select></label>
-        </div>
-        <div class="timer-config-actions">
-          <button type="button" class="secondary" onclick="saveCustomTimer()">Salvar configuração</button>
-          <button type="button" class="secondary" onclick="loadCustomTimer()">Carregar</button>
-          <button type="button" class="timer-danger" onclick="deleteCustomTimer()">Excluir</button>
-        </div>
-      </section>
-    </div>
-  </div>
+</label>
+<label class="timer-subject-wrap timer-topic-custom-wrap" hidden="" id="timerTopicCustomWrap">Outro assunto
+          <input id="timerTopicCustom" maxlength="70" placeholder="Digite o assunto" type="text"/>
+</label>
+<button aria-pressed="false" class="timer-fullscreen-toggle" id="timerFullscreenBtn" onclick="toggleTimerFullscreen()" type="button">⛶ Tela cheia</button>
+</div>
+</div>
+<div class="timer-face">
+<div class="timer-face-top">
+<div aria-hidden="true" class="timer-face-caption"></div>
+<div class="timer-phase" hidden="" id="timerPhase"></div>
+<div aria-live="off" class="timer-fullscreen-meta">
+<span class="timer-fullscreen-brand">Grafia Study / Sessão</span>
+<span class="timer-fullscreen-date" id="timerFullscreenDate"></span>
+</div>
+<time class="timer-fullscreen-clock" id="timerFullscreenClock"></time>
+<div aria-label="Hora atual e bateria" class="timer-device-status" id="timerDeviceStatus">
+<time id="timerDeviceClock">--:--</time>
+<span class="timer-battery"><span aria-hidden="true" class="timer-battery-icon"><i id="timerBatteryLevel"></i></span><span id="timerBatteryText">—%</span></span>
+</div>
+</div>
+<div aria-live="off" class="flip-display" id="flipDisplay"></div>
+<div class="timer-state" id="timerStatus">PRONTO</div>
+<div class="timer-session-note" id="timerSessionNote"></div>
+<div class="timer-actions">
+<button class="primary" id="timerStart" onclick="toggleTimer()" type="button">▶ Iniciar</button>
+<button class="secondary" hidden="" id="timerNext" onclick="advanceTimerPhase()" type="button">Próxima etapa</button>
+<button class="secondary" id="timerReset" onclick="resetTimer()" type="button">↺ Reiniciar</button>
+<button class="timer-finish" hidden="" id="timerFinish" onclick="finishTimer()" type="button">Finalizar</button>
+</div>
+</div>
+<div class="timer-config" id="timerConfig">
+<section class="timer-config-panel" data-config="countdown" hidden="">
+<div class="timer-config-heading"><strong>Temporizador regressivo</strong></div>
+<div class="timer-fields compact">
+<label>Minutos<input id="countMinutes" max="599" min="0" type="number" value="25"/></label>
+<label>Segundos<input id="countSeconds" max="59" min="0" type="number" value="0"/></label>
+</div>
+</section>
+<section class="timer-config-panel" data-config="pomodoro" hidden="">
+<div class="timer-config-heading"><strong>Pomodoro</strong></div>
+<div class="timer-presets">
+<button class="timer-preset active" data-preset="25" onclick="applyPomodoroPreset(25)" type="button">25 / 5</button>
+<button class="timer-preset" data-preset="50" onclick="applyPomodoroPreset(50)" type="button">50 / 10</button>
+<button class="timer-preset" data-preset="custom" onclick="applyPomodoroPreset('custom')" type="button">Personalizar</button>
+</div>
+<div class="timer-fields">
+<label>Foco (min)<input id="pomFocus" max="240" min="1" type="number" value="25"/></label>
+<label>Pausa curta (min)<input id="pomBreak" max="60" min="1" type="number" value="5"/></label>
+<label>Pausa longa (min)<input id="pomLong" max="120" min="1" type="number" value="20"/></label>
+<label>Ciclos de foco<input id="pomRounds" max="20" min="1" type="number" value="4"/></label>
+<label>Pausa longa a cada<input id="pomLongEvery" max="20" min="2" type="number" value="4"/></label>
+</div>
+<label class="timer-check"><input checked="" id="pomAuto" type="checkbox"/> Alternar etapas automaticamente</label>
+</section>
+<section class="timer-config-panel" data-config="custom" hidden="">
+<div class="timer-config-heading"><strong>Sequência personalizada</strong></div>
+<div class="timer-fields">
+<label class="wide">Nome da sequência<input id="customName" maxlength="42" placeholder="Ex.: Estudo aprofundado" type="text"/></label>
+<label>Estudo (min)<input id="customFocus" max="240" min="1" type="number" value="45"/></label>
+<label>Descanso (min)<input id="customBreak" max="120" min="0" type="number" value="10"/></label>
+<label>Repetições<input id="customRounds" max="20" min="1" type="number" value="3"/></label>
+<label class="wide">Configurações salvas<select id="customSaved"><option value="">Escolha uma configuração</option></select></label>
+</div>
+<div class="timer-config-actions">
+<button class="secondary" onclick="saveCustomTimer()" type="button">Salvar configuração</button>
+<button class="secondary" onclick="loadCustomTimer()" type="button">Carregar</button>
+<button class="timer-danger" onclick="deleteCustomTimer()" type="button">Excluir</button>
+</div>
+</section>
+</div>
+</div>
 </section><section class="page" id="settings"><div class="eyebrow">Preferências</div><h1>Configurações</h1><div class="grid settingsgrid">
 <div class="setting"><b>Histórico de estudos</b><button class="secondary" onclick="toast('Histórico demonstrativo')">Abrir histórico</button></div>
-<div class="setting"><b>Importar dados</b><input type="file" accept=".json,application/json" style="width:100%;margin-top:8px" onchange="toast('Importação ilustrativa neste protótipo')"></div>
+<div class="setting"><b>Importar dados</b><input accept=".json,application/json" onchange="toast('Importação ilustrativa neste protótipo')" style="width:100%;margin-top:8px" type="file"/></div>
 <div class="setting"><b>Exportar dados</b><button class="secondary" onclick="exportData()">Exportar JSON</button></div>
 <div class="setting"><b>Aparência</b><span class="pill">Tema escuro</span></div>
 <div class="setting"><b>Aplicativo e funcionamento offline</b></div>
-<div class="setting"><b>Backup e restauração</b><button class="secondary" onclick="toast('Backup demonstrativo')">Ver opções</button></div></div><button class="secondary" style="margin-top:22px" onclick="page('home')">← Voltar ao início</button></section>
+<div class="setting"><b>Backup e restauração</b><button class="secondary" onclick="toast('Backup demonstrativo')">Ver opções</button></div></div><button class="secondary" onclick="page('home')" style="margin-top:22px">← Voltar ao início</button></section>
 </main></div>
-<nav class="nav" id="nav" aria-label="Navegação principal">
-  <div class="nav-main" id="navMain">
-    <button class="nav-item active" data-id="home" onclick="page('home')"><span class="nav-icon">⌂</span><span class="nav-label">Início</span></button>
-    <button class="nav-item" data-id="study" onclick="page('study')" aria-label="Abrir Matérias"><span class="nav-icon">▤</span><span class="nav-label">Matérias</span></button>
-    <button class="nav-item" data-id="records" onclick="page('records')"><span class="nav-icon">▧</span><span class="nav-label">Registros</span></button>
-    <button class="nav-item" data-id="performance" onclick="page('performance')"><span class="nav-icon">⌁</span><span class="nav-label">Desempenho</span></button>
-    <button class="nav-item" data-id="timer" onclick="page('timer')"><span class="nav-icon">◷</span><span class="nav-label">Tempo</span></button>
-  </div>
-  <div class="nav-sub" id="navSub" aria-hidden="true">
-    <button class="nav-parent" type="button" onclick="exitStudyNav()" aria-label="Voltar à navegação principal" title="Voltar"><span class="nav-parent-icon">↙</span><span>Voltar</span><span class="return-mark">↙</span></button>
-    <span class="nav-divider" aria-hidden="true"></span>
-    <div class="nav-sub-items" id="studyNavItems">
-      <button class="nav-item sub-item" data-sub="cycle" onclick="openStudyArea('cycle')"><span class="nav-icon">⟳</span><span class="nav-label">Ciclo</span></button>
-      <button class="nav-item sub-item" data-sub="subjects" onclick="openStudyArea('subjects')"><span class="nav-icon">▤</span><span class="nav-label">Matérias e áreas</span></button>
-      <button class="nav-item sub-item" data-sub="reviews" onclick="openStudyArea('reviews')"><span class="nav-icon">↻</span><span class="nav-label">Revisões</span></button>
-    </div>
-    <div class="nav-sub-items" id="recordNavItems" hidden>
-      <button class="nav-item record-sub-item active" data-record-sub="questions" onclick="openRecordArea('questions')"><span class="nav-icon">▧</span><span class="nav-label">Questões</span></button>
-      <button class="nav-item record-sub-item" data-record-sub="exams" onclick="openRecordArea('exams')"><span class="nav-icon">▤</span><span class="nav-label">Provas</span></button>
-      <button class="nav-item record-sub-item" data-record-sub="mocks" onclick="openRecordArea('mocks')"><span class="nav-icon">▣</span><span class="nav-label">Simulados</span></button>
-    </div>
-  </div>
+<nav aria-label="Navegação principal" class="nav" id="nav">
+<div class="nav-main" id="navMain">
+<button class="nav-item active" data-id="home" onclick="page('home')"><span class="nav-icon">⌂</span><span class="nav-label">Início</span></button>
+<button aria-label="Abrir Matérias" class="nav-item" data-id="study" onclick="page('study')"><span class="nav-icon">▤</span><span class="nav-label">Matérias</span></button>
+<button class="nav-item" data-id="records" onclick="page('records')"><span class="nav-icon">▧</span><span class="nav-label">Registros</span></button>
+<button class="nav-item" data-id="performance" onclick="page('performance')"><span class="nav-icon">⌁</span><span class="nav-label">Desempenho</span></button>
+<button class="nav-item" data-id="timer" onclick="page('timer')"><span class="nav-icon">◷</span><span class="nav-label">Tempo</span></button>
+</div>
+<div aria-hidden="true" class="nav-sub" id="navSub">
+<button aria-label="Voltar à navegação principal" class="nav-parent" onclick="exitStudyNav()" title="Voltar" type="button"><span class="nav-parent-icon">↙</span><span>Voltar</span><span class="return-mark">↙</span></button>
+<span aria-hidden="true" class="nav-divider"></span>
+<div class="nav-sub-items" id="studyNavItems">
+<button class="nav-item sub-item" data-sub="cycle" onclick="openStudyArea('cycle')"><span class="nav-icon">⟳</span><span class="nav-label">Ciclo</span></button>
+<button class="nav-item sub-item" data-sub="subjects" onclick="openStudyArea('subjects')"><span class="nav-icon">▤</span><span class="nav-label">Matérias e áreas</span></button>
+<button class="nav-item sub-item" data-sub="reviews" onclick="openStudyArea('reviews')"><span class="nav-icon">↻</span><span class="nav-label">Revisões</span></button>
+</div>
+<div class="nav-sub-items" hidden="" id="recordNavItems">
+<button class="nav-item record-sub-item active" data-record-sub="questions" onclick="openRecordArea('questions')"><span class="nav-icon">▧</span><span class="nav-label">Questões</span></button>
+<button class="nav-item record-sub-item" data-record-sub="exams" onclick="openRecordArea('exams')"><span class="nav-icon">▤</span><span class="nav-label">Provas</span></button>
+<button class="nav-item record-sub-item" data-record-sub="mocks" onclick="openRecordArea('mocks')"><span class="nav-icon">▣</span><span class="nav-label">Simulados</span></button>
+</div>
+</div>
 </nav><div class="toast" id="toast"></div>
 <script>
 const ids=['home','study','records','performance','timer','settings'];
@@ -2069,27 +2122,9 @@ drawTimer(true);
 </style>
 <script id="grafia-pwa-controller">
 (()=>{
-  let installPrompt=null;
-  const installButton=document.getElementById('installAppButton');
-  const isStandalone=()=>window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
-  function refreshInstallButton(){
-    if(!installButton)return;
-    installButton.hidden=isStandalone();
-  }
-  window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;refreshInstallButton();});
-  window.addEventListener('appinstalled',()=>{installPrompt=null;refreshInstallButton();if(typeof toast==='function')toast('Grafia Study instalado.');});
-  window.installGrafiaApp=async function(){
-    if(isStandalone()){refreshInstallButton();return;}
-    if(installPrompt){installPrompt.prompt();const choice=await installPrompt.userChoice;installPrompt=null;if(choice&&choice.outcome==='accepted'&&typeof toast==='function')toast('Instalação iniciada.');return;}
-    const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
-    const message=ios?'Para instalar: abra no Safari, toque em Compartilhar e escolha “Adicionar à Tela de Início”.':'Para instalar: abra o menu ⋮ do navegador e escolha “Instalar app” ou “Adicionar à tela inicial”.';
-    if(typeof toast==='function')toast(message);else alert(message);
-  };
-  refreshInstallButton();
   if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(err=>console.warn('Falha ao ativar o modo offline:',err)));}
 })();
 </script>
-
 <script id="grafia-learning-engine">
 (()=>{
 const STORE='grafia-study-learning-v1';
@@ -2108,10 +2143,17 @@ const recommendationSequence = [{"number":1,"discipline":"Matemática","topic":"
 const hours={'Matemática':16,'Redação':8,'Biologia':8,'Química':7,'Física':6,'História':7,'Geografia':6,'Filosofia + Sociologia':6,'Linguagens':6};
 const steps=['Aula','Questões','Caderno de erros','Anki','Revisão'];
 const intervals=[1,7,21,45];
-const blank=()=>({version:1,topics:{},records:[],sessions:[],reviewEvents:[]});
+const blank=()=>({version:2,topics:{},records:[],sessions:[],reviewEvents:[],cycles:[],activeCycle:null,cycleSetupComplete:false});
 let data;try{data={...blank(),...JSON.parse(localStorage.getItem(STORE)||'{}')};}catch{data=blank();}
 const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(data));}catch(e){toast('Não foi possível salvar. Libere espaço no navegador.');}};
 const uid=()=>crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(16).slice(2);
+const cyclePlan={'Matemática':16,'Biologia':8,'Química':7,'Física':6,'História':7,'Geografia':6,'Filosofia + Sociologia':6,'Linguagens':6,'Redação':8};
+const cycleIcons={'Matemática':'∑','Biologia':'♙','Química':'⬡','Física':'⌁','História':'⌛','Geografia':'◎','Filosofia + Sociologia':'◇','Linguagens':'Aa','Redação':'✎'};
+const cycleAliases={'Filosofia + Sociologia':['Filosofia e Sociologia','Filosofia','Sociologia'],'História':['História','História do Brasil','História Geral']};
+function createCycleObject(){return {id:uid(),number:(data.cycles||[]).length+1,startedAt:new Date().toISOString(),plannedHours:{...cyclePlan},completedSubjects:{},status:'active'};}
+data.cycles=Array.isArray(data.cycles)?data.cycles:[];
+if(!data.cycleSetupComplete){data.activeCycle=data.activeCycle||createCycleObject();data.cycleSetupComplete=true;for(const s of data.sessions){if(!s.cycleId)s.cycleId=data.activeCycle.id;}for(const r of data.records){if(!r.cycleId)r.cycleId=data.activeCycle.id;}save();}
+
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dateKey=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`;};
 const addDays=(date,n)=>{let d=new Date(date);d.setDate(d.getDate()+n);return d.toISOString();};
@@ -2201,7 +2243,7 @@ function disciplineMatches(sessionDiscipline,discipline){
  };
  return (aliases[discipline]||[discipline]).includes(sessionDiscipline);
 }
-function formatStudyTime(seconds){const total=Math.max(0,Math.floor(seconds||0)),minutes=Math.floor(total/60),hours=Math.floor(minutes/60),rest=minutes%60;if(hours)return `${hours}h ${String(rest).padStart(2,'0')}min`;return `${minutes}min`;}
+function formatStudyTime(seconds){const total=Math.max(0,Math.floor(seconds||0)),minutes=Math.floor(total/60),hours=Math.floor(minutes/60),rest=minutes%60;if(total>0&&minutes===0)return `${total}s`;if(hours)return `${hours}h ${String(rest).padStart(2,'0')}min`;return `${minutes}min`;}
 function elapsed(d,t){
  let total=data.sessions.filter(s=>disciplineMatches(s.discipline,d)&&topicMatches(s.topic,t)).reduce((a,s)=>a+Number(s.seconds||0),0);
  if(activeContext&&disciplineMatches(activeContext.discipline,d)&&topicMatches(activeContext.topic,t))total+=activeAccum+(activeStarted?Math.max(0,Math.floor((Date.now()-activeStarted)/1000)):0);
@@ -2211,6 +2253,114 @@ function refreshTopicTimes(){
  document.querySelectorAll('.topic-time').forEach(el=>el.textContent=formatStudyTime(elapsed(el.dataset.discipline,el.dataset.timeTopic)));
  document.querySelectorAll('[data-topic-total]').forEach(el=>el.textContent=formatStudyTime(elapsed(el.dataset.discipline,el.dataset.timeTopic)));
 }
+function cycleSubjectMatches(sessionDiscipline,discipline){
+ const aliases=cycleAliases[discipline]||[discipline];
+ return aliases.some(alias=>disciplineMatches(sessionDiscipline,alias));
+}
+function cycleSecondsFor(d,cycle=data.activeCycle){
+ if(!cycle)return 0;
+ let total=data.sessions.filter(s=>s.cycleId===cycle.id&&cycleSubjectMatches(s.discipline,d)).reduce((sum,s)=>sum+Number(s.seconds||0),0);
+ if(cycle===data.activeCycle&&activeContext&&cycleSubjectMatches(activeContext.discipline,d))total+=activeAccum+(activeStarted?Math.max(0,Math.floor((Date.now()-activeStarted)/1000)):0);
+ return total;
+}
+function cycleTimeByDiscipline(cycle=data.activeCycle){
+ const result={};for(const d of Object.keys((cycle&&cycle.plannedHours)||cyclePlan))result[d]=cycleSecondsFor(d,cycle);return result;
+}
+function cycleCompletedHours(cycle=data.activeCycle){if(!cycle)return 100;const plan=cycle.plannedHours||cyclePlan;const total=Object.values(plan).reduce((a,b)=>a+Number(b||0),0)||1;const done=Object.keys(plan).filter(d=>cycle.completedSubjects&&cycle.completedSubjects[d]).reduce((a,d)=>a+Number(plan[d]||0),0);return Math.round(done/total*100);}
+function cycleRecordCount(cycle=data.activeCycle){return cycle?data.records.filter(r=>r.cycleId===cycle.id).length:0;}
+function cycleActualTotal(cycle=data.activeCycle){return Object.values(cycleTimeByDiscipline(cycle)).reduce((a,b)=>a+b,0);}
+function renderCycleHistory(){
+ const host=document.getElementById('cycleHistoryList');if(!host)return;
+ const items=[...(data.cycles||[])].sort((a,b)=>(b.endedAt||b.startedAt||'').localeCompare(a.endedAt||a.startedAt||''));
+ if(!items.length){host.innerHTML='<div class="card muted">Nenhum ciclo concluído ainda. Quando você finalizar todas as matérias, o histórico aparecerá aqui.</div>';return;}
+ host.innerHTML=items.map(c=>{
+  const sec=Number(c.totalSeconds||Object.values(c.timeByDiscipline||{}).reduce((a,b)=>a+Number(b||0),0));
+  const plan=c.plannedHours||cyclePlan;const done=Object.keys(c.completedSubjects||{}).length;
+  const breakdown=Object.entries(plan).map(([d,h])=>`<div class="lineitem"><div><b>${esc(d)}</b><small>${formatStudyTime((c.timeByDiscipline||{})[d]||0)} estudadas · ${h}h planejadas</small></div><span class="pill">${c.completedSubjects&&c.completedSubjects[d]?'Concluída':'—'}</span></div>`).join('');
+  return `<details class="cycle-history-card"><summary><span><strong>Ciclo ${Number(c.number||1)}</strong><small class="cycle-history-date">${new Date(c.startedAt).toLocaleDateString('pt-BR')} – ${new Date(c.endedAt||c.completedAt||c.startedAt).toLocaleDateString('pt-BR')}</small></span><span class="pill">Concluído</span></summary><div class="cycle-history-metrics"><div><strong>${formatStudyTime(sec)}</strong><span>Tempo estudado</span></div><div><strong>${done}/${Object.keys(plan).length}</strong><span>Matérias concluídas</span></div><div><strong>${Number(c.activitiesCount||0)}</strong><span>Atividades</span></div></div><div class="cycle-history-breakdown">${breakdown}</div></details>`;
+ }).join('');
+}
+function renderCycleStats(){
+ const cycle=data.activeCycle||(data.cycles||[]).slice(-1)[0]||null;
+ const seconds=cycle?cycleActualTotal(cycle):0;
+ const start=cycle?new Date(cycle.startedAt):null;
+ const days=cycle?Math.max(1,Math.ceil((Date.now()-start.getTime())/86400000)):1;
+ const avg=seconds/days;
+ const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value;};
+ set('performanceCycleTime',formatStudyTime(seconds));set('performanceDailyAverage',formatStudyTime(avg));
+ const chart=document.getElementById('cycleSubjectTimeChart');
+ if(chart){
+  const values=cycle?cycleTimeByDiscipline(cycle):{};const max=Math.max(1,...Object.values(values));
+  chart.innerHTML=cycle?Object.entries(cycle.plannedHours||cyclePlan).map(([d])=>{const sec=values[d]||0;return `<div class="cycle-time-row"><span>${esc(d)}</span><span class="cycle-time-track"><i style="width:${Math.min(100,sec/max*100)}%"></i></span><strong>${formatStudyTime(sec)}</strong></div>`;}).join(''):'<div class="cycle-chart-empty">O próximo ciclo ainda não foi iniciado.</div>';
+ }
+ renderCycleHistory();
+}
+function renderCycleUI(){
+ const host=document.getElementById('cycleSubjectGrid');if(!host)return;
+ const cycle=data.activeCycle;
+ const displayCycle=cycle||(data.cycles||[]).slice(-1)[0]||null;
+ const completeView=document.getElementById('cycleCompleteView');
+ const totalPlan=cycle?Object.values(cycle.plannedHours||cyclePlan).reduce((a,b)=>a+Number(b||0),0):Object.values(cyclePlan).reduce((a,b)=>a+Number(b||0),0);
+ const doneCount=cycle?Object.keys(cycle.completedSubjects||{}).length:0;
+ const cyclePercent=cycle?cycleCompletedHours(cycle):(displayCycle?100:0);
+ const totalSeconds=displayCycle?cycleActualTotal(displayCycle):0;
+ const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value;};
+ set('homeStudyTime',formatStudyTime(totalSeconds));set('homeActivityCount',String(cycleRecordCount(displayCycle)));set('homeCycleProgress',cyclePercent+'%');
+ const homeBar=document.getElementById('homeCycleProgressBar');if(homeBar)homeBar.style.width=cyclePercent+'%';
+ const homeGrid=document.getElementById('homeCycleSubjectGrid');if(homeGrid){
+  if(!displayCycle){homeGrid.innerHTML='<div class="muted">Nenhum tempo registrado neste ciclo ainda.</div>';}
+  else{const plan=displayCycle.plannedHours||cyclePlan;homeGrid.innerHTML=Object.entries(plan).slice(0,4).map(([d,h])=>{const sec=cycleSecondsFor(d,displayCycle),pct=Math.min(100,Math.round(sec/(Number(h)*3600)*100));return `<div class="subject"><div class="subjecttop"><span class="mark">${cycleIcons[d]||'◷'}</span><span class="pill">${h}h</span></div><h3>${esc(d)}</h3><p>${formatStudyTime(sec)} · ${pct}% do planejado</p><div class="mini"><i style="width:${pct}%"></i></div></div>`;}).join('');}
+ }
+ if(cycle){
+  set('cycleNumberLabel','Ciclo '+(cycle.number||1));set('cycleStartedLabel','Iniciado em '+new Date(cycle.startedAt).toLocaleDateString('pt-BR'));
+  set('cyclePlannedHours',totalPlan+'h planejadas');set('cycleStudiedTime',formatStudyTime(totalSeconds));set('cycleCompletionPercent',cyclePercent+'%');set('cycleCompletedCount',doneCount+'/'+Object.keys(cycle.plannedHours||cyclePlan).length);
+  set('cycleSubtitle','Acompanhe o tempo registrado e marque cada matéria quando concluir sua etapa.');
+  const bar=document.getElementById('cycleOverallBar');if(bar)bar.style.width=cyclePercent+'%';
+  if(completeView)completeView.hidden=true;
+  host.hidden=false;
+  host.innerHTML=Object.entries(cycle.plannedHours||cyclePlan).map(([d,h])=>{
+   const sec=cycleSecondsFor(d,cycle),pct=Math.min(100,Math.round(sec/(Number(h)*3600)*100)),done=!!(cycle.completedSubjects&&cycle.completedSubjects[d]);
+   const remaining=Math.max(0,Number(h)*3600-sec);
+   return `<article class="cycle-subject-card ${done?'is-complete':''}" data-cycle-subject-card="${esc(d)}"><div class="cycle-subject-top"><span class="cycle-subject-icon" aria-hidden="true">${cycleIcons[d]||'◷'}</span><span class="cycle-target-pill">${h}h planejadas</span></div><h3>${esc(d)}</h3><div class="cycle-subject-meta">${formatStudyTime(sec)} estudadas · ${pct}% do planejado</div><div class="cycle-subject-progress"><i style="width:${pct}%"></i></div><div class="cycle-subject-footer"><span class="cycle-subject-status">${done?'✓ Concluída':remaining===0?'Meta de tempo alcançada':'Em andamento'}</span>${done?`<button class="secondary cycle-reopen-button" type="button" data-cycle-reopen="${esc(d)}">Reabrir</button>`:`<button class="secondary cycle-complete-button" type="button" data-cycle-complete="${esc(d)}">Marcar conclusão ✓</button>`}</div></article>`;
+  }).join('');
+  host.querySelectorAll('[data-cycle-complete]').forEach(btn=>btn.onclick=()=>completeCycleSubject(btn.dataset.cycleComplete));
+  host.querySelectorAll('[data-cycle-reopen]').forEach(btn=>btn.onclick=()=>reopenCycleSubject(btn.dataset.cycleReopen));
+  const note=document.getElementById('cycleSectionNote');if(note)note.textContent='O tempo é atualizado pelo cronômetro';
+ }else{
+  host.hidden=true;
+  if(completeView){completeView.hidden=false;const last=(data.cycles||[]).slice(-1)[0];
+   set('cycleSubtitle','Seu ciclo anterior foi arquivado.');
+   set('cycleCompletionSummary','Todas as matérias foram concluídas. Os tempos e resultados deste ciclo estão guardados no histórico de Desempenho.');
+   const total=last?Number(last.totalSeconds||Object.values(last.timeByDiscipline||{}).reduce((a,b)=>a+Number(b||0),0)):0;
+   const stats=document.getElementById('cycleCompletionStats');if(stats)stats.innerHTML=`<div><strong>${formatStudyTime(total)}</strong><span>Tempo estudado</span></div><div><strong>${Object.keys(last?.completedSubjects||{}).length}/${Object.keys(last?.plannedHours||cyclePlan).length}</strong><span>Matérias concluídas</span></div>`;
+  }
+  set('cycleNumberLabel','Ciclo concluído');set('cycleStartedLabel','Histórico preservado');set('cyclePlannedHours',totalPlan+'h planejadas');set('cycleStudiedTime','—');set('cycleCompletionPercent','100%');set('cycleCompletedCount',Object.keys(cyclePlan).length+'/'+Object.keys(cyclePlan).length);
+  const bar=document.getElementById('cycleOverallBar');if(bar)bar.style.width='100%';
+ }
+ renderCycleStats();
+}
+function completeCycleSubject(d){
+ const cycle=data.activeCycle;if(!cycle||!Object.prototype.hasOwnProperty.call(cycle.plannedHours||cyclePlan,d)||cycle.completedSubjects[d])return;
+ const studied=cycleSecondsFor(d,cycle),planned=Number(cycle.plannedHours[d])*3600;
+ 
+ cycle.completedSubjects[d]={at:new Date().toISOString(),secondsAtCompletion:studied};
+ const allDone=Object.keys(cycle.plannedHours||cyclePlan).every(subject=>!!cycle.completedSubjects[subject]);
+ if(allDone){finishStudyCycle();return;}
+ save();renderCycleUI();toast(d+' concluída.');
+}
+function reopenCycleSubject(d){const cycle=data.activeCycle;if(!cycle||!cycle.completedSubjects[d])return;delete cycle.completedSubjects[d];save();renderCycleUI();}
+function finishStudyCycle(){
+ const cycle=data.activeCycle;if(!cycle)return;
+ if(timerState&&timerState.status==='running'&&typeof window.pauseTimer==='function')window.pauseTimer();
+ if(activeStarted){collectActiveSeconds();persistActiveSeconds();}activeContext=null;activeStarted=0;
+ const times=cycleTimeByDiscipline(cycle),total=Object.values(times).reduce((a,b)=>a+b,0);
+ const archived={...cycle,completedSubjects:{...cycle.completedSubjects},timeByDiscipline:times,totalSeconds:total,activitiesCount:cycleRecordCount(cycle),sessionsCount:data.sessions.filter(s=>s.cycleId===cycle.id).length,endedAt:new Date().toISOString(),status:'completed'};
+ data.cycles.push(archived);data.activeCycle=null;save();renderCycleUI();toast('Ciclo concluído! Parabéns pelo percurso.');
+}
+function restartStudyCycle(){if(data.activeCycle||!(data.cycles||[]).length)return;data.activeCycle=createCycleObject();save();renderCycleUI();toast('Novo ciclo iniciado.');}
+window.restartStudyCycle=restartStudyCycle;
+document.getElementById('restartCycleBtn')?.addEventListener('click',restartStudyCycle);
+
 function renderTopics(d,expandTopic=undefined){
  let box=document.getElementById('topicList');if(!box)return;
  if(expandTopic!==undefined)expandedTopic=expandTopic;
@@ -2253,7 +2403,7 @@ if(timerSubjectSelect){
  window.populateTimerTopics(timerSubjectSelect.value,timerState.topic||'');
  timerSubjectSelect.addEventListener('change',()=>window.populateTimerTopics(timerSubjectSelect.value,''));
 }
-let cycle=document.querySelector('#study-cycle .study-list');if(cycle){let list=Object.entries(hours).map(([d,h])=>`<div class="lineitem" data-cycle-subject="${esc(d)}"><div><b>${esc(d)}</b><small>${h} horas planejadas</small></div><span class="pill">${h}h</span></div>`).join('');cycle.innerHTML=list;}
+renderCycleUI();
 let dir=document.querySelector('.subject-directory');if(dir){dir.innerHTML=Object.entries(disciplines).map(([d,topics])=>`<div class="subject" data-dir="${esc(d)}"><div class="subjecttop"><span class="mark">▤</span><span class="pill">${topics.length} assuntos</span></div><h3>${esc(d)}</h3><p>Área de estudo</p></div>`).join('');}
 // Registros integrados: cada atividade é um evento único; os recortes por matéria/assunto são detalhes do mesmo evento.
 const recordDisciplines=Object.keys(disciplines);
@@ -2364,7 +2514,7 @@ function renderRecordList(kind,records){
  box.querySelectorAll('[data-delete-record]').forEach(btn=>btn.onclick=()=>deleteRecord(btn.dataset.deleteRecord));
  box.querySelectorAll('[data-edit-record]').forEach(btn=>btn.onclick=()=>editRecord(btn.dataset.editRecord));
 }
-function deleteRecord(id){if(!confirm('Excluir este registro? Os indicadores relacionados serão recalculados.'))return;data.records=data.records.filter(r=>r.id!==id);if(recordEditingId===id)cancelRecordEdit('all');save();refreshRecordViews();renderReviews();toast('Registro excluído.');}
+function deleteRecord(id){if(!confirm('Excluir este registro? Os indicadores relacionados serão recalculados.'))return;data.records=data.records.filter(r=>r.id!==id);if(recordEditingId===id)cancelRecordEdit('all');save();refreshRecordViews();renderReviews();renderCycleUI();toast('Registro excluído.');}
 let recordEditingId=null;
 function cancelRecordEdit(kind='all'){recordEditingId=null;window.currentRecordEditCategory=null;const kinds=kind==='all'?['questions','exam','mock']:[kind];kinds.forEach(k=>{const p=k==='questions'?'question':k;const fields=k==='questions'?['questionName','questionTotal','questionCorrect','questionBlank']: [p+'Name',p+'Total',p+'Correct',p+'Blank',p+'OriginalTotal',p+'Notes',p+'BreakdownOriginal'];fields.forEach(id=>{const el=document.getElementById(id);if(el){el.value=id.endsWith('Blank')?'0':'';el.dispatchEvent(new Event('input'));}});if(k==='questions'){document.getElementById('questionDate').value=recordToday();document.getElementById('questionDiscipline').value=recordDisciplines[0];fillTopicSelect(document.getElementById('questionTopic'),recordDisciplines[0]);document.getElementById('saveQuestionBtn').textContent='Salvar atividade';document.getElementById('cancelQuestionEdit').hidden=true;}else{document.getElementById(p+'Date').value=recordToday();document.getElementById(p+'Scope').value='complete';document.getElementById(p+'Mode').value='total';setAssessmentMode(p);document.getElementById(p+'BreakdownRows').innerHTML='';document.getElementById('save'+(k==='exam'?'Exam':'Mock')+'Btn').textContent=k==='exam'?'Salvar prova':'Salvar simulado';document.getElementById('cancel'+(k==='exam'?'Exam':'Mock')+'Edit').hidden=true;}});}
 window.cancelRecordEdit=cancelRecordEdit;
@@ -2375,7 +2525,7 @@ function validateCounts(total,correct,blank){return Number.isInteger(total)&&Num
 function saveQuestionRecord(){
  const name=document.getElementById('questionName').value.trim(),discipline=qDiscipline.value,topic=document.getElementById('questionTopic').value,total=Number(document.getElementById('questionTotal').value),correct=Number(document.getElementById('questionCorrect').value),blank=Number(document.getElementById('questionBlank').value||0),date=document.getElementById('questionDate').value;
  if(!name||!discipline||!date||!validateCounts(total,correct,blank)){toast('Confira os dados da atividade.');return;}
- const record={id:recordEditingId||uid(),category:'questions',name,discipline,topic,total,correct,blank,errors:total-correct-blank,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString()};if(recordEditingId){const idx=data.records.findIndex(x=>x.id===recordEditingId);if(idx>=0){record.createdAt=data.records[idx].createdAt||record.createdAt;data.records[idx]=record;}else data.records.push(record);}else data.records.push(record);cancelRecordEdit('questions');save();refreshRecordViews();renderReviews();toast('Atividade salva.');
+ const existingRecord=recordEditingId?data.records.find(x=>x.id===recordEditingId):null;const record={id:recordEditingId||uid(),cycleId:existingRecord?.cycleId??data.activeCycle?.id??null,category:'questions',name,discipline,topic,total,correct,blank,errors:total-correct-blank,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString()};if(recordEditingId){const idx=data.records.findIndex(x=>x.id===recordEditingId);if(idx>=0){record.createdAt=data.records[idx].createdAt||record.createdAt;data.records[idx]=record;}else data.records.push(record);}else data.records.push(record);cancelRecordEdit('questions');save();refreshRecordViews();renderReviews();renderCycleUI();toast('Atividade salva.');
 }
 window.saveQuestionRecord=saveQuestionRecord;
 function saveAssessmentRecord(kind){
@@ -2392,9 +2542,9 @@ function saveAssessmentRecord(kind){
   if(sourceTotal!==null&&(!Number.isInteger(sourceTotal)||sourceTotal<total))throw new Error('O total original não pode ser menor que o total realizado.');
  }catch(e){toast(e.message||'Confira os resultados.');return;}
  if(scope==='complete'&&sourceTotal!==null&&sourceTotal!==total){toast('Uma avaliação completa deve ter o total original igual ao total realizado.');return;}
- const record={id:recordEditingId||uid(),category,name,scope,mode,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString(),total,correct,blank,errors:total-correct-blank,sourceTotal,breakdown,notes};
+ const existingRecord=recordEditingId?data.records.find(x=>x.id===recordEditingId):null;const record={id:recordEditingId||uid(),cycleId:existingRecord?.cycleId??data.activeCycle?.id??null,category,name,scope,mode,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString(),total,correct,blank,errors:total-correct-blank,sourceTotal,breakdown,notes};
  if(recordEditingId){const idx=data.records.findIndex(x=>x.id===recordEditingId);if(idx>=0){record.createdAt=data.records[idx].createdAt||record.createdAt;data.records[idx]=record;}else data.records.push(record);}else data.records.push(record);
- cancelRecordEdit(prefix);save();refreshRecordViews();renderReviews();toast(kind==='exam'?'Prova salva.':'Simulado salvo.');
+ cancelRecordEdit(prefix);save();refreshRecordViews();renderReviews();renderCycleUI();toast(kind==='exam'?'Prova salva.':'Simulado salvo.');
 }
 window.saveAssessmentRecord=saveAssessmentRecord;
 ['exam','mock'].forEach(kind=>{document.getElementById(kind+'Date').value=recordToday();});
@@ -2403,13 +2553,13 @@ refreshRecordViews();
 const oldStart=window.startTimer,oldPause=window.pauseTimer,oldFinish=window.finishTimer,oldReset=window.resetTimer;
 function collectActiveSeconds(){if(activeStarted){activeAccum+=Math.max(0,Math.floor((Date.now()-activeStarted)/1000));activeStarted=0;}}
 function persistActiveSeconds(){
- if(activeAccum>0&&activeContext){data.sessions.push({id:uid(),discipline:activeContext.discipline,topic:activeContext.topic,seconds:activeAccum,at:new Date().toISOString()});save();activeAccum=0;}
+ if(activeAccum>0&&activeContext){data.sessions.push({id:uid(),cycleId:data.activeCycle?.id||null,discipline:activeContext.discipline,topic:activeContext.topic,seconds:activeAccum,at:new Date().toISOString()});save();activeAccum=0;}
  refreshTopicTimes();
 }
 window.startTimer=function(){
  const wasRunning=timerState.status==='running';
  oldStart();
- if(!wasRunning&&timerState.status==='running'){
+ if(!wasRunning&&timerState.status==='running'&&timerState.phase!=='break'){
   if(activeAccum>0)persistActiveSeconds();
   activeContext={discipline:timerState.subject||'Matemática',topic:timerState.topic||''};
   activeStarted=Date.now();
@@ -2420,13 +2570,15 @@ window.pauseTimer=function(){if(timerState.status==='running')collectActiveSecon
 window.finishTimer=function(){if(timerState.status==='running')collectActiveSeconds();oldFinish();persistActiveSeconds();activeContext=null;};
 window.resetTimer=function(){if(timerState.status==='running')collectActiveSeconds();persistActiveSeconds();activeContext=null;activeStarted=0;oldReset();};
 // Keep the value in the subject row current while the timer is running.
-if(timerState.status==='running'){
+if(timerState.status==='running'&&timerState.phase!=='break'){
  activeContext={discipline:timerState.subject||'Matemática',topic:timerState.topic||''};
  activeStarted=Date.now();
 }
 setInterval(()=>{
- if(timerState.status!=='running'&&activeStarted){collectActiveSeconds();persistActiveSeconds();activeContext=null;}
- refreshTopicTimes();
+ if(timerState.status==='running'&&timerState.phase==='break'&&activeStarted){collectActiveSeconds();persistActiveSeconds();activeContext=null;}
+ else if(timerState.status==='running'&&timerState.phase!=='break'&&!activeStarted){activeContext={discipline:timerState.subject||'Matemática',topic:timerState.topic||''};activeStarted=Date.now();}
+ else if(timerState.status!=='running'&&activeStarted){collectActiveSeconds();persistActiveSeconds();activeContext=null;}
+ refreshTopicTimes();renderCycleUI();
 },1000);
 window.addEventListener('pagehide',()=>{if(timerState.status==='running')collectActiveSeconds();persistActiveSeconds();});
 // Import/export now includes learning history while retaining timer settings.
@@ -2438,6 +2590,7 @@ const recordSelect=document.getElementById('rs');if(recordSelect){recordSelect.i
 const topicSelect=document.getElementById('topicSubject');if(topicSelect){topicSelect.innerHTML='<option value="">Selecione uma matéria</option>'+Object.keys(disciplines).map(v=>`<option>${esc(v)}</option>`).join('');}
 renderReviews();
 refreshRecommendationUI();
+renderCycleUI();
 }
 // Add a revision category to the nested study navigation and render after base scripts initialize.
 let baseOpen=window.openStudyArea;window.openStudyArea=function(name){if(name==='reviews'){document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-reviews'));document.querySelectorAll('.sub-item').forEach(b=>b.classList.toggle('active',b.dataset.sub==='reviews'));renderReviews();scrollTo({top:0,behavior:'auto'});return;}if(name==='recommendations'){document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-recommendations'));document.querySelectorAll('.sub-item').forEach(b=>b.classList.remove('active'));renderRecommendationList();scrollTo({top:0,behavior:'auto'});return;}baseOpen(name);};
