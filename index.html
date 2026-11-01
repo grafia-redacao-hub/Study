@@ -1516,12 +1516,12 @@ body:before,body:after{display:none!important;filter:none!important}
 </div>
 </div>
 </section><section class="page" id="settings"><div class="eyebrow">Preferências</div><h1>Configurações</h1><div class="grid settingsgrid">
-<div class="setting"><b>Histórico de estudos</b><button class="secondary" onclick="toast('Histórico demonstrativo')">Abrir histórico</button></div>
-<div class="setting"><b>Importar dados</b><input accept=".json,application/json" onchange="toast('Importação ilustrativa neste protótipo')" style="width:100%;margin-top:8px" type="file"/></div>
+<div class="setting"><b>Histórico de estudos</b><button class="secondary" onclick="page('performance')">Abrir histórico</button></div>
+<div class="setting"><b>Importar dados</b><input id="backupImportInput" accept=".json,application/json" style="width:100%;margin-top:8px" type="file"/></div>
 <div class="setting"><b>Exportar dados</b><button class="secondary" onclick="exportData()">Exportar JSON</button></div>
 <div class="setting"><b>Aparência</b><span class="pill">Tema escuro</span></div>
 <div class="setting"><b>Aplicativo e funcionamento offline</b></div>
-<div class="setting"><b>Backup e restauração</b><button class="secondary" onclick="toast('Backup demonstrativo')">Ver opções</button></div></div><button class="secondary" onclick="page('home')" style="margin-top:22px">← Voltar ao início</button></section>
+<div class="setting"><b>Backup e restauração</b><button class="secondary" onclick="openBackupOptions()">Ver opções</button></div></div><button class="secondary" onclick="page('home')" style="margin-top:22px">← Voltar ao início</button></section>
 </main></div>
 <nav aria-label="Navegação principal" class="nav" id="nav">
 <div class="nav-main" id="navMain">
@@ -1660,6 +1660,7 @@ function populateTimerTopics(subject,selected=''){
  else if(customWrap)customWrap.hidden=true;
 }
 function syncTimerStudySelection(){
+ if(['running','paused','phase-complete'].includes(timerState.status)){syncTimerStudyControls();toast('Finalize ou reinicie a sessão para trocar a matéria ou o assunto.');return;}
  const subject=document.getElementById('timerSubject')?.value||'Matemática';
  const topicSelect=document.getElementById('timerTopic');
  const customWrap=document.getElementById('timerTopicCustomWrap');
@@ -1793,6 +1794,7 @@ function applyModeDefaults(){
   if(timerState.mode==='stopwatch'){timerState.sessionName='Cronômetro crescente';}
 }
 function startTimer(){
+  if(window.GrafiaStudyCanStartTimer&&!window.GrafiaStudyCanStartTimer()){toast('Este ciclo foi concluído. Reinicie-o antes de iniciar novas sessões.');return;}
   if(timerState.status==='completed'){resetTimer();return;}
   if(timerState.status==='phase-complete'){advanceTimerPhase();return;}
   const now=Date.now();
@@ -1996,6 +1998,21 @@ function syncFlipDisplay(value){
   display.dataset.shape=value.map(part=>part.length).join(':');
   display.dataset.value=chunks;
 }
+function syncTimerStudyControls(){
+ const locked=['running','paused','phase-complete'].includes(timerState.status);
+ const subject=document.getElementById('timerSubject'),topic=document.getElementById('timerTopic'),custom=document.getElementById('timerTopicCustom');
+ if(!subject||!topic)return;
+ if(locked){
+  if(subject.value!==timerState.subject)subject.value=timerState.subject||'Matemática';
+  if(topic.value!==timerState.topic){
+   const option=[...topic.options].find(o=>o.value===timerState.topic);
+   if(option)topic.value=timerState.topic;else if(timerState.topic){topic.value='__other__';if(custom)custom.value=timerState.topic;}
+   else topic.value='';
+  }
+ }
+ subject.disabled=locked;topic.disabled=locked;if(custom)custom.disabled=locked;
+ const wrap=document.getElementById('timerTopicCustomWrap');if(wrap&&locked)wrap.hidden=topic.value!=='__other__';
+}
 function drawTimer(force=false){
   const mode=timerState.mode,seconds=timerSecondsNow(),parts=formatTimerSeconds(seconds);
   syncFlipDisplay(parts);
@@ -2016,9 +2033,11 @@ function drawTimer(force=false){
   document.getElementById('timerReset').disabled=timerState.status==='idle';
   document.querySelectorAll('.timer-mode').forEach(b=>{const active=b.dataset.mode===mode;b.classList.toggle('active',active);b.setAttribute('aria-selected',active?'true':'false');});
   document.querySelectorAll('[data-config]').forEach(panel=>panel.hidden=panel.dataset.config!==mode);
+  syncTimerStudyControls();
   if(force)saveTimerState();
 }
 function advanceTimerPhase(){
+  if(window.GrafiaStudyCanStartTimer&&!window.GrafiaStudyCanStartTimer()){toast('Este ciclo foi concluído. Reinicie-o antes de iniciar novas sessões.');return;}
   if(timerState.status!=='phase-complete')return;
   timerState.status='running';timerState.remainingMs=timerState.phaseDurationMs||timerState.focusDurationMs;timerState.deadlineAt=Date.now()+timerState.remainingMs;timerState.nextPhase=null;saveTimerState();ensureTimerTicker();drawTimer(true);
 }
@@ -2056,7 +2075,7 @@ function applyPomodoroPreset(minutes){
   document.querySelectorAll('.timer-preset').forEach(b=>b.classList.toggle('active',b.dataset.preset===String(minutes)));
   readTimerConfig();timerState=defaultTimerState();timerState.mode='pomodoro';applyModeDefaults();drawTimer(true);
 }
-document.getElementById('timerSubject').addEventListener('change',e=>{timerState.subject=e.target.value;saveTimerState();drawTimer();});
+document.getElementById('timerSubject').addEventListener('change',e=>{if(['running','paused','phase-complete'].includes(timerState.status)){syncTimerStudyControls();return;}timerState.subject=e.target.value;saveTimerState();drawTimer();});
 document.getElementById('customSaved').addEventListener('change',()=>{if(document.getElementById('customSaved').value)loadCustomTimer();});
 document.getElementById('countMinutes').addEventListener('change',()=>{readTimerConfig();timerState=defaultTimerState();timerState.mode='countdown';applyModeDefaults();saveTimerState();drawTimer(true);});
 document.getElementById('countSeconds').addEventListener('change',()=>{readTimerConfig();timerState=defaultTimerState();timerState.mode='countdown';applyModeDefaults();saveTimerState();drawTimer(true);});
@@ -2151,8 +2170,44 @@ const cyclePlan={'Matemática':16,'Biologia':8,'Química':7,'Física':6,'Histór
 const cycleIcons={'Matemática':'∑','Biologia':'♙','Química':'⬡','Física':'⌁','História':'⌛','Geografia':'◎','Filosofia + Sociologia':'◇','Linguagens':'Aa','Redação':'✎'};
 const cycleAliases={'Filosofia + Sociologia':['Filosofia e Sociologia','Filosofia','Sociologia'],'História':['História','História do Brasil','História Geral']};
 function createCycleObject(){return {id:uid(),number:(data.cycles||[]).length+1,startedAt:new Date().toISOString(),plannedHours:{...cyclePlan},completedSubjects:{},status:'active'};}
+// Normaliza backups e dados de versões anteriores sem apagar registros existentes.
+data.topics=data.topics&&typeof data.topics==='object'?data.topics:{};
+data.records=Array.isArray(data.records)?data.records:[];
+data.sessions=Array.isArray(data.sessions)?data.sessions:[];
 data.cycles=Array.isArray(data.cycles)?data.cycles:[];
-if(!data.cycleSetupComplete){data.activeCycle=data.activeCycle||createCycleObject();data.cycleSetupComplete=true;for(const s of data.sessions){if(!s.cycleId)s.cycleId=data.activeCycle.id;}for(const r of data.records){if(!r.cycleId)r.cycleId=data.activeCycle.id;}save();}
+for(const [id,x] of Object.entries(data.topics)){
+ if(!x||typeof x!=='object'){delete data.topics[id];continue;}
+ x.id=x.id||id;x.steps=Array.isArray(x.steps)?x.steps:[];x.events=Array.isArray(x.events)?x.events:[];
+ x.enrolled=!!x.enrolled;x.reviewIndex=Number.isFinite(Number(x.reviewIndex))?Number(x.reviewIndex):0;
+ if(x.enrolled&&!x.enrolledAt)x.enrolledAt=x.createdAt||new Date().toISOString();
+ if(x.enrolled&&!x.reviewCycleStartedAt)x.reviewCycleStartedAt=x.enrolledAt;
+ if(x.enrolled&&!x.nextReviewAt&&!x.completed)x.nextReviewAt=new Date().toISOString();
+}
+if(!data.cycleSetupComplete){data.activeCycle=data.activeCycle||createCycleObject();data.cycleSetupComplete=true;}
+if(!data.activeCycle&&!data.cycles.length){data.activeCycle=createCycleObject();data.cycleSetupComplete=true;}
+if(data.activeCycle&&typeof data.activeCycle==='object'){
+ data.activeCycle.plannedHours=data.activeCycle.plannedHours||{...cyclePlan};
+ data.activeCycle.completedSubjects=data.activeCycle.completedSubjects||{};
+}
+window.GrafiaStudyCanStartTimer=()=>!!data.activeCycle;
+// Associa registros somente ao ciclo cujas datas realmente abrangem a atividade.
+// Também corrige vínculos antigos claramente fora do período do ciclo atribuído.
+function cycleForEntry(item,isSession=false){
+ const raw=isSession?(item.at||item.createdAt):(item.date||item.at||item.createdAt);if(!raw)return null;
+ let stamp;if(/^\d{4}-\d{2}-\d{2}$/.test(String(raw))){const [y,m,d]=String(raw).split('-').map(Number);stamp=new Date(y,m-1,d,12,0,0,0);}else stamp=new Date(raw);
+ if(Number.isNaN(stamp.getTime()))return null;
+ const candidates=[...(data.cycles||[]),...(data.activeCycle?[data.activeCycle]:[])].filter(c=>c&&c.id&&c.startedAt);
+ return candidates.filter(c=>{const start=new Date(c.startedAt),end=new Date(c.endedAt||c.completedAt||(c===data.activeCycle?Date.now():c.startedAt));if(Number.isNaN(start.getTime())||Number.isNaN(end.getTime()))return false;if(isSession)return stamp>=start&&stamp<=end;const day=t=>new Date(t.getFullYear(),t.getMonth(),t.getDate()).getTime();return day(stamp)>=day(start)&&day(stamp)<=day(end);}).sort((a,b)=>new Date(b.startedAt)-new Date(a.startedAt))[0]||null;
+}
+if(Number(data.schemaMigrationVersion||0)<3){
+ for(const item of [...data.sessions,...data.records]){
+  const isSession=data.sessions.includes(item),matched=cycleForEntry(item,isSession),assigned=[...(data.cycles||[]),...(data.activeCycle?[data.activeCycle]:[])].find(c=>c&&c.id===item.cycleId);
+  if(!item.cycleId){if(matched)item.cycleId=matched.id;}
+  else if(assigned&&matched&&assigned.id!==matched.id)item.cycleId=matched.id;
+  else if(assigned&&!matched){const raw=isSession?(item.at||item.createdAt):(item.date||item.at||item.createdAt);if(raw)item.cycleId=null;}
+ }
+ data.schemaMigrationVersion=3;save();
+}
 
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dateKey=d=>{let x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`;};
@@ -2259,40 +2314,50 @@ function cycleSubjectMatches(sessionDiscipline,discipline){
 }
 function cycleSecondsFor(d,cycle=data.activeCycle){
  if(!cycle)return 0;
+ if(cycle!==data.activeCycle&&cycle.timeByDiscipline&&Object.prototype.hasOwnProperty.call(cycle.timeByDiscipline,d))return Math.max(0,Number(cycle.timeByDiscipline[d])||0);
  let total=data.sessions.filter(s=>s.cycleId===cycle.id&&cycleSubjectMatches(s.discipline,d)).reduce((sum,s)=>sum+Number(s.seconds||0),0);
- if(cycle===data.activeCycle&&activeContext&&cycleSubjectMatches(activeContext.discipline,d))total+=activeAccum+(activeStarted?Math.max(0,Math.floor((Date.now()-activeStarted)/1000)):0);
+ if(cycle===data.activeCycle&&activeContext&&activeContext.cycleId===cycle.id&&cycleSubjectMatches(activeContext.discipline,d))total+=activeAccum+(activeStarted?Math.max(0,Math.floor((Date.now()-activeStarted)/1000)):0);
  return total;
 }
 function cycleTimeByDiscipline(cycle=data.activeCycle){
  const result={};for(const d of Object.keys((cycle&&cycle.plannedHours)||cyclePlan))result[d]=cycleSecondsFor(d,cycle);return result;
 }
-function cycleCompletedHours(cycle=data.activeCycle){if(!cycle)return 100;const plan=cycle.plannedHours||cyclePlan;const total=Object.values(plan).reduce((a,b)=>a+Number(b||0),0)||1;const done=Object.keys(plan).filter(d=>cycle.completedSubjects&&cycle.completedSubjects[d]).reduce((a,d)=>a+Number(plan[d]||0),0);return Math.round(done/total*100);}
+function cycleCompletedHours(cycle=data.activeCycle){if(!cycle)return 0;const plan=cycle.plannedHours||cyclePlan;const total=Object.values(plan).reduce((a,b)=>a+Number(b||0),0)||1;const done=Object.keys(plan).filter(d=>cycle.completedSubjects&&cycle.completedSubjects[d]).reduce((a,d)=>a+Number(plan[d]||0),0);return Math.round(done/total*100);}
 function cycleRecordCount(cycle=data.activeCycle){return cycle?data.records.filter(r=>r.cycleId===cycle.id).length:0;}
-function cycleActualTotal(cycle=data.activeCycle){return Object.values(cycleTimeByDiscipline(cycle)).reduce((a,b)=>a+b,0);}
+function cycleActualTotal(cycle=data.activeCycle){if(cycle&&cycle!==data.activeCycle&&Number.isFinite(Number(cycle.totalSeconds)))return Math.max(0,Number(cycle.totalSeconds));return Object.values(cycleTimeByDiscipline(cycle)).reduce((a,b)=>a+b,0);}
+function cycleRecordMetrics(records){const total=records.reduce((a,r)=>a+Number(r.total||0),0),correct=records.reduce((a,r)=>a+Number(r.correct||0),0),blank=records.reduce((a,r)=>a+Number(r.blank||0),0);return {activities:records.length,total,correct,blank,errors:Math.max(0,total-correct-blank),accuracy:total?correct/total:null};}
+function reviewCountsAreValid(total,correct,blank){return Number.isInteger(total)&&Number.isInteger(correct)&&Number.isInteger(blank)&&total>0&&correct>=0&&blank>=0&&correct+blank<=total;}
+function cycleGroupResults(included,legacy=[],records=[]){let total=0,correct=0,blank=0;for(const r of records){if(Array.isArray(r.breakdown)&&r.breakdown.length){for(const part of r.breakdown){if(!included.includes(part.discipline)&&!legacy.includes(part.discipline))continue;total+=Number(part.total||0);correct+=Number(part.correct||0);blank+=Number(part.blank||0);}}else if(included.includes(r.discipline)||legacy.includes(r.discipline)){total+=Number(r.total||0);correct+=Number(r.correct||0);blank+=Number(r.blank||0);}}return {total,correct,blank,errors:Math.max(0,total-correct-blank),accuracy:total?correct/total:null};}
 function renderCycleHistory(){
  const host=document.getElementById('cycleHistoryList');if(!host)return;
+ const openIds=new Set([...host.querySelectorAll('details[open]')].map(el=>el.dataset.cycleId));
  const items=[...(data.cycles||[])].sort((a,b)=>(b.endedAt||b.startedAt||'').localeCompare(a.endedAt||a.startedAt||''));
  if(!items.length){host.innerHTML='<div class="card muted">Nenhum ciclo concluído ainda. Quando você finalizar todas as matérias, o histórico aparecerá aqui.</div>';return;}
+ const groups=[
+  ['Matemática',['Matemática']],['Linguagens',['Linguagens']],['Biologia',['Biologia']],['Química',['Química']],['Física',['Física']],['Geografia',['Geografia']],['História',['História do Brasil','História Geral'],['História']],['Filosofia e Sociologia',['Filosofia','Sociologia'],['Filosofia e Sociologia']]
+ ];
  host.innerHTML=items.map(c=>{
   const sec=Number(c.totalSeconds||Object.values(c.timeByDiscipline||{}).reduce((a,b)=>a+Number(b||0),0));
-  const plan=c.plannedHours||cyclePlan;const done=Object.keys(c.completedSubjects||{}).length;
+  const plan=c.plannedHours||cyclePlan;const done=Object.keys(c.completedSubjects||{}).filter(k=>c.completedSubjects[k]).length;
+  const records=data.records.filter(r=>r.cycleId===c.id);const m=cycleRecordMetrics(records);
   const breakdown=Object.entries(plan).map(([d,h])=>`<div class="lineitem"><div><b>${esc(d)}</b><small>${formatStudyTime((c.timeByDiscipline||{})[d]||0)} estudadas · ${h}h planejadas</small></div><span class="pill">${c.completedSubjects&&c.completedSubjects[d]?'Concluída':'—'}</span></div>`).join('');
-  return `<details class="cycle-history-card"><summary><span><strong>Ciclo ${Number(c.number||1)}</strong><small class="cycle-history-date">${new Date(c.startedAt).toLocaleDateString('pt-BR')} – ${new Date(c.endedAt||c.completedAt||c.startedAt).toLocaleDateString('pt-BR')}</small></span><span class="pill">Concluído</span></summary><div class="cycle-history-metrics"><div><strong>${formatStudyTime(sec)}</strong><span>Tempo estudado</span></div><div><strong>${done}/${Object.keys(plan).length}</strong><span>Matérias concluídas</span></div><div><strong>${Number(c.activitiesCount||0)}</strong><span>Atividades</span></div></div><div class="cycle-history-breakdown">${breakdown}</div></details>`;
+  const subjectResults=groups.map(([label,subjects,legacy=[]])=>{const x=cycleGroupResults(subjects,legacy,records);return `<div class="lineitem"><div><b>${esc(label)}</b><small>${x.total} questões · ${x.correct} acertos</small></div><span class="pill">${x.accuracy===null?'—':Math.round(x.accuracy*100)+'%'}</span></div>`;}).join('');
+  const startDate=c.startedAt?new Date(c.startedAt):null,endDate=c.endedAt||c.completedAt?new Date(c.endedAt||c.completedAt):startDate;
+  const dates=startDate&&endDate&&!Number.isNaN(startDate.getTime())&&!Number.isNaN(endDate.getTime())?`${startDate.toLocaleDateString('pt-BR')} – ${endDate.toLocaleDateString('pt-BR')}`:'Datas indisponíveis';
+  return `<details class="cycle-history-card" data-cycle-id="${esc(c.id)}" ${openIds.has(c.id)?'open':''}><summary><span><strong>Ciclo ${Number(c.number||1)}</strong><small class="cycle-history-date">${dates}</small></span><span class="pill">Concluído</span></summary><div class="cycle-history-metrics"><div><strong>${formatStudyTime(sec)}</strong><span>Tempo estudado</span></div><div><strong>${done}/${Object.keys(plan).length}</strong><span>Matérias concluídas</span></div><div><strong>${m.activities}</strong><span>Atividades</span></div><div><strong>${m.total}</strong><span>Questões</span></div><div><strong>${m.accuracy===null?'—':Math.round(m.accuracy*100)+'%'}</strong><span>Aproveitamento</span></div></div><div class="cycle-history-breakdown"><strong>Tempo por matéria</strong>${breakdown}<strong style="display:block;margin-top:12px">Resultados por matéria</strong>${subjectResults}</div></details>`;
  }).join('');
 }
 function renderCycleStats(){
  const cycle=data.activeCycle||(data.cycles||[]).slice(-1)[0]||null;
  const seconds=cycle?cycleActualTotal(cycle):0;
- const start=cycle?new Date(cycle.startedAt):null;
- const days=cycle?Math.max(1,Math.ceil((Date.now()-start.getTime())/86400000)):1;
+ const start=cycle&&cycle.startedAt?new Date(cycle.startedAt):null;
+ const end=cycle&&!data.activeCycle?new Date(cycle.endedAt||cycle.completedAt||cycle.startedAt||Date.now()):new Date();
+ const days=cycle&&start&&!Number.isNaN(start.getTime())?Math.max(1,Math.ceil((end.getTime()-start.getTime())/86400000)):1;
  const avg=seconds/days;
  const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value;};
  set('performanceCycleTime',formatStudyTime(seconds));set('performanceDailyAverage',formatStudyTime(avg));
  const chart=document.getElementById('cycleSubjectTimeChart');
- if(chart){
-  const values=cycle?cycleTimeByDiscipline(cycle):{};const max=Math.max(1,...Object.values(values));
-  chart.innerHTML=cycle?Object.entries(cycle.plannedHours||cyclePlan).map(([d])=>{const sec=values[d]||0;return `<div class="cycle-time-row"><span>${esc(d)}</span><span class="cycle-time-track"><i style="width:${Math.min(100,sec/max*100)}%"></i></span><strong>${formatStudyTime(sec)}</strong></div>`;}).join(''):'<div class="cycle-chart-empty">O próximo ciclo ainda não foi iniciado.</div>';
- }
+ if(chart){const values=cycle?cycleTimeByDiscipline(cycle):{};const max=Math.max(1,...Object.values(values));chart.innerHTML=cycle?Object.entries(cycle.plannedHours||cyclePlan).map(([d])=>{const sec=values[d]||0;return `<div class="cycle-time-row"><span>${esc(d)}</span><span class="cycle-time-track"><i style="width:${Math.min(100,sec/max*100)}%"></i></span><strong>${formatStudyTime(sec)}</strong></div>`;}).join(''):'<div class="cycle-chart-empty">O próximo ciclo ainda não foi iniciado.</div>';}
  renderCycleHistory();
 }
 function renderCycleUI(){
@@ -2352,12 +2417,13 @@ function reopenCycleSubject(d){const cycle=data.activeCycle;if(!cycle||!cycle.co
 function finishStudyCycle(){
  const cycle=data.activeCycle;if(!cycle)return;
  if(timerState&&timerState.status==='running'&&typeof window.pauseTimer==='function')window.pauseTimer();
+ else if(timerState&&timerState.status==='phase-complete'){timerState.status='paused';timerState.deadlineAt=0;timerState.nextPhase=null;saveTimerState();drawTimer(true);}
  if(activeStarted){collectActiveSeconds();persistActiveSeconds();}activeContext=null;activeStarted=0;
  const times=cycleTimeByDiscipline(cycle),total=Object.values(times).reduce((a,b)=>a+b,0);
- const archived={...cycle,completedSubjects:{...cycle.completedSubjects},timeByDiscipline:times,totalSeconds:total,activitiesCount:cycleRecordCount(cycle),sessionsCount:data.sessions.filter(s=>s.cycleId===cycle.id).length,endedAt:new Date().toISOString(),status:'completed'};
- data.cycles.push(archived);data.activeCycle=null;save();renderCycleUI();toast('Ciclo concluído! Parabéns pelo percurso.');
+ const cycleRecords=data.records.filter(r=>r.cycleId===cycle.id);const archived={...cycle,completedSubjects:{...cycle.completedSubjects},timeByDiscipline:times,totalSeconds:total,activitiesCount:cycleRecords.length,questionsCount:cycleRecordMetrics(cycleRecords).total,recordMetrics:cycleRecordMetrics(cycleRecords),sessionsCount:data.sessions.filter(s=>s.cycleId===cycle.id).length,endedAt:new Date().toISOString(),status:'completed'};
+ data.cycles.push(archived);data.activeCycle=null;save();renderCycleUI();window.refreshRecordViews?.();toast('Ciclo concluído! Parabéns pelo percurso.');
 }
-function restartStudyCycle(){if(data.activeCycle||!(data.cycles||[]).length)return;data.activeCycle=createCycleObject();save();renderCycleUI();toast('Novo ciclo iniciado.');}
+function restartStudyCycle(){if(data.activeCycle||!(data.cycles||[]).length)return;data.activeCycle=createCycleObject();data.cycleSetupComplete=true;save();renderCycleUI();window.refreshRecordViews?.();toast('Novo ciclo iniciado.');}
 window.restartStudyCycle=restartStudyCycle;
 document.getElementById('restartCycleBtn')?.addEventListener('click',restartStudyCycle);
 
@@ -2390,10 +2456,109 @@ function openTopic(d,t){
 }
 function renderSteps(){let {d,t}=selected,x=stateFor(d,t),box=document.getElementById('stepList');box.innerHTML=steps.map((name,i)=>{let done=!!x.steps[i],locked=i>0&&!x.steps[i-1],stamp=x.events.filter(e=>e.step===i).slice(-1)[0]?.at;return `<label class="check-step ${locked?'locked':''}"><input type="checkbox" data-step="${i}" ${done?'checked':''} ${locked?'disabled':''}><span><strong>${name}</strong>${done?'<small>Concluída</small>':''}</span><span class="step-date">${stamp?new Date(stamp).toLocaleString('pt-BR'):(locked?'Bloqueada':'Pendente')}</span></label>`}).join('');box.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>toggleStep(Number(el.dataset.step),el.checked));}
 function toggleStep(i,checked){let {d,t}=selected,x=stateFor(d,t);if(checked&&i>0&&!x.steps[i-1]){toast('Conclua a etapa anterior primeiro.');renderSteps();return;}if(!checked){if(!confirm('Desmarcar esta etapa? O histórico de confirmações será preservado. As etapas seguintes também voltarão a ficar pendentes.')){renderSteps();return;}for(let j=i;j<5;j++)x.steps[j]=false;x.events.push({type:'undo',step:i,at:new Date().toISOString()});}else{x.steps[i]=true;x.events.push({type:'complete',step:i,at:new Date().toISOString()});}save();renderTopics(d,t);refreshRecommendationUI();if(x.steps.slice(0,3).every(Boolean)&&!x.enrolled&&!x.prompted){x.prompted=true;save();enrollPrompt(d,t,true);}}
-function enrollPrompt(d,t,auto=false){let x=stateFor(d,t),modal=document.getElementById('learningModal');modal.hidden=false;modal.querySelector('[data-modal-title]').textContent='Adicionar às revisões';modal.querySelector('#modalDifficulty').value=x.difficulty||'medium';modal.querySelector('#modalIncidence').value=x.incidence||'medium';modal.querySelector('#modalSkip').onclick=()=>{modal.hidden=true;toast('Você pode adicionar este assunto às revisões depois.');};modal.querySelector('#modalSave').onclick=()=>{x.difficulty=modal.querySelector('#modalDifficulty').value;x.incidence=modal.querySelector('#modalIncidence').value;x.enrolled=true;x.cycle=(x.cycle||0)+1;x.completed=false;x.reviewIndex=0;x.nextReviewAt=addDays(new Date(),intervals[0]);x.events.push({type:'enrolled',at:new Date().toISOString(),cycle:x.cycle});save();modal.hidden=true;renderReviews();toast('Assunto adicionado às revisões.');};}
-function renderReviews(){let items=Object.values(data.topics).filter(x=>x.enrolled),today=dateKey(new Date()),f=document.getElementById('reviewFilter')?.value||'all';let due=items.filter(x=>x.nextReviewAt&&dateKey(x.nextReviewAt)<=today&&!x.completed).length,over=items.filter(x=>x.nextReviewAt&&dateKey(x.nextReviewAt)<today&&!x.completed).length,up=items.filter(x=>x.nextReviewAt&&dateKey(x.nextReviewAt)>today&&!x.completed).length,done=items.filter(x=>x.completed).length;let sum=document.getElementById('reviewSummary');if(sum)sum.innerHTML=[['Hoje',due,''],['Atrasadas',over,''],['Próximas',up,''],['Consolidadas',done,'']].map(a=>`<div class="subject"><div class="eyebrow">${a[0]}</div><strong style="font:30px Georgia,serif">${a[1]}</strong></div>`).join('');let list=document.getElementById('reviewList');if(!list)return;let filtered=items.filter(x=>{let k=x.nextReviewAt?dateKey(x.nextReviewAt):'';return f==='all'?true:f==='today'?k===today&&!x.completed:f==='overdue'?k<today&&!x.completed:f==='upcoming'?k>today&&!x.completed:f==='done'?x.completed:false;}).sort((a,b)=>(a.nextReviewAt||'').localeCompare(b.nextReviewAt||''));list.innerHTML=filtered.length?filtered.map(x=>{let a=accuracy(x.discipline,x.topic),idx=x.reviewIndex||0;return `<article class="review-card"><h3>${esc(x.topic)}</h3><div class="review-meta">${esc(x.discipline)} · ${esc(x.difficulty)} · Revisão ${Math.min(idx+1,4)} de 4<br>${a.value===null?'Desempenho sem dados':Math.round(a.value*100)+'% · '+a.source+' ('+a.n+' questões)'}<br>${x.completed?'Ciclo consolidado':x.nextReviewAt?'Próxima: '+new Date(x.nextReviewAt).toLocaleDateString('pt-BR'):'Sem data'}</div><div class="review-actions">${!x.completed?`<button class="primary" data-review="${esc(x.id)}">Registrar revisão</button>`:''}<button class="secondary" data-topic-open="${esc(x.id)}">Checklist</button></div></article>`}).join(''):'<div class="card muted">Nenhum assunto nesta categoria.</div>';list.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>completeReview(b.dataset.review));list.querySelectorAll('[data-topic-open]').forEach(b=>b.onclick=()=>{let x=data.topics[b.dataset.topicOpen];openStudyArea('topics');document.getElementById('topicSubject').value=x.discipline;document.getElementById('topicSubject').dispatchEvent(new Event('change'));openTopic(x.discipline,x.topic);});let hist=document.getElementById('reviewHistory');if(hist){let ev=items.flatMap(x=>x.events.filter(e=>e.type==='review').map(e=>({x,e}))).sort((a,b)=>b.e.at.localeCompare(a.e.at));hist.innerHTML=ev.length?ev.map(({x,e})=>`<div class="lineitem"><div><b>${esc(x.topic)}</b><small>${new Date(e.at).toLocaleString('pt-BR')} · ${e.index}/4 · ${e.result||'Revisão registrada'}</small></div><span class="pill">Ciclo ${e.cycle}</span></div>`).join(''):'<span class="muted">As revisões concluídas aparecerão aqui.</span>';}}
-function completeReview(id){let x=data.topics[id];if(!x)return;let a=accuracy(x.discipline,x.topic),suggest=a.value!==null&&a.value<.6?1:a.value!==null&&a.value<.85?Math.max(2,intervals[Math.min(x.reviewIndex||0,3)]):intervals[Math.min(x.reviewIndex||0,3)];x.events.push({type:'review',at:new Date().toISOString(),index:(x.reviewIndex||0)+1,cycle:x.cycle,result:a.value===null?'Sem resultado':Math.round(a.value*100)+'%',accuracySource:a.source,questions:a.n});x.reviewIndex=(x.reviewIndex||0)+1;if(x.reviewIndex>=4){x.completed=true;x.nextReviewAt=null;}else{x.nextReviewAt=addDays(new Date(),suggest); }save();renderReviews();toast(x.completed?'Ciclo concluído. Histórico preservado.':'Revisão registrada.');}
-function initUI(){let modal=document.createElement('div');modal.id='learningModal';modal.className='learning-modal';modal.hidden=true;modal.innerHTML=`<div class="modal-card"><div class="eyebrow">Planejamento de revisão</div><h2 data-modal-title>Adicionar às revisões</h2><label for="modalDifficulty">Dificuldade pessoal</label><select id="modalDifficulty"><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select><label for="modalIncidence">Incidência no ENEM</label><select id="modalIncidence"><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select><div class="modal-actions"><button class="secondary" id="modalSkip">Agora não</button><button class="primary" id="modalSave">Adicionar</button></div></div>`;document.body.append(modal);
+function enrollPrompt(d,t,auto=false){
+ let x=stateFor(d,t),modal=document.getElementById('learningModal');modal.hidden=false;
+ modal.querySelector('[data-modal-title]').textContent='Adicionar às revisões';
+ modal.querySelector('#modalDifficulty').value=x.difficulty||'medium';modal.querySelector('#modalIncidence').value=x.incidence||'medium';
+ modal.querySelector('#modalSkip').onclick=()=>{modal.hidden=true;toast('Você pode adicionar este assunto às revisões depois.');};
+ modal.querySelector('#modalSave').onclick=()=>{
+  x.difficulty=modal.querySelector('#modalDifficulty').value;x.incidence=modal.querySelector('#modalIncidence').value;
+  x.enrolled=true;x.cycle=(Number(x.cycle)||0)+1;x.completed=false;x.reviewIndex=0;
+  x.enrolledAt=new Date().toISOString();x.reviewCycleStartedAt=x.enrolledAt;x.nextReviewAt=addDays(new Date(),intervals[0]);
+  x.events=x.events||[];x.events.push({type:'enrolled',at:x.enrolledAt,cycle:x.cycle});save();modal.hidden=true;renderReviews();toast('Assunto adicionado às revisões.');
+ };
+}
+const cautiousIntervals=[1,4,12,27];
+function lastReviewEvent(x){return [...(x.events||[])].filter(e=>e.type==='review').sort((a,b)=>(b.at||'').localeCompare(a.at||''))[0]||null;}
+function topicLastActivityAt(x){
+ const stamps=[];
+ data.sessions.forEach(s=>{if(disciplineMatches(s.discipline,x.discipline)&&topicMatches(s.topic||'',x.topic)&&s.at)stamps.push(s.at);});
+ data.records.forEach(r=>{
+  const when=r.at||r.date||r.createdAt;if(!when)return;
+  if(Array.isArray(r.breakdown)&&r.breakdown.length){if(r.breakdown.some(part=>matchesDiscipline(part.discipline||'',x.discipline)&&topicMatches(part.topic||'',x.topic)))stamps.push(when);}
+  else if(matchesDiscipline(r.discipline||'',x.discipline)&&topicMatches(r.topic||'',x.topic))stamps.push(when);
+ });
+ if(x.lastReviewAt)stamps.push(x.lastReviewAt);
+ if(!stamps.length)return null;
+ return stamps.sort().slice(-1)[0];
+}
+function reviewPriority(x){
+ const last=lastReviewEvent(x);const hasLastScore=!!last&&last.accuracy!==null&&last.accuracy!==undefined&&Number.isFinite(Number(last.accuracy));const base=hasLastScore?{value:Number(last.accuracy),n:Number(last.total||0)}:accuracy(x.discipline,x.topic);
+ const lastAt=topicLastActivityAt(x);const days=lastAt?Math.max(0,Math.floor((Date.now()-new Date(lastAt).getTime())/86400000)):30;
+ const difficulty={low:5,medium:13,high:22}[x.difficulty]??13;
+ const incidence={low:4,medium:9,high:14}[x.incidence]??9;
+ const performance=base.value===null?13:base.value<.6?28:base.value<.85?17:5;
+ const recency=days>=14?22:days>=7?16:days>=3?9:3;
+ const repetitions=Math.min(8,(Number(x.failedReviewCycles||0)*3)+(Number(x.reviewIndex||0)));
+ const score=difficulty+incidence+performance+recency+repetitions;
+ const label=score>=65?'Alta':score>=45?'Média':'Normal';
+ return {score,label,days,lastAt,result:base};
+}
+function showReviewPrompt(id){
+ const x=Object.values(data.topics).find(t=>t.id===id);if(!x)return;
+ const modal=document.getElementById('reviewModal');modal.dataset.topicId=id;
+ modal.querySelector('#reviewTopicTitle').textContent=x.topic;
+ modal.querySelector('#reviewTotal').value='';modal.querySelector('#reviewCorrect').value='';modal.querySelector('#reviewBlank').value='0';
+ modal.querySelector('#reviewWithoutQuestions').checked=false;
+ ['reviewTotal','reviewCorrect','reviewBlank'].forEach(k=>modal.querySelector('#'+k).disabled=false);
+ modal.hidden=false;
+}
+function scheduleNextReview(x,nextIndex,mode,now){
+ const milestones=mode==='standard'?intervals:cautiousIntervals;
+ const base=new Date(x.reviewCycleStartedAt||x.enrolledAt||now.toISOString());
+ const target=new Date(base);target.setDate(target.getDate()+milestones[nextIndex]);
+ if(target>now)return target.toISOString();
+ const previous=milestones[Math.max(0,nextIndex-1)]||0;
+ const gap=Math.max(1,milestones[nextIndex]-previous);
+ return addDays(now,gap);
+}
+function completeReview(id,result={}){
+ const x=Object.values(data.topics).find(t=>t.id===id);if(!x||!x.enrolled||x.completed)return;
+ const now=new Date(),hasQuestions=Number(result.total)>0;
+ let total=0,correct=0,blank=0,score=null;
+ if(hasQuestions){total=Number(result.total);correct=Number(result.correct);blank=Number(result.blank||0);if(!reviewCountsAreValid(total,correct,blank)){toast('Confira a quantidade de questões e acertos da revisão.');return;}score=correct/total;}
+ const currentCycle=Number(x.cycle)||1,currentIndex=Number(x.reviewIndex)||0;
+ const event={type:'review',at:now.toISOString(),index:currentIndex+1,cycle:currentCycle,total:hasQuestions?total:0,correct:hasQuestions?correct:0,blank:hasQuestions?blank:0,accuracy:score,result:score===null?'Sem questões':Math.round(score*100)+'%',mode:score===null?'content-only':score>=.85?'standard':score>=.6?'cautious':'reinforce'};
+ x.events=x.events||[];x.events.push(event);x.lastReviewAt=event.at;
+ if(score!==null&&score<.6){
+  x.failedReviewCycles=(Number(x.failedReviewCycles)||0)+1;x.cycle=currentCycle+1;x.reviewIndex=0;x.completed=false;x.reviewCycleStartedAt=now.toISOString();x.nextReviewAt=addDays(now,1);
+  save();renderReviews();window.refreshRecordViews?.();toast('Resultado abaixo de 60%. Um novo ciclo de reforço foi iniciado.');return;
+ }
+ x.reviewIndex=currentIndex+1;
+ if(x.reviewIndex>=4){x.completed=true;x.nextReviewAt=null;}
+ else{x.completed=false;x.nextReviewAt=scheduleNextReview(x,x.reviewIndex,score===null||score<.85?'cautious':'standard',now);}
+ save();renderReviews();window.refreshRecordViews?.();toast(x.completed?'Ciclo de revisão concluído. Histórico preservado.':'Revisão registrada.');
+}
+function restartReviewCycle(id){const x=Object.values(data.topics).find(t=>t.id===id);if(!x||!x.completed)return;x.cycle=(Number(x.cycle)||0)+1;x.reviewIndex=0;x.completed=false;x.reviewCycleStartedAt=new Date().toISOString();x.nextReviewAt=addDays(new Date(),1);x.events=x.events||[];x.events.push({type:'restart',at:new Date().toISOString(),cycle:x.cycle});save();renderReviews();toast('Novo ciclo de revisão iniciado.');}
+function renderReviews(){
+ const items=Object.values(data.topics).filter(x=>x.enrolled),today=dateKey(new Date()),f=document.getElementById('reviewFilter')?.value||'all';
+ const active=items.filter(x=>!x.completed&&x.nextReviewAt),due=active.filter(x=>dateKey(x.nextReviewAt)===today).length,over=active.filter(x=>dateKey(x.nextReviewAt)<today).length,up=active.filter(x=>dateKey(x.nextReviewAt)>today).length,done=items.filter(x=>x.completed).length;
+ const sum=document.getElementById('reviewSummary');if(sum)sum.innerHTML=[['Hoje',due],['Atrasadas',over],['Próximas',up],['Consolidadas',done]].map(([label,value])=>`<div class="subject"><div class="eyebrow">${label}</div><strong style="font:30px Georgia,serif">${value}</strong></div>`).join('');
+ const list=document.getElementById('reviewList');if(!list)return;
+ const filtered=items.filter(x=>{const k=x.nextReviewAt?dateKey(x.nextReviewAt):'';return f==='all'?true:f==='today'?k===today&&!x.completed:f==='overdue'?!!k&&k<today&&!x.completed:f==='upcoming'?k>today&&!x.completed:f==='done'?x.completed:false;}).sort((a,b)=>{const pa=reviewPriority(a).score,pb=reviewPriority(b).score;return pb-pa||(a.nextReviewAt||'').localeCompare(b.nextReviewAt||'');});
+ list.innerHTML=filtered.length?filtered.map(x=>{
+  const p=reviewPriority(x),idx=Number(x.reviewIndex)||0,last=lastReviewEvent(x),fallback=accuracy(x.discipline,x.topic);
+  const performance=last?`${last.result||'Sem resultado na última revisão'} · última revisão`:fallback.value===null?'Sem dados de questões':`${Math.round(fallback.value*100)}% · ${fallback.source} (${fallback.n} questões)`;
+  const lastStudy=p.lastAt?`Último estudo: ${new Date(p.lastAt).toLocaleDateString('pt-BR')} · há ${p.days} dia(s)`:'Sem sessão de estudo registrada';
+  const status=x.completed?'Ciclo consolidado':x.nextReviewAt?'Próxima: '+new Date(x.nextReviewAt).toLocaleDateString('pt-BR'):'Sem data';
+  return `<article class="review-card"><h3>${esc(x.topic)}</h3><div class="review-meta">${esc(x.discipline)} · Dificuldade ${esc(x.difficulty||'medium')} · Incidência ${esc(x.incidence||'medium')}<br>Revisão ${Math.min(idx+1,4)} de 4 · ${performance}<br>${lastStudy}<br>${status}</div><div class="review-actions"><span class="review-tag">Prioridade ${p.label}</span>${!x.completed?`<button class="primary" data-review="${esc(x.id)}">Registrar revisão</button>`:`<button class="secondary" data-review-restart="${esc(x.id)}">Iniciar novo ciclo</button>`}<button class="secondary" data-topic-open="${esc(x.id)}">Checklist</button></div></article>`;
+ }).join(''):'<div class="card muted">Nenhum assunto nesta categoria.</div>';
+ list.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>showReviewPrompt(b.dataset.review));
+ list.querySelectorAll('[data-review-restart]').forEach(b=>b.onclick=()=>restartReviewCycle(b.dataset.reviewRestart));
+ list.querySelectorAll('[data-topic-open]').forEach(b=>b.onclick=()=>{let x=Object.values(data.topics).find(t=>t.id===b.dataset.topicOpen);if(!x)return;openStudyArea('topics');document.getElementById('topicSubject').value=x.discipline;document.getElementById('topicSubject').dispatchEvent(new Event('change'));openTopic(x.discipline,x.topic);});
+ const hist=document.getElementById('reviewHistory');if(hist){const ev=items.flatMap(x=>(x.events||[]).filter(e=>e.type==='review'||e.type==='restart').map(e=>({x,e}))).sort((a,b)=>b.e.at.localeCompare(a.e.at));hist.innerHTML=ev.length?ev.map(({x,e})=>`<div class="lineitem"><div><b>${esc(x.topic)}</b><small>${new Date(e.at).toLocaleString('pt-BR')} · ${e.type==='restart'?'Novo ciclo iniciado':`Revisão ${e.index}/4 · ${e.result||'Registrada'}`}</small></div><span class="pill">Ciclo ${e.cycle}</span></div>`).join(''):'<span class="muted">As revisões concluídas aparecerão aqui.</span>';}
+}
+function initUI(){
+ let modal=document.createElement('div');modal.id='learningModal';modal.className='learning-modal';modal.hidden=true;modal.innerHTML=`<div class="modal-card"><div class="eyebrow">Planejamento de revisão</div><h2 data-modal-title>Adicionar às revisões</h2><label for="modalDifficulty">Dificuldade pessoal</label><select id="modalDifficulty"><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select><label for="modalIncidence">Incidência no ENEM</label><select id="modalIncidence"><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select><div class="modal-actions"><button class="secondary" id="modalSkip">Agora não</button><button class="primary" id="modalSave">Adicionar</button></div></div>`;document.body.append(modal);
+ const reviewModal=document.createElement('div');reviewModal.id='reviewModal';reviewModal.className='learning-modal';reviewModal.hidden=true;reviewModal.innerHTML=`<div class="modal-card"><div class="eyebrow">Registro de revisão</div><h2 id="reviewTopicTitle">Assunto</h2><p class="muted" style="font-size:12px">Informe o resultado desta revisão. Ele não será substituído por uma nota antiga.</p><label for="reviewTotal">Questões realizadas</label><input id="reviewTotal" type="number" min="1" step="1" placeholder="Ex.: 10" style="width:100%"><label for="reviewCorrect">Acertos</label><input id="reviewCorrect" type="number" min="0" step="1" placeholder="Ex.: 8" style="width:100%"><label for="reviewBlank">Em branco (opcional)</label><input id="reviewBlank" type="number" min="0" step="1" value="0" style="width:100%"><label style="display:flex;align-items:center;gap:9px"><input id="reviewWithoutQuestions" type="checkbox"> Revisão de conteúdo sem questões</label><div class="modal-actions"><button class="secondary" id="reviewCancel">Cancelar</button><button class="primary" id="reviewSave">Salvar revisão</button></div></div>`;document.body.append(reviewModal);
+ const backupModal=document.createElement('div');backupModal.id='backupModal';backupModal.className='learning-modal';backupModal.hidden=true;backupModal.innerHTML=`<div class="modal-card"><div class="eyebrow">Segurança dos dados</div><h2>Backup e restauração</h2><p class="muted" style="font-size:12px">Exporte uma cópia dos seus registros ou importe um arquivo JSON salvo anteriormente.</p><div class="modal-actions" style="justify-content:stretch;flex-wrap:wrap"><button class="secondary" id="backupCancel">Fechar</button><button class="secondary" id="backupImport">Importar JSON</button><button class="primary" id="backupExport">Exportar JSON</button></div></div>`;document.body.append(backupModal);
+ reviewModal.querySelector('#reviewWithoutQuestions').addEventListener('change',e=>{['reviewTotal','reviewCorrect','reviewBlank'].forEach(id=>reviewModal.querySelector('#'+id).disabled=e.target.checked);});
+ reviewModal.querySelector('#reviewCancel').onclick=()=>{reviewModal.hidden=true;};
+ reviewModal.querySelector('#reviewSave').onclick=()=>{const id=reviewModal.dataset.topicId,without=reviewModal.querySelector('#reviewWithoutQuestions').checked;let result={};if(!without){const totalRaw=reviewModal.querySelector('#reviewTotal').value,correctRaw=reviewModal.querySelector('#reviewCorrect').value,blankRaw=reviewModal.querySelector('#reviewBlank').value;if(totalRaw===''||correctRaw===''){toast('Informe o total de questões e os acertos, ou marque revisão sem questões.');return;}result={total:Number(totalRaw),correct:Number(correctRaw),blank:Number(blankRaw||0)};if(!reviewCountsAreValid(result.total,result.correct,result.blank)){toast('Confira o total, os acertos e as questões em branco.');return;}}reviewModal.hidden=true;completeReview(id,result);};
+ backupModal.querySelector('#backupCancel').onclick=()=>{backupModal.hidden=true;};
+ backupModal.querySelector('#backupExport').onclick=()=>{backupModal.hidden=true;window.exportData();};
+ backupModal.querySelector('#backupImport').onclick=()=>{backupModal.hidden=true;document.getElementById('backupImportInput')?.click();};
+ window.openBackupOptions=()=>{backupModal.hidden=false;};
 let select=document.getElementById('topicSubject');select.addEventListener('change',()=>{let d=select.value;document.getElementById('topicsEmpty').hidden=!!d;document.getElementById('topicsSelected').hidden=!d;document.getElementById('topicsSelectedName').textContent=d;if(d){selected=null;expandedTopic=null;renderTopics(d,null);}});
 let revFilter=document.getElementById('reviewFilter');revFilter?.addEventListener('change',renderReviews);
 window.populateTimerTopics=function(subject,selected=''){let select=document.getElementById('timerTopic');if(!select)return;let opts=subject==='História'?[...(disciplines['História do Brasil']||[]),...(disciplines['História Geral']||[])]:subject==='Filosofia e Sociologia'?[...(disciplines.Filosofia||[]),...(disciplines.Sociologia||[])]:disciplines[subject]||[];select.innerHTML='<option value="">Selecione um assunto</option>';opts.forEach(t=>{let o=document.createElement('option');o.value=t;o.textContent=t;select.append(o);});let other=document.createElement('option');other.value='__other__';other.textContent='Outro assunto…';select.append(other);let wrap=document.getElementById('timerTopicCustomWrap'),input=document.getElementById('timerTopicCustom');if(selected&&opts.includes(selected)){select.value=selected;if(wrap)wrap.hidden=true;}else if(selected){select.value='__other__';if(wrap)wrap.hidden=false;if(input)input.value=selected==='Outro assunto'?'':selected;}else if(wrap)wrap.hidden=true;};
@@ -2407,7 +2572,7 @@ renderCycleUI();
 let dir=document.querySelector('.subject-directory');if(dir){dir.innerHTML=Object.entries(disciplines).map(([d,topics])=>`<div class="subject" data-dir="${esc(d)}"><div class="subjecttop"><span class="mark">▤</span><span class="pill">${topics.length} assuntos</span></div><h3>${esc(d)}</h3><p>Área de estudo</p></div>`).join('');}
 // Registros integrados: cada atividade é um evento único; os recortes por matéria/assunto são detalhes do mesmo evento.
 const recordDisciplines=Object.keys(disciplines);
-const recordToday=()=>new Date().toISOString().slice(0,10);
+const recordToday=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
 const selectMarkup=(id,values,placeholder='Selecione')=>`<select id="${id}"><option value="">${placeholder}</option>${values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}</select>`;
 function fillTopicSelect(select,discipline,selected=''){
  if(!select)return;
@@ -2440,9 +2605,9 @@ function readBreakdown(kind){
  const breakdown=[],seen=new Set();
  for(const row of rows){
   const discipline=row.querySelector('[data-discipline]').value,topic=row.querySelector('[data-topic]').value;
-  const total=Number(row.querySelector('[data-total]').value),correct=Number(row.querySelector('[data-correct]').value),blank=Number(row.querySelector('[data-blank]').value||0);
-  if(!discipline&&!row.querySelector('[data-total]').value&&!row.querySelector('[data-correct]').value)continue;
-  if(!discipline||!Number.isInteger(total)||!Number.isInteger(correct)||!Number.isInteger(blank)||total<=0||correct<0||blank<0||correct+blank>total)throw new Error('Confira os dados de cada matéria.');
+  const totalRaw=row.querySelector('[data-total]').value,correctRaw=row.querySelector('[data-correct]').value,total=Number(totalRaw),correct=Number(correctRaw),blank=Number(row.querySelector('[data-blank]').value||0);
+  if(!discipline&&!totalRaw&&!correctRaw)continue;
+  if(!discipline||totalRaw===''||correctRaw===''||!Number.isInteger(total)||!Number.isInteger(correct)||!Number.isInteger(blank)||total<=0||correct<0||blank<0||correct+blank>total)throw new Error('Confira os dados de cada matéria.');
   const uniqueKey=discipline+'::'+(topic||'');if(seen.has(uniqueKey))throw new Error('Remova resultados duplicados para a mesma matéria e assunto.');seen.add(uniqueKey);
   breakdown.push({discipline,topic,total,correct,blank,errors:total-correct-blank});
  }
@@ -2466,9 +2631,9 @@ function categoryOf(r){return r.category||'questions';}
 function dateOf(r){return r.date||r.at||r.createdAt||new Date().toISOString();}
 function formatRecordDate(value){const d=new Date(value+'T00:00:00');return Number.isNaN(d.getTime())?new Date(value).toLocaleDateString('pt-BR'):d.toLocaleDateString('pt-BR');}
 function allRecordMetrics(){return metricsFor(data.records);}
-function collectGroupResults(included,legacy=[]){
+function collectGroupResults(included,legacy=[],records=data.records){
  let total=0,correct=0,blank=0;
- for(const r of data.records){
+ for(const r of records){
   if(Array.isArray(r.breakdown)&&r.breakdown.length){
    for(const part of r.breakdown){if(!included.includes(part.discipline)&&!legacy.includes(part.discipline))continue;total+=Number(part.total||0);correct+=Number(part.correct||0);blank+=Number(part.blank||0);}
   }else if(included.includes(r.discipline)||legacy.includes(r.discipline)){
@@ -2477,23 +2642,26 @@ function collectGroupResults(included,legacy=[]){
  }
  return {total,correct,blank,errors:Math.max(0,total-correct-blank),accuracy:total?correct/total:null};
 }
-function renderDisciplinePerformance(){
+function renderDisciplinePerformance(records=data.records){
  const host=document.getElementById('disciplinePerformanceGrid');if(!host)return;
  const groups=[
   ['Matemática',['Matemática']],['Linguagens',['Linguagens']],['Biologia',['Biologia']],['Química',['Química']],['Física',['Física']],['Geografia',['Geografia']],['História',['História do Brasil','História Geral'],['História']],['Filosofia e Sociologia',['Filosofia','Sociologia'],['Filosofia e Sociologia']]
  ];
- host.innerHTML=groups.map(([label,subjects,legacy=[]])=>{const m=collectGroupResults(subjects,legacy);return `<div class="record-stat"><strong>${m.accuracy===null?'—':Math.round(m.accuracy*100)+'%'}</strong><span>${esc(label)} · ${m.total} questões</span></div>`;}).join('');
+ host.innerHTML=groups.map(([label,subjects,legacy=[]])=>{const m=collectGroupResults(subjects,legacy,records);return `<div class="record-stat"><strong>${m.accuracy===null?'—':Math.round(m.accuracy*100)+'%'}</strong><span>${esc(label)} · ${m.total} questões</span></div>`;}).join('');
 }
 function refreshRecordViews(){
  const byCategory={questions:data.records.filter(r=>categoryOf(r)==='questions'),exam:data.records.filter(r=>categoryOf(r)==='exam'),mock:data.records.filter(r=>categoryOf(r)==='mock')};
  const total=allRecordMetrics();
- document.getElementById('homeActivityCount')?.replaceChildren(document.createTextNode(String(total.activities)));
- document.getElementById('performanceAccuracy')?.replaceChildren(document.createTextNode(total.accuracy===null?'—':Math.round(total.accuracy*100)+'%'));
- document.getElementById('performanceQuestionCount')?.replaceChildren(document.createTextNode(String(total.total)));
+ const displayCycle=data.activeCycle||(data.cycles||[]).slice(-1)[0]||null;
+ const cycleRecords=displayCycle?data.records.filter(r=>r.cycleId===displayCycle.id):[];
+ const cycleMetrics=metricsFor(cycleRecords);
+ // A página Desempenho acompanha o ciclo atual (ou o último concluído); Registros continua mostrando o total geral.
+ document.getElementById('performanceAccuracy')?.replaceChildren(document.createTextNode(cycleMetrics.accuracy===null?'—':Math.round(cycleMetrics.accuracy*100)+'%'));
+ document.getElementById('performanceQuestionCount')?.replaceChildren(document.createTextNode(String(cycleMetrics.total)));
  document.getElementById('count')?.replaceChildren(document.createTextNode(String(total.activities)));
  document.getElementById('recordQuestionTotal')?.replaceChildren(document.createTextNode(String(total.total)));
  document.getElementById('recordOverallAccuracy')?.replaceChildren(document.createTextNode(total.accuracy===null?'—':Math.round(total.accuracy*100)+'%'));
- renderDisciplinePerformance();
+ renderDisciplinePerformance(cycleRecords);
  ['questions','exam','mock'].forEach((key)=>{
   const m=metricsFor(byCategory[key]),summary=document.getElementById(key==='questions'?'questionSummary':key==='exam'?'examSummary':'mockSummary');
   if(summary)summary.innerHTML=[['Atividades',m.activities],['Questões',m.total],['Acertos',m.correct],['Aproveitamento',m.accuracy===null?'—':Math.round(m.accuracy*100)+'%']].map(([label,value])=>`<div class="record-stat"><strong>${value}</strong><span>${label}</span></div>`).join('');
@@ -2523,9 +2691,9 @@ window.editRecord=editRecord;
 window.deleteRecord=deleteRecord;
 function validateCounts(total,correct,blank){return Number.isInteger(total)&&Number.isInteger(correct)&&Number.isInteger(blank)&&total>0&&correct>=0&&blank>=0&&correct+blank<=total;}
 function saveQuestionRecord(){
- const name=document.getElementById('questionName').value.trim(),discipline=qDiscipline.value,topic=document.getElementById('questionTopic').value,total=Number(document.getElementById('questionTotal').value),correct=Number(document.getElementById('questionCorrect').value),blank=Number(document.getElementById('questionBlank').value||0),date=document.getElementById('questionDate').value;
- if(!name||!discipline||!date||!validateCounts(total,correct,blank)){toast('Confira os dados da atividade.');return;}
- const existingRecord=recordEditingId?data.records.find(x=>x.id===recordEditingId):null;const record={id:recordEditingId||uid(),cycleId:existingRecord?.cycleId??data.activeCycle?.id??null,category:'questions',name,discipline,topic,total,correct,blank,errors:total-correct-blank,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString()};if(recordEditingId){const idx=data.records.findIndex(x=>x.id===recordEditingId);if(idx>=0){record.createdAt=data.records[idx].createdAt||record.createdAt;data.records[idx]=record;}else data.records.push(record);}else data.records.push(record);cancelRecordEdit('questions');save();refreshRecordViews();renderReviews();renderCycleUI();toast('Atividade salva.');
+ const name=document.getElementById('questionName').value.trim(),discipline=qDiscipline.value,topic=document.getElementById('questionTopic').value,totalRaw=document.getElementById('questionTotal').value,correctRaw=document.getElementById('questionCorrect').value,total=Number(totalRaw),correct=Number(correctRaw),blank=Number(document.getElementById('questionBlank').value||0),date=document.getElementById('questionDate').value;
+ if(!name||!discipline||!date||totalRaw===''||correctRaw===''||!Number.isInteger(total)||!Number.isInteger(correct)||!validateCounts(total,correct,blank)){toast('Confira os dados da atividade.');return;}
+ const existingRecord=recordEditingId?data.records.find(x=>x.id===recordEditingId):null;const record={id:recordEditingId||uid(),cycleId:existingRecord?(existingRecord.cycleId??null):(data.activeCycle?.id??null),category:'questions',name,discipline,topic,total,correct,blank,errors:total-correct-blank,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString()};if(recordEditingId){const idx=data.records.findIndex(x=>x.id===recordEditingId);if(idx>=0){record.createdAt=data.records[idx].createdAt||record.createdAt;data.records[idx]=record;}else data.records.push(record);}else data.records.push(record);cancelRecordEdit('questions');save();refreshRecordViews();renderReviews();renderCycleUI();toast('Atividade salva.');
 }
 window.saveQuestionRecord=saveQuestionRecord;
 function saveAssessmentRecord(kind){
@@ -2536,13 +2704,13 @@ function saveAssessmentRecord(kind){
   if(mode==='discipline'){
    breakdown=readBreakdown(prefix);total=breakdown.reduce((a,x)=>a+x.total,0);correct=breakdown.reduce((a,x)=>a+x.correct,0);blank=breakdown.reduce((a,x)=>a+x.blank,0);sourceTotal=Number(document.getElementById(prefix+'BreakdownOriginal').value)||null;
   }else{
-   total=Number(document.getElementById(prefix+'Total').value);correct=Number(document.getElementById(prefix+'Correct').value);blank=Number(document.getElementById(prefix+'Blank').value||0);sourceTotal=Number(document.getElementById(prefix+'OriginalTotal').value)||null;
-   if(!validateCounts(total,correct,blank))throw new Error('Confira a quantidade de questões, acertos e questões em branco.');
+   const totalRaw=document.getElementById(prefix+'Total').value,correctRaw=document.getElementById(prefix+'Correct').value;total=Number(totalRaw);correct=Number(correctRaw);blank=Number(document.getElementById(prefix+'Blank').value||0);sourceTotal=Number(document.getElementById(prefix+'OriginalTotal').value)||null;
+   if(totalRaw===''||correctRaw===''||!Number.isInteger(total)||!Number.isInteger(correct)||!validateCounts(total,correct,blank))throw new Error('Confira a quantidade de questões, acertos e questões em branco.');
   }
   if(sourceTotal!==null&&(!Number.isInteger(sourceTotal)||sourceTotal<total))throw new Error('O total original não pode ser menor que o total realizado.');
  }catch(e){toast(e.message||'Confira os resultados.');return;}
  if(scope==='complete'&&sourceTotal!==null&&sourceTotal!==total){toast('Uma avaliação completa deve ter o total original igual ao total realizado.');return;}
- const existingRecord=recordEditingId?data.records.find(x=>x.id===recordEditingId):null;const record={id:recordEditingId||uid(),cycleId:existingRecord?.cycleId??data.activeCycle?.id??null,category,name,scope,mode,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString(),total,correct,blank,errors:total-correct-blank,sourceTotal,breakdown,notes};
+ const existingRecord=recordEditingId?data.records.find(x=>x.id===recordEditingId):null;const record={id:recordEditingId||uid(),cycleId:existingRecord?(existingRecord.cycleId??null):(data.activeCycle?.id??null),category,name,scope,mode,date,at:new Date(date+'T12:00:00').toISOString(),createdAt:new Date().toISOString(),total,correct,blank,errors:total-correct-blank,sourceTotal,breakdown,notes};
  if(recordEditingId){const idx=data.records.findIndex(x=>x.id===recordEditingId);if(idx>=0){record.createdAt=data.records[idx].createdAt||record.createdAt;data.records[idx]=record;}else data.records.push(record);}else data.records.push(record);
  cancelRecordEdit(prefix);save();refreshRecordViews();renderReviews();renderCycleUI();toast(kind==='exam'?'Prova salva.':'Simulado salvo.');
 }
@@ -2553,15 +2721,16 @@ refreshRecordViews();
 const oldStart=window.startTimer,oldPause=window.pauseTimer,oldFinish=window.finishTimer,oldReset=window.resetTimer;
 function collectActiveSeconds(){if(activeStarted){activeAccum+=Math.max(0,Math.floor((Date.now()-activeStarted)/1000));activeStarted=0;}}
 function persistActiveSeconds(){
- if(activeAccum>0&&activeContext){data.sessions.push({id:uid(),cycleId:data.activeCycle?.id||null,discipline:activeContext.discipline,topic:activeContext.topic,seconds:activeAccum,at:new Date().toISOString()});save();activeAccum=0;}
+ if(activeAccum>0&&activeContext&&activeContext.cycleId){data.sessions.push({id:uid(),cycleId:activeContext.cycleId,discipline:activeContext.discipline,topic:activeContext.topic,seconds:activeAccum,at:new Date().toISOString()});save();activeAccum=0;}else if(activeAccum>0&&!activeContext?.cycleId){toast('Tempo não associado a um ciclo foi descartado. Reinicie o ciclo para continuar registrando sessões.');activeAccum=0;}
  refreshTopicTimes();
 }
 window.startTimer=function(){
  const wasRunning=timerState.status==='running';
+ if(!wasRunning&&!data.activeCycle){toast('Este ciclo foi concluído. Reinicie-o antes de iniciar novas sessões.');return;}
  oldStart();
  if(!wasRunning&&timerState.status==='running'&&timerState.phase!=='break'){
   if(activeAccum>0)persistActiveSeconds();
-  activeContext={discipline:timerState.subject||'Matemática',topic:timerState.topic||''};
+  activeContext={cycleId:data.activeCycle?.id||null,discipline:timerState.subject||'Matemática',topic:timerState.topic||''};
   activeStarted=Date.now();
  }
  refreshTopicTimes();
@@ -2569,14 +2738,16 @@ window.startTimer=function(){
 window.pauseTimer=function(){if(timerState.status==='running')collectActiveSeconds();oldPause();persistActiveSeconds();};
 window.finishTimer=function(){if(timerState.status==='running')collectActiveSeconds();oldFinish();persistActiveSeconds();activeContext=null;};
 window.resetTimer=function(){if(timerState.status==='running')collectActiveSeconds();persistActiveSeconds();activeContext=null;activeStarted=0;oldReset();};
+// Do not let a restored timer continue outside an active study cycle.
+if(timerState.status==='running'&&!data.activeCycle){window.pauseTimer();toast('Sessão pausada: reinicie o ciclo para continuar registrando tempo.');}
 // Keep the value in the subject row current while the timer is running.
 if(timerState.status==='running'&&timerState.phase!=='break'){
- activeContext={discipline:timerState.subject||'Matemática',topic:timerState.topic||''};
+ activeContext={cycleId:data.activeCycle?.id||null,discipline:timerState.subject||'Matemática',topic:timerState.topic||''};
  activeStarted=Date.now();
 }
 setInterval(()=>{
  if(timerState.status==='running'&&timerState.phase==='break'&&activeStarted){collectActiveSeconds();persistActiveSeconds();activeContext=null;}
- else if(timerState.status==='running'&&timerState.phase!=='break'&&!activeStarted){activeContext={discipline:timerState.subject||'Matemática',topic:timerState.topic||''};activeStarted=Date.now();}
+ else if(timerState.status==='running'&&timerState.phase!=='break'&&!activeStarted){activeContext={cycleId:data.activeCycle?.id||null,discipline:timerState.subject||'Matemática',topic:timerState.topic||''};activeStarted=Date.now();}
  else if(timerState.status!=='running'&&activeStarted){collectActiveSeconds();persistActiveSeconds();activeContext=null;}
  refreshTopicTimes();renderCycleUI();
 },1000);
@@ -2584,7 +2755,7 @@ window.addEventListener('pagehide',()=>{if(timerState.status==='running')collect
 // Import/export now includes learning history while retaining timer settings.
 window.exportData=function(){let payload={app:'Grafia Study',version:1,exportedAt:new Date().toISOString(),learning:data,timer:timerState,timerPresets:customTimerPresets};let blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='grafia-study-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('Backup exportado.');};
 // Restore a backup exported by this build, preserving a recoverable local snapshot first.
-let importInput=document.querySelector('#settings input[type=file]');if(importInput){importInput.onchange=async()=>{let file=importInput.files?.[0];if(!file)return;try{let payload=JSON.parse(await file.text());if(!payload.learning||!payload.learning.topics||!Array.isArray(payload.learning.records)||!Array.isArray(payload.learning.sessions))throw new Error('Formato inválido');if(!confirm('Importar este backup substituirá os dados atuais de aprendizagem e registros. Um backup atual será baixado antes. Continuar?')){importInput.value='';return;}window.exportData();data={...blank(),...payload.learning};save();if(payload.timer){timerState={...defaultTimerState(),...payload.timer};saveTimerState();}if(Array.isArray(payload.timerPresets)){customTimerPresets=payload.timerPresets;saveCustomTimerPresets();}toast('Backup importado. Recarregue a página para atualizar todos os dados.');setTimeout(()=>location.reload(),900);}catch(e){toast('Não foi possível importar: arquivo inválido.');}finally{importInput.value='';}};}
+let importInput=document.getElementById('backupImportInput');if(importInput){importInput.onchange=async()=>{let file=importInput.files?.[0];if(!file)return;try{let payload=JSON.parse(await file.text());if(!payload.learning||!payload.learning.topics||!Array.isArray(payload.learning.records)||!Array.isArray(payload.learning.sessions))throw new Error('Formato inválido');if(!confirm('Importar este backup substituirá os dados atuais de aprendizagem e registros. Um backup atual será baixado antes. Continuar?')){importInput.value='';return;}if(timerState.status==='running')window.pauseTimer?.();window.exportData();data={...blank(),...payload.learning};data.topics=data.topics&&typeof data.topics==='object'?data.topics:{};data.records=Array.isArray(data.records)?data.records:[];data.sessions=Array.isArray(data.sessions)?data.sessions:[];data.cycles=Array.isArray(data.cycles)?data.cycles:[];if(payload.timer){timerState={...defaultTimerState(),...payload.timer};saveTimerState();}if(Array.isArray(payload.timerPresets)){customTimerPresets=payload.timerPresets;saveCustomTimerPresets();}save();toast('Backup importado. Recarregue a página para atualizar todos os dados.');setTimeout(()=>location.reload(),900);}catch(e){toast('Não foi possível importar: arquivo inválido.');}finally{importInput.value='';}};}
 // Expand selectors to the complete recovered subject catalog.
 const recordSelect=document.getElementById('rs');if(recordSelect){recordSelect.innerHTML=['Matemática','Biologia','Química','Física','História','Geografia','Filosofia e Sociologia','Linguagens'].map(v=>`<option>${v}</option>`).join('');}
 const topicSelect=document.getElementById('topicSubject');if(topicSelect){topicSelect.innerHTML='<option value="">Selecione uma matéria</option>'+Object.keys(disciplines).map(v=>`<option>${esc(v)}</option>`).join('');}
