@@ -1245,7 +1245,7 @@ body:before,body:after{display:none!important;filter:none!important}
 <section class="page" id="study">
 <div class="study-view active" id="study-overview">
 <div class="eyebrow">Matérias</div><h1>Área de estudos</h1>
-<div class="card study-welcome"><div class="welcome-symbol">▤</div><div><h2>Matérias e planejamento</h2></div></div>
+<div class="card study-welcome"><div class="welcome-symbol">▤</div><div><h2>Área de matérias</h2></div></div>
 </div>
 <div class="study-view" id="study-cycle">
 <div class="cycle-header">
@@ -1286,7 +1286,7 @@ body:before,body:after{display:none!important;filter:none!important}
 </section>
 </div>
 <div class="study-view" id="study-subjects">
-<div class="eyebrow">Matérias / Organização</div><h1>Matérias e áreas</h1>
+<div class="eyebrow">Matérias / Organização</div><h1>Área de matérias</h1>
 <div class="grid subjects subject-directory">
 <div class="subject" style="--accent:#80bce4"><div class="subjecttop"><span class="mark" style="background:#80bce422">∑</span><span class="pill">16h</span></div><h3>Matemática</h3><p>Exatas</p></div>
 <div class="subject" style="--accent:#b6a9e6"><div class="subjecttop"><span class="mark" style="background:#b6a9e622">⚗</span><span class="pill">8h</span></div><h3>Biologia</h3><p>Ciências da natureza</p></div>
@@ -1299,12 +1299,14 @@ body:before,body:after{display:none!important;filter:none!important}
 </div>
 </div>
 <div class="study-view" id="study-topics">
-<div class="eyebrow">Matérias</div><h1>Assuntos</h1>
+<div class="topics-page-heading">
+  <div><div class="eyebrow">ÁREA DE MATÉRIAS</div><h1 id="topicsPageTitle">Assuntos</h1></div>
+  <button class="secondary topics-back-button" id="backToSubjectDirectory" type="button">← Área de matérias</button>
+</div>
+<select class="topic-select" id="topicSubject" aria-hidden="true" tabindex="-1" hidden><option value="">Selecione uma matéria</option></select>
 <div class="card topics-card">
-<label class="field-label" for="topicSubject">Matéria</label>
-<select class="topic-select" id="topicSubject"><option value="">Selecione uma matéria</option><option>Matemática</option><option>Biologia</option><option>Química</option><option>Física</option><option>História</option><option>Geografia</option><option>Filosofia e Sociologia</option><option>Linguagens</option></select>
 <div class="topics-empty" id="topicsEmpty"><div class="empty-symbol">⌕</div><strong>Escolha uma matéria</strong></div>
-<div class="topics-selected" hidden="" id="topicsSelected"><div class="eyebrow">Matéria selecionada</div><h2 id="topicsSelectedName"></h2><div class="grid" id="topicList"></div></div>
+<div class="topics-selected" hidden="" id="topicsSelected"><div class="eyebrow">Assuntos e checklists</div><h2 id="topicsSelectedName"></h2><div class="grid" id="topicList"></div></div>
 </div>
 </div>
 <div class="study-view" id="study-reviews">
@@ -1536,7 +1538,7 @@ body:before,body:after{display:none!important;filter:none!important}
 <span aria-hidden="true" class="nav-divider"></span>
 <div class="nav-sub-items" id="studyNavItems">
 <button class="nav-item sub-item" data-sub="cycle" onclick="openStudyArea('cycle')"><span class="nav-icon">⟳</span><span class="nav-label">Ciclo</span></button>
-<button class="nav-item sub-item" data-sub="subjects" onclick="openStudyArea('subjects')"><span class="nav-icon">▤</span><span class="nav-label">Matérias e áreas</span></button>
+<button class="nav-item sub-item" data-sub="subjects" onclick="openStudyArea('subjects')"><span class="nav-icon">▤</span><span class="nav-label">Área de matérias</span></button>
 <button class="nav-item sub-item" data-sub="reviews" onclick="openStudyArea('reviews')"><span class="nav-icon">↻</span><span class="nav-label">Revisões</span></button>
 </div>
 <div class="nav-sub-items" hidden="" id="recordNavItems">
@@ -2138,6 +2140,29 @@ drawTimer(true);
 .assessment-row-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.assessment-row-fields label{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:11px}.assessment-row-fields label:first-child{grid-column:1/-1}.assessment-row-fields input,.assessment-row-fields select{width:100%;min-width:0}.assessment-row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:11px;color:var(--muted)}.assessment-row-head button{font-size:10px;padding:5px 8px}.assessment-total-fields{margin-top:12px}.assessment-original{margin-top:12px}.record-note{display:flex;flex-direction:column;gap:7px;color:var(--muted);font-size:12px}.record-actions{display:flex;gap:8px;flex-wrap:wrap}.record-actions button{flex:1}.record-note textarea{width:100%;resize:vertical;background:#0b1928;border:1px solid var(--line);border-radius:11px;padding:11px;color:var(--text);font:inherit}
 @media(max-width:850px){.record-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.record-layout{grid-template-columns:1fr}}
 @media(max-width:580px){.record-fields{grid-template-columns:1fr}.record-fields label.wide,.record-note{grid-column:auto}.record-summary{gap:8px}.record-stat{padding:12px}.record-stat strong{font-size:23px}.record-entry-head{flex-direction:column}.record-entry-actions{width:100%}.record-entry-actions button{flex:1}.assessment-row-fields{grid-template-columns:1fr 1fr}}
+
+/* Área de matérias: cartões navegáveis e detalhe de assuntos */
+.subject-directory-item{
+  appearance:none;-webkit-appearance:none;display:block;width:100%;min-width:0;
+  color:var(--text);font:inherit;text-align:left;cursor:pointer;
+  border:1px solid rgba(187,214,246,.14);padding:16px;
+}
+.subject-directory-item:focus-visible{outline:2px solid #a8dfff;outline-offset:4px}
+.subject-directory-item .subject-card-action{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px;color:#b8dcf5;font-size:10px;font-weight:750}
+.subject-directory-item .subject-card-action span:last-child{font-size:16px;transition:transform .2s ease}
+.subject-directory-item:hover .subject-card-action span:last-child{transform:translateX(4px)}
+.topics-page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
+.topics-page-heading h1{margin-bottom:0}
+.topics-back-button{flex:0 0 auto;margin-bottom:3px}
+#study-topics .topics-card{margin-top:0}
+#study-topics .topics-selected{margin-top:0}
+#study-topics .topics-selected h2{margin:7px 0 17px}
+#study-topics .topic-accordion{margin-top:10px}
+@media(max-width:580px){
+ .topics-page-heading{align-items:flex-start;flex-direction:column;gap:12px}
+ .topics-back-button{margin:0;width:100%}
+ .subject-directory-item{padding:14px}
+}
 </style>
 <script id="grafia-pwa-controller">
 (()=>{
@@ -2451,7 +2476,8 @@ function renderTopicPanel(d,t,panel){
 }
 function openTopic(d,t){
  let select=document.getElementById('topicSubject');
- if(select&&select.value!==d){select.value=d;select.dispatchEvent(new Event('change'));}
+ if(select&&select.value!==d){select.value=d;select.dispatchEvent(new Event('change',{bubbles:true}));}
+ const pageTitle=document.getElementById('topicsPageTitle');if(pageTitle)pageTitle.textContent=d;
  renderTopics(d,t);
 }
 function renderSteps(){let {d,t}=selected,x=stateFor(d,t),box=document.getElementById('stepList');box.innerHTML=steps.map((name,i)=>{let done=!!x.steps[i],locked=i>0&&!x.steps[i-1],stamp=x.events.filter(e=>e.step===i).slice(-1)[0]?.at;return `<label class="check-step ${locked?'locked':''}"><input type="checkbox" data-step="${i}" ${done?'checked':''} ${locked?'disabled':''}><span><strong>${name}</strong>${done?'<small>Concluída</small>':''}</span><span class="step-date">${stamp?new Date(stamp).toLocaleString('pt-BR'):(locked?'Bloqueada':'Pendente')}</span></label>`}).join('');box.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>toggleStep(Number(el.dataset.step),el.checked));}
@@ -2559,7 +2585,24 @@ function initUI(){
  backupModal.querySelector('#backupExport').onclick=()=>{backupModal.hidden=true;window.exportData();};
  backupModal.querySelector('#backupImport').onclick=()=>{backupModal.hidden=true;document.getElementById('backupImportInput')?.click();};
  window.openBackupOptions=()=>{backupModal.hidden=false;};
-let select=document.getElementById('topicSubject');select.addEventListener('change',()=>{let d=select.value;document.getElementById('topicsEmpty').hidden=!!d;document.getElementById('topicsSelected').hidden=!d;document.getElementById('topicsSelectedName').textContent=d;if(d){selected=null;expandedTopic=null;renderTopics(d,null);}});
+let select=document.getElementById('topicSubject');
+select.addEventListener('change',()=>{
+ let d=select.value;
+ document.getElementById('topicsEmpty').hidden=!!d;
+ document.getElementById('topicsSelected').hidden=!d;
+ document.getElementById('topicsSelectedName').textContent=d;
+ const pageTitle=document.getElementById('topicsPageTitle');if(pageTitle)pageTitle.textContent=d||'Assuntos';
+ if(d){selected=null;expandedTopic=null;renderTopics(d,null);}
+});
+function openDisciplineTopics(d){
+ if(!Object.prototype.hasOwnProperty.call(disciplines,d))return;
+ const picker=document.getElementById('topicSubject');
+ picker.value=d;
+ picker.dispatchEvent(new Event('change',{bubbles:true}));
+ openStudyArea('topics');
+}
+window.openDisciplineTopics=openDisciplineTopics;
+document.getElementById('backToSubjectDirectory')?.addEventListener('click',()=>openStudyArea('subjects'));
 let revFilter=document.getElementById('reviewFilter');revFilter?.addEventListener('change',renderReviews);
 window.populateTimerTopics=function(subject,selected=''){let select=document.getElementById('timerTopic');if(!select)return;let opts=subject==='História'?[...(disciplines['História do Brasil']||[]),...(disciplines['História Geral']||[])]:subject==='Filosofia e Sociologia'?[...(disciplines.Filosofia||[]),...(disciplines.Sociologia||[])]:disciplines[subject]||[];select.innerHTML='<option value="">Selecione um assunto</option>';opts.forEach(t=>{let o=document.createElement('option');o.value=t;o.textContent=t;select.append(o);});let other=document.createElement('option');other.value='__other__';other.textContent='Outro assunto…';select.append(other);let wrap=document.getElementById('timerTopicCustomWrap'),input=document.getElementById('timerTopicCustom');if(selected&&opts.includes(selected)){select.value=selected;if(wrap)wrap.hidden=true;}else if(selected){select.value='__other__';if(wrap)wrap.hidden=false;if(input)input.value=selected==='Outro assunto'?'':selected;}else if(wrap)wrap.hidden=true;};
 
@@ -2569,7 +2612,12 @@ if(timerSubjectSelect){
  timerSubjectSelect.addEventListener('change',()=>window.populateTimerTopics(timerSubjectSelect.value,''));
 }
 renderCycleUI();
-let dir=document.querySelector('.subject-directory');if(dir){dir.innerHTML=Object.entries(disciplines).map(([d,topics])=>`<div class="subject" data-dir="${esc(d)}"><div class="subjecttop"><span class="mark">▤</span><span class="pill">${topics.length} assuntos</span></div><h3>${esc(d)}</h3><p>Área de estudo</p></div>`).join('');}
+let dir=document.querySelector('.subject-directory');
+if(dir){
+ const directoryIcons={'Matemática':'∑','Linguagens':'Aa','Biologia':'♙','Química':'⬡','Física':'⌁','História do Brasil':'⌛','História Geral':'⌛','Geografia':'◎','Filosofia':'◇','Sociologia':'◌'};
+ dir.innerHTML=Object.entries(disciplines).map(([d,topics])=>`<button type="button" class="subject subject-directory-item" data-dir="${esc(d)}" aria-label="Abrir ${esc(d)}: ${topics.length} assuntos"><div class="subjecttop"><span class="mark">${directoryIcons[d]||'▤'}</span><span class="pill">${topics.length} assuntos</span></div><h3>${esc(d)}</h3><p>Matéria de estudo</p><span class="subject-card-action"><span>Ver assuntos e checklist</span><span aria-hidden="true">↗</span></span></button>`).join('');
+ dir.querySelectorAll('[data-dir]').forEach(card=>card.addEventListener('click',()=>openDisciplineTopics(card.dataset.dir)));
+}
 // Registros integrados: cada atividade é um evento único; os recortes por matéria/assunto são detalhes do mesmo evento.
 const recordDisciplines=Object.keys(disciplines);
 const recordToday=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
