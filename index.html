@@ -1286,17 +1286,16 @@ body:before,body:after{display:none!important;filter:none!important}
 </section>
 </div>
 <div class="study-view" id="study-subjects">
-<div class="eyebrow">Matérias / Organização</div><h1>Área de matérias</h1>
-<div class="grid subjects subject-directory">
-<div class="subject" style="--accent:#80bce4"><div class="subjecttop"><span class="mark" style="background:#80bce422">∑</span><span class="pill">16h</span></div><h3>Matemática</h3><p>Exatas</p></div>
-<div class="subject" style="--accent:#b6a9e6"><div class="subjecttop"><span class="mark" style="background:#b6a9e622">⚗</span><span class="pill">8h</span></div><h3>Biologia</h3><p>Ciências da natureza</p></div>
-<div class="subject" style="--accent:#e0c48c"><div class="subjecttop"><span class="mark" style="background:#e0c48c22">⌬</span><span class="pill">7h</span></div><h3>Química</h3><p>Ciências da natureza</p></div>
-<div class="subject" style="--accent:#9bd3c6"><div class="subjecttop"><span class="mark" style="background:#9bd3c622">ϟ</span><span class="pill">6h</span></div><h3>Física</h3><p>Ciências da natureza</p></div>
-<div class="subject" style="--accent:#d9aebc"><div class="subjecttop"><span class="mark" style="background:#d9aebc22">⌛</span><span class="pill">7h</span></div><h3>História</h3><p>Humanidades</p></div>
-<div class="subject" style="--accent:#a8c6df"><div class="subjecttop"><span class="mark" style="background:#a8c6df22">◎</span><span class="pill">6h</span></div><h3>Geografia</h3><p>Humanidades</p></div>
-<div class="subject" style="--accent:#c6b9e8"><div class="subjecttop"><span class="mark" style="background:#c6b9e822">◇</span><span class="pill">6h</span></div><h3>Filosofia e Sociologia</h3><p>Humanidades</p></div>
-<div class="subject" style="--accent:#e4c6a3"><div class="subjecttop"><span class="mark" style="background:#e4c6a322">Aa</span><span class="pill">6h</span></div><h3>Linguagens</h3><p>Linguagens</p></div>
-</div>
+<div class="subject-page-heading"><div><div class="eyebrow">MATÉRIAS / ORGANIZAÇÃO</div><h1>Área de matérias</h1></div></div>
+<section class="card subject-progress-overview" aria-label="Progresso geral dos assuntos">
+  <div class="subject-overview-copy"><div class="eyebrow">SEU PROGRESSO</div><h2>Seu percurso de aprendizagem</h2><p>Todos os assuntos estão disponíveis para estudo, em qualquer ordem.</p></div>
+  <div class="subject-overview-stats">
+    <div class="subject-overview-stat"><strong id="subjectTotalCount">100</strong><span>Assuntos</span></div>
+    <div class="subject-overview-stat"><strong id="subjectStartedCount">0</strong><span>Em andamento</span></div>
+    <div class="subject-overview-stat"><strong id="subjectCompletedCount">0</strong><span>Concluídos</span></div>
+  </div>
+</section>
+<div class="subject-directory-groups" id="subjectDirectory"></div>
 </div>
 <div class="study-view" id="study-topics">
 <div class="topics-page-heading">
@@ -1317,7 +1316,7 @@ body:before,body:after{display:none!important;filter:none!important}
 <div class="sectionhead"><div><div class="eyebrow">Registro permanente</div><h2>Histórico de revisões</h2></div></div><div class="card" id="reviewHistory"></div>
 </div>
 <div class="study-view" id="study-recommendations">
-<div class="eyebrow">Planejamento</div><h1>Ordem de estudos</h1>
+<div class="eyebrow">PLANEJAMENTO</div><h1>Ordem de estudos</h1><p class="muted" style="max-width:640px;font-size:12px;margin:0 0 12px">A sequência é apenas uma sugestão. Você pode abrir e estudar qualquer assunto a qualquer momento.</p>
 <div class="recommendation-list-head"><span id="recommendationProgress">0/100</span><button class="secondary" onclick="exitStudyNav()" type="button">Voltar</button></div>
 <div class="recommendation-list" id="recommendationList"></div>
 </div>
@@ -2141,16 +2140,44 @@ drawTimer(true);
 @media(max-width:850px){.record-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.record-layout{grid-template-columns:1fr}}
 @media(max-width:580px){.record-fields{grid-template-columns:1fr}.record-fields label.wide,.record-note{grid-column:auto}.record-summary{gap:8px}.record-stat{padding:12px}.record-stat strong{font-size:23px}.record-entry-head{flex-direction:column}.record-entry-actions{width:100%}.record-entry-actions button{flex:1}.assessment-row-fields{grid-template-columns:1fr 1fr}}
 
-/* Área de matérias: cartões navegáveis e detalhe de assuntos */
-.subject-directory-item{
-  appearance:none;-webkit-appearance:none;display:block;width:100%;min-width:0;
-  color:var(--text);font:inherit;text-align:left;cursor:pointer;
-  border:1px solid rgba(187,214,246,.14);padding:16px;
-}
+/* Área de matérias: visão agrupada por área do ENEM e progresso por assunto. */
+.subject-page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:17px}
+.subject-page-heading h1{margin-bottom:0}
+.subject-progress-overview{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:26px;margin:18px 0 28px;padding:21px 23px;overflow:hidden;position:relative;background:radial-gradient(circle at 10% 0%,rgba(110,196,208,.13),transparent 42%),linear-gradient(135deg,rgba(29,70,78,.72),rgba(17,35,54,.88) 58%,rgba(43,38,70,.65));border-color:rgba(164,218,220,.18)}
+.subject-progress-overview:after{content:"";position:absolute;width:190px;height:190px;border:1px solid rgba(187,237,231,.08);border-radius:50%;right:23%;top:-130px;box-shadow:0 0 0 25px rgba(187,237,231,.025),0 0 0 50px rgba(187,237,231,.02);pointer-events:none}
+.subject-overview-copy{position:relative;z-index:1;min-width:0}
+.subject-overview-copy h2{font:25px Georgia,serif;margin:7px 0 5px;color:#e8f6f4}
+.subject-overview-copy p{margin:0;color:#a9c3c8;font-size:12px;line-height:1.5}
+.subject-overview-stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(75px,1fr));gap:17px}
+.subject-overview-stat{min-width:0;padding-left:15px;border-left:1px solid rgba(182,224,222,.16)}
+.subject-overview-stat strong{display:block;font:29px Georgia,serif;color:#e9f8f4;font-variant-numeric:tabular-nums}
+.subject-overview-stat span{display:block;margin-top:3px;color:#a9c4c6;font-size:10px;white-space:nowrap}
+.subject-directory-groups{display:grid;gap:25px}
+.subject-area-section{min-width:0}
+.subject-area-heading{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:12px}
+.subject-area-heading h2{font:24px Georgia,serif;letter-spacing:-.35px;margin:0;color:#e6f0f7}
+.subject-area-heading p{font-size:11px;color:var(--muted);margin:4px 0 0}
+.subject-area-count{flex:none;padding:6px 10px;border:1px solid rgba(176,211,239,.13);border-radius:999px;background:rgba(130,185,220,.07);color:#b8d4e5;font-size:10px;font-weight:750}
+.subject-area-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.subject-directory-item{appearance:none;-webkit-appearance:none;position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;min-height:183px;width:100%;padding:16px;border:1px solid rgba(186,220,238,.14);border-radius:19px;background:linear-gradient(145deg,rgba(36,61,82,.72),rgba(13,31,48,.8));color:var(--text);font:inherit;text-align:left;cursor:pointer;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 24px rgba(0,5,15,.13);transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.subject-directory-item:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.75}
+.subject-directory-item:after{content:"";position:absolute;width:112px;height:112px;right:-48px;top:-54px;border-radius:50%;background:var(--accent);opacity:.075;filter:blur(2px);pointer-events:none}
+.subject-directory-item:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent),white 24%);background:linear-gradient(145deg,rgba(43,72,95,.8),rgba(17,37,56,.88));box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 16px 30px rgba(0,5,15,.22)}
 .subject-directory-item:focus-visible{outline:2px solid #a8dfff;outline-offset:4px}
-.subject-directory-item .subject-card-action{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px;color:#b8dcf5;font-size:10px;font-weight:750}
-.subject-directory-item .subject-card-action span:last-child{font-size:16px;transition:transform .2s ease}
-.subject-directory-item:hover .subject-card-action span:last-child{transform:translateX(4px)}
+.subject-directory-top{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.subject-directory-icon{width:37px;height:37px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--accent),transparent 70%);border-radius:12px;background:color-mix(in srgb,var(--accent),transparent 88%);color:var(--accent);font-size:19px;font-weight:750;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.subject-directory-count{flex:none;padding:5px 8px;border:1px solid rgba(183,211,235,.13);border-radius:999px;background:rgba(9,24,39,.42);color:#bed3e4;font-size:9px;font-weight:750;white-space:nowrap}
+.subject-directory-main{position:relative;z-index:1;margin-top:12px;min-width:0}
+.subject-directory-main h3{margin:0;color:#edf5fa;font-size:15px;line-height:1.3;overflow-wrap:anywhere}
+.subject-directory-main p{margin:4px 0 0;color:#9eb5c9;font-size:10px}
+.subject-directory-progress{position:relative;z-index:1;margin-top:auto;padding-top:13px}
+.subject-directory-progress-line{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;color:#a6becb;font-size:9px}
+.subject-directory-progress-line b{color:#d5e7ef;font-size:10px;font-variant-numeric:tabular-nums}
+.subject-directory-track{height:5px;border-radius:99px;background:rgba(2,13,24,.65);overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.28)}
+.subject-directory-track i{display:block;height:100%;width:var(--progress,0%);border-radius:inherit;background:linear-gradient(90deg,var(--accent),#b0ddd7);box-shadow:0 0 10px color-mix(in srgb,var(--accent),transparent 50%);transition:width .25s ease}
+.subject-directory-footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:7px;margin-top:9px;color:#9eb5c6;font-size:9px}
+.subject-directory-footer span:last-child{color:var(--accent);font-size:14px;font-weight:800;transition:transform .2s ease}
+.subject-directory-item:hover .subject-directory-footer span:last-child{transform:translateX(3px)}
 .topics-page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
 .topics-page-heading h1{margin-bottom:0}
 .topics-back-button{flex:0 0 auto;margin-bottom:3px}
@@ -2158,11 +2185,32 @@ drawTimer(true);
 #study-topics .topics-selected{margin-top:0}
 #study-topics .topics-selected h2{margin:7px 0 17px}
 #study-topics .topic-accordion{margin-top:10px}
+/* Todas as etapas são independentes: a ordem visual não representa pré-requisitos. */
+.check-step{cursor:pointer;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+.check-step:hover{border-color:rgba(142,205,240,.34);background:rgba(24,48,69,.9)}
+.check-step input{flex:0 0 20px;margin:0;cursor:pointer}
+.check-step.locked{opacity:1}
+.check-step .step-date{font-variant-numeric:tabular-nums;line-height:1.4}
+@media(max-width:1050px){.subject-area-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.subject-progress-overview{grid-template-columns:1fr;gap:17px}.subject-overview-stats{max-width:440px}.subject-area-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:580px){
  .topics-page-heading{align-items:flex-start;flex-direction:column;gap:12px}
  .topics-back-button{margin:0;width:100%}
- .subject-directory-item{padding:14px}
+ .subject-progress-overview{padding:18px;border-radius:19px}
+ .subject-overview-copy h2{font-size:23px}
+ .subject-overview-stats{gap:8px}
+ .subject-overview-stat{padding-left:9px}
+ .subject-overview-stat strong{font-size:25px}
+ .subject-overview-stat span{font-size:9px}
+ .subject-area-heading h2{font-size:21px}
+ .subject-area-grid{gap:10px}
+ .subject-directory-item{padding:13px;min-height:177px;border-radius:16px}
+ .subject-directory-main h3{font-size:13px}
+ .subject-directory-count{font-size:8px;padding:5px 7px}
+ .subject-directory-footer{font-size:8px}
 }
+@media(max-width:390px){.subject-area-grid{grid-template-columns:1fr}.subject-directory-item{min-height:160px}}
+
 </style>
 <script id="grafia-pwa-controller">
 (()=>{
@@ -2253,7 +2301,7 @@ function renderRecommendationList(){
  const progress=document.getElementById('recommendationProgress');if(progress)progress.textContent=`${state.passed}/100`;
  box.innerHTML=state.statuses.map(entry=>{
   const current=!!state.current&&entry.number===state.current.number;
-  const status=entry.passed?'Já estudado':current?'Recomendado':'Na sequência';
+  const status=entry.passed?'Estudado':current?'Sugestão atual':'Disponível';
   return `<button type="button" class="recommendation-row ${current?'is-current':''} ${entry.passed?'is-passed':''}" data-open-recommendation="${entry.number}" aria-label="Abrir checklist de ${esc(entry.topic)}"><span class="recommendation-number">${String(entry.number).padStart(2,'0')}</span><span class="recommendation-topic"><b>${esc(entry.topic)}</b><small>${esc(entry.discipline)}</small></span><span class="recommendation-status">${status}</span></button>`;
  }).join('');
  box.querySelectorAll('[data-open-recommendation]').forEach(button=>{
@@ -2452,6 +2500,54 @@ function restartStudyCycle(){if(data.activeCycle||!(data.cycles||[]).length)retu
 window.restartStudyCycle=restartStudyCycle;
 document.getElementById('restartCycleBtn')?.addEventListener('click',restartStudyCycle);
 
+const subjectAreas=[
+ {name:'Exatas',description:'Matemática e raciocínio lógico',subjects:['Matemática']},
+ {name:'Linguagens',description:'Leitura, interpretação e linguagem',subjects:['Linguagens']},
+ {name:'Ciências da Natureza',description:'Biologia, Química e Física',subjects:['Biologia','Química','Física']},
+ {name:'Ciências Humanas',description:'História, Geografia, Filosofia e Sociologia',subjects:['Geografia','História do Brasil','História Geral','Filosofia','Sociologia']}
+];
+const subjectMeta={
+ 'Matemática':{icon:'∑',accent:'#80bce4'},'Linguagens':{icon:'Aa',accent:'#e4c6a3'},
+ 'Biologia':{icon:'♧',accent:'#b6a9e6'},'Química':{icon:'⌬',accent:'#e0c48c'},'Física':{icon:'ϟ',accent:'#9bd3c6'},
+ 'Geografia':{icon:'◎',accent:'#a8c6df'},'História do Brasil':{icon:'⌛',accent:'#d9aebc'},
+ 'História Geral':{icon:'◷',accent:'#c9a8b9'},'Filosofia':{icon:'◇',accent:'#c6b9e8'},'Sociologia':{icon:'◌',accent:'#a8c9c5'}
+};
+function disciplineProgress(d){
+ const topics=disciplines[d]||[];
+ let started=0,completed=0,seconds=0;
+ for(const topic of topics){
+  const x=data.topics[topicId(d,topic)];
+  const stepsDone=Array.isArray(x?.steps)?x.steps:false;
+  if(stepsDone&&stepsDone.some(Boolean))started++;
+  // O estudo inicial é considerado concluído após Aula, Questões, Caderno de erros e Anki.
+  if(stepsDone&&stepsDone.slice(0,4).length===4&&stepsDone.slice(0,4).every(Boolean))completed++;
+  seconds+=elapsed(d,topic);
+ }
+ return {total:topics.length,started,completed,seconds};
+}
+function renderSubjectDirectory(){
+ const dir=document.getElementById('subjectDirectory');if(!dir)return;
+ let total=0,started=0,completed=0;
+ const progressByDiscipline={};
+ for(const d of Object.keys(disciplines)){
+  const progress=disciplineProgress(d);progressByDiscipline[d]=progress;
+  total+=progress.total;started+=progress.started;completed+=progress.completed;
+ }
+ const setText=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=String(value);};
+ setText('subjectTotalCount',total);setText('subjectStartedCount',Math.max(0,started-completed));setText('subjectCompletedCount',completed);
+ dir.innerHTML=subjectAreas.map(area=>{
+  const count=area.subjects.reduce((sum,d)=>sum+(disciplines[d]||[]).length,0);
+  const cards=area.subjects.map(d=>{
+   const topics=disciplines[d]||[],progress=progressByDiscipline[d]||{total:topics.length,started:0,completed:0,seconds:0};
+   const meta=subjectMeta[d]||{icon:'▤',accent:'#8ecdf0'};
+   const percent=progress.total?Math.round(progress.completed/progress.total*100):0;
+   return `<button type="button" class="subject-directory-item" style="--accent:${meta.accent};--progress:${percent}%" data-dir="${esc(d)}" aria-label="Abrir ${esc(d)}: ${topics.length} assuntos, ${progress.completed} concluídos"><span class="subject-directory-top"><span class="subject-directory-icon" aria-hidden="true">${meta.icon}</span><span class="subject-directory-count">${topics.length} assuntos</span></span><span class="subject-directory-main"><h3>${esc(d)}</h3><p>${esc(area.name)}</p></span><span class="subject-directory-progress"><span class="subject-directory-progress-line"><span>Aprendizagem</span><b>${progress.completed}/${progress.total}</b></span><span class="subject-directory-track"><i></i></span></span><span class="subject-directory-footer"><span>${Math.max(0,progress.started-progress.completed)} em andamento</span><span>${formatStudyTime(progress.seconds)}</span><span aria-hidden="true">↗</span></span></button>`;
+  }).join('');
+  return `<section class="subject-area-section"><div class="subject-area-heading"><div><h2>${esc(area.name)}</h2><p>${esc(area.description)}</p></div><span class="subject-area-count">${count} assuntos</span></div><div class="subject-area-grid">${cards}</div></section>`;
+ }).join('');
+ dir.querySelectorAll('[data-dir]').forEach(card=>card.addEventListener('click',()=>openDisciplineTopics(card.dataset.dir)));
+}
+
 function renderTopics(d,expandTopic=undefined){
  let box=document.getElementById('topicList');if(!box)return;
  if(expandTopic!==undefined)expandedTopic=expandTopic;
@@ -2480,8 +2576,23 @@ function openTopic(d,t){
  const pageTitle=document.getElementById('topicsPageTitle');if(pageTitle)pageTitle.textContent=d;
  renderTopics(d,t);
 }
-function renderSteps(){let {d,t}=selected,x=stateFor(d,t),box=document.getElementById('stepList');box.innerHTML=steps.map((name,i)=>{let done=!!x.steps[i],locked=i>0&&!x.steps[i-1],stamp=x.events.filter(e=>e.step===i).slice(-1)[0]?.at;return `<label class="check-step ${locked?'locked':''}"><input type="checkbox" data-step="${i}" ${done?'checked':''} ${locked?'disabled':''}><span><strong>${name}</strong>${done?'<small>Concluída</small>':''}</span><span class="step-date">${stamp?new Date(stamp).toLocaleString('pt-BR'):(locked?'Bloqueada':'Pendente')}</span></label>`}).join('');box.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>toggleStep(Number(el.dataset.step),el.checked));}
-function toggleStep(i,checked){let {d,t}=selected,x=stateFor(d,t);if(checked&&i>0&&!x.steps[i-1]){toast('Conclua a etapa anterior primeiro.');renderSteps();return;}if(!checked){if(!confirm('Desmarcar esta etapa? O histórico de confirmações será preservado. As etapas seguintes também voltarão a ficar pendentes.')){renderSteps();return;}for(let j=i;j<5;j++)x.steps[j]=false;x.events.push({type:'undo',step:i,at:new Date().toISOString()});}else{x.steps[i]=true;x.events.push({type:'complete',step:i,at:new Date().toISOString()});}save();renderTopics(d,t);refreshRecommendationUI();if(x.steps.slice(0,3).every(Boolean)&&!x.enrolled&&!x.prompted){x.prompted=true;save();enrollPrompt(d,t,true);}}
+function renderSteps(){
+ let {d,t}=selected,x=stateFor(d,t),box=document.getElementById('stepList');if(!box)return;
+ box.innerHTML=steps.map((name,i)=>{
+  const done=!!x.steps[i],lastEvent=x.events.filter(e=>e.step===i).slice(-1)[0],stamp=lastEvent?.at;
+  const status=done?'Concluída':lastEvent?.type==='undo'?'Desmarcada':'Pendente';
+  return `<label class="check-step"><input type="checkbox" data-step="${i}" ${done?'checked':''}><span><strong>${name}</strong>${done?'<small>Concluída</small>':''}</span><span class="step-date">${stamp?`${status} · ${new Date(stamp).toLocaleDateString('pt-BR')}`:status}</span></label>`;
+ }).join('');
+ box.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>toggleStep(Number(el.dataset.step),el.checked));
+}
+function toggleStep(i,checked){
+ let {d,t}=selected,x=stateFor(d,t);
+ if(i<0||i>=steps.length)return;
+ if(!checked&&!confirm('Desmarcar apenas esta etapa? As outras etapas permanecerão como estão e o histórico será preservado.')){renderSteps();return;}
+ x.steps[i]=!!checked;x.events.push({type:checked?'complete':'undo',step:i,at:new Date().toISOString()});
+ save();renderTopics(d,t);refreshRecommendationUI();renderSubjectDirectory();
+ if(x.steps.slice(0,3).every(Boolean)&&!x.enrolled&&!x.prompted){x.prompted=true;save();enrollPrompt(d,t,true);}
+}
 function enrollPrompt(d,t,auto=false){
  let x=stateFor(d,t),modal=document.getElementById('learningModal');modal.hidden=false;
  modal.querySelector('[data-modal-title]').textContent='Adicionar às revisões';
@@ -2612,12 +2723,7 @@ if(timerSubjectSelect){
  timerSubjectSelect.addEventListener('change',()=>window.populateTimerTopics(timerSubjectSelect.value,''));
 }
 renderCycleUI();
-let dir=document.querySelector('.subject-directory');
-if(dir){
- const directoryIcons={'Matemática':'∑','Linguagens':'Aa','Biologia':'♙','Química':'⬡','Física':'⌁','História do Brasil':'⌛','História Geral':'⌛','Geografia':'◎','Filosofia':'◇','Sociologia':'◌'};
- dir.innerHTML=Object.entries(disciplines).map(([d,topics])=>`<button type="button" class="subject subject-directory-item" data-dir="${esc(d)}" aria-label="Abrir ${esc(d)}: ${topics.length} assuntos"><div class="subjecttop"><span class="mark">${directoryIcons[d]||'▤'}</span><span class="pill">${topics.length} assuntos</span></div><h3>${esc(d)}</h3><p>Matéria de estudo</p><span class="subject-card-action"><span>Ver assuntos e checklist</span><span aria-hidden="true">↗</span></span></button>`).join('');
- dir.querySelectorAll('[data-dir]').forEach(card=>card.addEventListener('click',()=>openDisciplineTopics(card.dataset.dir)));
-}
+renderSubjectDirectory();
 // Registros integrados: cada atividade é um evento único; os recortes por matéria/assunto são detalhes do mesmo evento.
 const recordDisciplines=Object.keys(disciplines);
 const recordToday=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
@@ -2812,7 +2918,7 @@ refreshRecommendationUI();
 renderCycleUI();
 }
 // Add a revision category to the nested study navigation and render after base scripts initialize.
-let baseOpen=window.openStudyArea;window.openStudyArea=function(name){if(name==='reviews'){document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-reviews'));document.querySelectorAll('.sub-item').forEach(b=>b.classList.toggle('active',b.dataset.sub==='reviews'));renderReviews();scrollTo({top:0,behavior:'auto'});return;}if(name==='recommendations'){document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-recommendations'));document.querySelectorAll('.sub-item').forEach(b=>b.classList.remove('active'));renderRecommendationList();scrollTo({top:0,behavior:'auto'});return;}baseOpen(name);};
+let baseOpen=window.openStudyArea;window.openStudyArea=function(name){if(name==='reviews'){document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-reviews'));document.querySelectorAll('.sub-item').forEach(b=>b.classList.toggle('active',b.dataset.sub==='reviews'));renderReviews();scrollTo({top:0,behavior:'auto'});return;}if(name==='recommendations'){document.querySelectorAll('.study-view').forEach(v=>v.classList.toggle('active',v.id==='study-recommendations'));document.querySelectorAll('.sub-item').forEach(b=>b.classList.remove('active'));renderRecommendationList();scrollTo({top:0,behavior:'auto'});return;}if(name==='subjects')renderSubjectDirectory();baseOpen(name);};
 window.openRecommendationList=function(){page('study');openStudyArea('recommendations');};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initUI);else initUI();
 })();
