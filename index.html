@@ -961,7 +961,7 @@ body:before,body:after{display:none!important;filter:none!important}
  .card,.setting{box-shadow:0 6px 16px rgba(0,10,14,.18),inset 0 1px 0 rgba(231,255,255,.1)!important}
  .hero{min-height:0!important}
  .nav{backdrop-filter:blur(10px) saturate(116%)!important;-webkit-backdrop-filter:blur(10px) saturate(116%)!important}
- .app{padding-bottom:128px!important}
+ .app{padding-bottom:164px!important}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -2211,6 +2211,79 @@ drawTimer(true);
 }
 @media(max-width:390px){.subject-area-grid{grid-template-columns:1fr}.subject-directory-item{min-height:160px}}
 
+
+/* Refinamento da Área de matérias e dos checklists no celular e no desktop. */
+#study-subjects,#study-topics{min-width:0;padding-bottom:26px}
+#study-topics .topics-card{padding:0;min-height:0;border:0;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:visible}
+#study-topics .topics-selected{display:flex;align-items:stretch;gap:14px;padding:0;border:0;background:transparent;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:visible}
+#study-topics .topics-selected:before,#study-topics .topics-selected:after{display:none!important;content:none!important}
+#study-topics .topics-selected[hidden],#study-topics .topics-empty[hidden]{display:none!important}
+#study-topics .topics-selected>.eyebrow{margin:0;color:#9bd8ce;letter-spacing:1.5px}
+#study-topics .topics-selected h2{margin:0 0 3px;font:clamp(24px,3vw,30px) Georgia,serif;color:#edf8f7}
+#study-topics #topicList{display:grid;grid-template-columns:minmax(0,1fr);gap:11px;width:100%;margin:2px 0 0}
+#study-topics .topic-accordion{min-width:0;margin:0;overflow:hidden;border:1px solid rgba(165,211,219,.17);border-radius:18px;background:linear-gradient(145deg,rgba(20,47,63,.94),rgba(11,29,43,.96));box-shadow:0 7px 19px rgba(0,7,13,.14),inset 0 1px 0 rgba(255,255,255,.035);transition:border-color .2s ease,box-shadow .2s ease}
+#study-topics .topic-accordion:has(.topic-row[aria-expanded="true"]){border-color:rgba(132,211,205,.42);box-shadow:0 10px 26px rgba(0,8,14,.2),0 0 0 1px rgba(132,211,205,.07)}
+#study-topics .topic-row{min-height:82px;display:flex;align-items:center;gap:14px;padding:15px 17px;border:0;border-radius:0;background:transparent}
+#study-topics .topic-row:hover{background:rgba(93,158,163,.075)}
+#study-topics .topic-row[aria-expanded="true"]{border-radius:0;background:linear-gradient(100deg,rgba(56,106,113,.24),rgba(30,64,76,.13));}
+#study-topics .topic-info{display:block;min-width:0;flex:1}
+#study-topics .topic-title-line{display:flex;align-items:center;gap:10px;min-width:0}
+#study-topics .topic-title-line b{font-size:16px;font-weight:680;line-height:1.35;letter-spacing:-.15px;color:#e7f3f4}
+#study-topics .topic-time{padding:5px 9px;border-color:rgba(145,209,210,.2);background:rgba(113,183,185,.09);color:#b5dedd;font-size:10px}
+#study-topics .topic-row small{margin-top:5px;color:#9eb8bf;font-size:11px}
+#study-topics .topic-progress{height:4px;margin-top:9px;background:rgba(0,10,17,.55)}
+#study-topics .topic-progress i{background:linear-gradient(90deg,#6bc5bd,#b8e2d5)}
+#study-topics .topic-chevron{width:29px;height:29px;display:grid;place-items:center;border:1px solid rgba(157,211,212,.16);border-radius:50%;background:rgba(134,192,195,.075);color:#a9dbd9;font-size:16px}
+#study-topics .topic-panel-wrap[hidden]{display:none!important}
+#study-topics .learning-panel{margin:0;padding:17px 17px 16px;border:0;border-top:1px solid rgba(158,211,209,.15);border-radius:0;background:linear-gradient(155deg,rgba(7,29,37,.66),rgba(9,27,39,.9))}
+#study-topics .learning-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:13px}
+#study-topics .learning-panel-head .eyebrow{font-size:9px;letter-spacing:1.45px;color:#9edbd2}
+#study-topics .learning-panel-head h2{margin:5px 0 3px;font:21px Georgia,serif;color:#eaf6f4}
+#study-topics .learning-panel-head p{margin:0;color:#9db8bd;font-size:11px;line-height:1.45}
+#study-topics .learning-count{flex:none;min-width:42px;padding:7px 9px;border:1px solid rgba(141,211,202,.23);border-radius:12px;background:rgba(98,174,165,.1);color:#b8e4d7;text-align:center;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
+#study-topics .learning-step-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#study-topics .check-step{min-width:0;min-height:64px;display:grid;grid-template-columns:20px minmax(0,1fr);align-items:center;gap:4px 10px;margin:0;padding:10px 11px;border:1px solid rgba(162,203,212,.14);border-radius:13px;background:rgba(17,42,55,.76);cursor:pointer}
+#study-topics .check-step:hover{border-color:rgba(142,205,196,.42);background:rgba(26,61,69,.8)}
+#study-topics .check-step input{width:18px;height:18px;grid-row:1 / span 2;accent-color:#82cfc0}
+#study-topics .check-step-copy{min-width:0;display:block}
+#study-topics .check-step-copy strong{display:block;color:#e4f0ef;font-size:12px;line-height:1.3}
+#study-topics .check-step-copy small{display:block;margin-top:3px;color:#87a9ad;font-size:9px}
+#study-topics .check-step.is-done{border-color:rgba(115,202,174,.26);background:rgba(29,76,67,.35)}
+#study-topics .check-step.is-done .check-step-copy strong{color:#c0eadd}
+#study-topics .check-step .step-date{grid-column:2;justify-self:start;margin:0;color:#88a8ad;font-size:9px;text-align:left;line-height:1.3}
+#study-topics .learning-performance{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding:12px 13px;border:1px solid rgba(157,204,208,.12);border-radius:13px;background:rgba(9,27,39,.62)}
+#study-topics .learning-performance b{display:block;color:#d9e9e8;font-size:11px}
+#study-topics .learning-performance small{display:block;margin-top:3px;color:#96b1b5;font-size:10px}
+#study-topics .review-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
+#study-topics .review-actions button{flex:1 1 150px;min-height:40px;padding:9px 12px;border-color:rgba(147,207,205,.19);background:rgba(29,63,74,.82);font-size:11px}
+.subject-area-section{padding:3px 0}
+.subject-area-heading{margin-bottom:13px}
+.subject-area-heading h2{font-size:23px}
+.subject-area-grid{gap:11px}
+.subject-directory-item{min-height:166px;padding:15px;border-radius:18px}
+.subject-directory-item:active{transform:scale(.985)}
+@media(max-width:760px){
+ #study-subjects,#study-topics{padding-bottom:38px}
+ #study-topics .topics-page-heading{margin-bottom:15px}
+ #study-topics .topic-row{min-height:76px;padding:13px 14px}
+ #study-topics .topic-title-line b{font-size:15px}
+ #study-topics .learning-panel{padding:15px 13px 14px}
+ #study-topics .learning-step-list{grid-template-columns:1fr;gap:7px}
+ #study-topics .check-step{min-height:57px;grid-template-columns:19px minmax(0,1fr) auto;gap:8px;padding:9px 10px}
+ #study-topics .check-step input{grid-row:1;grid-column:1}
+ #study-topics .check-step-copy{grid-row:1;grid-column:2}
+ #study-topics .check-step .step-date{grid-row:1;grid-column:3;justify-self:end;text-align:right;max-width:112px}
+ .subject-directory-item{min-height:156px;padding:13px;border-radius:16px}
+}
+@media(max-width:390px){
+ #study-topics .topic-title-line{flex-wrap:wrap;gap:6px 8px}
+ #study-topics .topic-title-line b{font-size:14px}
+ #study-topics .check-step .step-date{max-width:90px;font-size:8px}
+ .subject-area-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .subject-directory-item{min-height:151px}
+}
+@media(prefers-reduced-motion:reduce){#study-topics .topic-accordion,#study-topics .topic-progress i{transition:none!important}}
+
 </style>
 <script id="grafia-pwa-controller">
 (()=>{
@@ -2250,7 +2323,10 @@ data.sessions=Array.isArray(data.sessions)?data.sessions:[];
 data.cycles=Array.isArray(data.cycles)?data.cycles:[];
 for(const [id,x] of Object.entries(data.topics)){
  if(!x||typeof x!=='object'){delete data.topics[id];continue;}
- x.id=x.id||id;x.steps=Array.isArray(x.steps)?x.steps:[];x.events=Array.isArray(x.events)?x.events:[];
+ x.id=x.id||id;
+ // Converte listas antigas/esparsas em cinco estados booleanos explícitos.
+ x.steps=Array.from({length:steps.length},(_,i)=>Array.isArray(x.steps)&&x.steps[i]===true);
+ x.events=Array.isArray(x.events)?x.events:[];
  x.enrolled=!!x.enrolled;x.reviewIndex=Number.isFinite(Number(x.reviewIndex))?Number(x.reviewIndex):0;
  if(x.enrolled&&!x.enrolledAt)x.enrolledAt=x.createdAt||new Date().toISOString();
  if(x.enrolled&&!x.reviewCycleStartedAt)x.reviewCycleStartedAt=x.enrolledAt;
@@ -2288,7 +2364,7 @@ const addDays=(date,n)=>{let d=new Date(date);d.setDate(d.getDate()+n);return d.
 const topicId=(discipline,topic)=>discipline+'::'+topic;
 function hasFinishedInitialLearning(entry){
  const state=data.topics[topicId(entry.discipline,entry.topic)];
- return !!(state&&Array.isArray(state.steps)&&state.steps.slice(0,4).length===4&&state.steps.slice(0,4).every(Boolean));
+ return !!(state&&Array.isArray(state.steps)&&[0,1,2,3].every(i=>state.steps[i]===true));
 }
 function getRecommendationState(){
  const statuses=recommendationSequence.map(entry=>({...entry,passed:hasFinishedInitialLearning(entry)}));
@@ -2322,7 +2398,14 @@ function refreshRecommendationUI(){
  if(name)name.textContent=state.current?state.current.topic:'Lista concluída';
  const list=document.getElementById('recommendationList');if(list)renderRecommendationList();
 }
-function stateFor(d,t){let id=topicId(d,t);return data.topics[id]||(data.topics[id]={id,discipline:d,topic:t,steps:[],events:[],difficulty:'medium',incidence:'medium',enrolled:false,cycle:0,completed:false,createdAt:new Date().toISOString()});}
+function stateFor(d,t){
+ let id=topicId(d,t),x=data.topics[id];
+ if(!x)x=data.topics[id]={id,discipline:d,topic:t,steps:Array(steps.length).fill(false),events:[],difficulty:'medium',incidence:'medium',enrolled:false,cycle:0,completed:false,createdAt:new Date().toISOString()};
+ // Garante cinco posições booleanas reais; índices vazios nunca contam como concluídos.
+ x.steps=Array.from({length:steps.length},(_,i)=>Array.isArray(x.steps)&&x.steps[i]===true);
+ x.events=Array.isArray(x.events)?x.events:[];
+ return x;
+}
 function normalizeRecordCategory(r){return r.category||'questions';}
 function matchesDiscipline(recordDiscipline,requested){
  const aliases={
@@ -2520,7 +2603,7 @@ function disciplineProgress(d){
   const stepsDone=Array.isArray(x?.steps)?x.steps:false;
   if(stepsDone&&stepsDone.some(Boolean))started++;
   // O estudo inicial é considerado concluído após Aula, Questões, Caderno de erros e Anki.
-  if(stepsDone&&stepsDone.slice(0,4).length===4&&stepsDone.slice(0,4).every(Boolean))completed++;
+  if(stepsDone&&[0,1,2,3].every(i=>stepsDone[i]===true))completed++;
   seconds+=elapsed(d,topic);
  }
  return {total:topics.length,started,completed,seconds};
@@ -2555,43 +2638,53 @@ function renderTopics(d,expandTopic=undefined){
  selected=expandedTopic?{d,t:expandedTopic}:null;
  box.innerHTML=(disciplines[d]||[]).map(t=>{
   let x=stateFor(d,t),done=x.steps.filter(Boolean).length,isOpen=expandedTopic===t;
-  return `<div class="topic-accordion"><button class="topic-row" type="button" data-topic="${esc(t)}" aria-expanded="${isOpen?'true':'false'}"><span class="topic-info"><span class="topic-title-line"><b>${esc(t)}</b><span class="topic-time" data-discipline="${esc(d)}" data-time-topic="${esc(t)}">${formatStudyTime(elapsed(d,t))}</span></span><small>${done}/5 etapas${x.enrolled?' · Na fila de revisões':''}</small><span class="topic-progress"><i style="width:${done*20}%"></i></span></span><span class="topic-chevron" aria-hidden="true">⌄</span></button><div class="topic-panel-wrap" id="topicPanel-${esc(t).replace(/[^a-zA-Z0-9_-]/g,'-')}" ${isOpen?'':'hidden'}><div class="card learning-panel" id="topicDetail"></div></div></div>`;
+  return `<article class="topic-accordion"><button class="topic-row" type="button" data-topic="${esc(t)}" aria-expanded="${isOpen?'true':'false'}"><span class="topic-info"><span class="topic-title-line"><b>${esc(t)}</b><span class="topic-time" data-discipline="${esc(d)}" data-time-topic="${esc(t)}">${formatStudyTime(elapsed(d,t))}</span></span><small>${done}/5 etapas${x.enrolled?' · Na fila de revisões':''}</small><span class="topic-progress"><i style="width:${done*20}%"></i></span></span><span class="topic-chevron" aria-hidden="true">⌄</span></button><div class="topic-panel-wrap" id="topicPanel-${esc(t).replace(/[^a-zA-Z0-9_-]/g,'-')}" ${isOpen?'':'hidden'}><div class="learning-panel" data-topic-detail></div></div></article>`;
  }).join('');
  box.querySelectorAll('[data-topic]').forEach(el=>el.onclick=()=>{
   let topic=el.dataset.topic;
   renderTopics(d,expandedTopic===topic?null:topic);
  });
- if(expandedTopic){let panel=box.querySelector('#topicDetail');if(panel)renderTopicPanel(d,expandedTopic,panel);}
+ // Cada assunto possui seu próprio painel. Preenche somente o painel visível,
+ // sem depender de IDs repetidos em outros cartões recolhidos.
+ if(expandedTopic){
+  const activeWrap=box.querySelector('.topic-panel-wrap:not([hidden])');
+  const panel=activeWrap?.querySelector('[data-topic-detail]');
+  if(panel)renderTopicPanel(d,expandedTopic,panel);
+ }
 }
 function renderTopicPanel(d,t,panel){
  selected={d,t};let x=stateFor(d,t),a=accuracy(d,t),time=elapsed(d,t);
- panel.innerHTML=`<div class="sectionhead" style="margin-top:0"><div><div class="eyebrow">Checklist de aprendizagem</div><h2>${esc(t)}</h2></div><span class="pill">${x.steps.filter(Boolean).length}/5</span></div><div id="stepList"></div><div class="lineitem"><div><b>Desempenho em questões</b><small>${a.value===null?'Ainda sem resultados':Math.round(a.value*100)+'% · '+a.source+' · '+a.n+' questões'}</small></div><span class="pill" data-topic-total data-discipline="${esc(d)}" data-time-topic="${esc(t)}">${formatStudyTime(time)}</span></div><div class="review-actions"><button class="secondary" id="enrollReview">${x.enrolled?'Ver revisões':'Adicionar às revisões'}</button><button class="secondary" id="startTopicTimer">Iniciar cronômetro</button></div>`;
- renderSteps();
- panel.querySelector('#enrollReview').onclick=()=>x.enrolled?openStudyArea('reviews'):enrollPrompt(d,t);
- panel.querySelector('#startTopicTimer').onclick=()=>page('timer');
+ panel.innerHTML=`<div class="learning-panel-head"><div><div class="eyebrow">CHECKLIST DE APRENDIZAGEM</div><h2>${esc(t)}</h2><p>Marque cada etapa no momento em que concluir. A ordem é livre.</p></div><span class="learning-count">${x.steps.filter(Boolean).length}/5</span></div><div class="learning-step-list" data-step-list></div><div class="learning-performance"><div><b>Desempenho em questões</b><small>${a.value===null?'Ainda sem resultados':Math.round(a.value*100)+'% · '+a.source+' · '+a.n+' questões'}</small></div><span class="pill" data-topic-total data-discipline="${esc(d)}" data-time-topic="${esc(t)}">${formatStudyTime(time)}</span></div><div class="review-actions"><button class="secondary" data-enroll-review>${x.enrolled?'Ver revisões':'Adicionar às revisões'}</button><button class="secondary" data-start-topic-timer>Iniciar cronômetro</button></div>`;
+ renderSteps(panel);
+ panel.querySelector('[data-enroll-review]').onclick=()=>x.enrolled?openStudyArea('reviews'):enrollPrompt(d,t);
+ panel.querySelector('[data-start-topic-timer]').onclick=()=>page('timer');
 }
 function openTopic(d,t){
  let select=document.getElementById('topicSubject');
  if(select&&select.value!==d){select.value=d;select.dispatchEvent(new Event('change',{bubbles:true}));}
- const pageTitle=document.getElementById('topicsPageTitle');if(pageTitle)pageTitle.textContent=d;
+ const pageTitle=document.getElementById('topicsPageTitle');if(pageTitle)pageTitle.textContent='Assuntos';
  renderTopics(d,t);
 }
-function renderSteps(){
- let {d,t}=selected,x=stateFor(d,t),box=document.getElementById('stepList');if(!box)return;
+function renderSteps(panel=null){
+ const context=selected;if(!context)return;
+ const {d,t}=context,x=stateFor(d,t);
+ const box=panel?.querySelector('[data-step-list]')||document.querySelector('#topicList .topic-panel-wrap:not([hidden]) [data-step-list]');
+ if(!box)return;
  box.innerHTML=steps.map((name,i)=>{
   const done=!!x.steps[i],lastEvent=x.events.filter(e=>e.step===i).slice(-1)[0],stamp=lastEvent?.at;
-  const status=done?'Concluída':lastEvent?.type==='undo'?'Desmarcada':'Pendente';
-  return `<label class="check-step"><input type="checkbox" data-step="${i}" ${done?'checked':''}><span><strong>${name}</strong>${done?'<small>Concluída</small>':''}</span><span class="step-date">${stamp?`${status} · ${new Date(stamp).toLocaleDateString('pt-BR')}`:status}</span></label>`;
+  const status=done?'Concluída':lastEvent?.type==='undo'?'Não concluída':'Pendente';
+  return `<label class="check-step ${done?'is-done':''}"><input type="checkbox" data-step="${i}" ${done?'checked':''} aria-label="Marcar ${esc(name)} como concluída"><span class="check-step-copy"><strong>${name}</strong><small>${done?'Etapa concluída':'Etapa independente'}</small></span><span class="step-date">${stamp?`${status} · ${new Date(stamp).toLocaleDateString('pt-BR')}`:status}</span></label>`;
  }).join('');
  box.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>toggleStep(Number(el.dataset.step),el.checked));
 }
 function toggleStep(i,checked){
- let {d,t}=selected,x=stateFor(d,t);
- if(i<0||i>=steps.length)return;
- if(!checked&&!confirm('Desmarcar apenas esta etapa? As outras etapas permanecerão como estão e o histórico será preservado.')){renderSteps();return;}
+ const context=selected;if(!context||i<0||i>=steps.length)return;
+ const {d,t}=context,x=stateFor(d,t);
+ // Uma etapa não libera nem bloqueia nenhuma outra; apenas ela própria muda.
+ if(!!x.steps[i]===!!checked)return;
  x.steps[i]=!!checked;x.events.push({type:checked?'complete':'undo',step:i,at:new Date().toISOString()});
  save();renderTopics(d,t);refreshRecommendationUI();renderSubjectDirectory();
- if(x.steps.slice(0,3).every(Boolean)&&!x.enrolled&&!x.prompted){x.prompted=true;save();enrollPrompt(d,t,true);}
+ if([0,1,2].every(index=>x.steps[index]===true)&&!x.enrolled&&!x.prompted){x.prompted=true;save();enrollPrompt(d,t,true);}
 }
 function enrollPrompt(d,t,auto=false){
  let x=stateFor(d,t),modal=document.getElementById('learningModal');modal.hidden=false;
@@ -2702,7 +2795,7 @@ select.addEventListener('change',()=>{
  document.getElementById('topicsEmpty').hidden=!!d;
  document.getElementById('topicsSelected').hidden=!d;
  document.getElementById('topicsSelectedName').textContent=d;
- const pageTitle=document.getElementById('topicsPageTitle');if(pageTitle)pageTitle.textContent=d||'Assuntos';
+ const pageTitle=document.getElementById('topicsPageTitle');if(pageTitle)pageTitle.textContent='Assuntos';
  if(d){selected=null;expandedTopic=null;renderTopics(d,null);}
 });
 function openDisciplineTopics(d){

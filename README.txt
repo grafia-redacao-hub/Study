@@ -4,7 +4,7 @@ Arquivos
 - index.html: aplicação Grafia Study
 - manifest.webmanifest: metadados de instalação
 - service-worker.js: cache da interface para uso offline básico
-- icons/: ícones da aplicação
+- icons/: ícones da aplicação (icon-192.png, icon-512.png e apple-touch-icon.png)
 
 Como testar corretamente
 1. Publique TODOS os arquivos preservando a estrutura de pastas em um host HTTPS.
