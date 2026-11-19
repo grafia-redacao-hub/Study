@@ -1,4 +1,4 @@
-const CACHE_NAME = 'grafia-study-shell-v11';
+const CACHE_NAME = 'grafia-study-shell-v12';
 const APP_SHELL = [
   './',
   './index.html',
