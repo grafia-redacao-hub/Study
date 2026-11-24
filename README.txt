@@ -23,7 +23,7 @@ O service worker armazena o shell da interface e os ícones. Como esta versão n
 
 CATÁLOGO DE ASSUNTOS (ATUALIZAÇÃO)
 - 121 assuntos no total: 100 assuntos originais + 21 fundamentos novos.
-- A Ordem de Estudos foi reorganizada para seguir uma progressão de pré-requisitos.
+- A Ordem de Estudos intercala as disciplinas, respeita pré-requisitos e evita blocos longos de uma mesma matéria.
 - Os fundamentos novos aparecem identificados como “Fundamento” na lista de recomendação.
 - O estudo fora de ordem continua permitido.
 - Os registros locais dos assuntos originais são preservados porque seus identificadores disciplina::assunto não foram alterados.
